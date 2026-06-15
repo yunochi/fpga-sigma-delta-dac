@@ -100,30 +100,152 @@ module linear_interpolation #(
         input wire clk,
         input wire rst_n,
         input wire signed [DATA_WIDTH-1:0] data_in,
-        input wire signed [31:0] interval_cnt,
-        output reg signed [DATA_WIDTH-1:0] data_out
+        input wire [15:0] interval_cnt,
+        output wire signed [DATA_WIDTH-1:0] data_out
     );
 
     reg signed [DATA_WIDTH + 16 -1:0] data_in_prev;
     reg signed [DATA_WIDTH + 16 -1:0] data_in_current;
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            data_out <= 0;
             data_in_prev <= 0;
             data_in_current <= 0;
         end
-        else if (interval_cnt == 0) begin
+        else if (interval_cnt == OVERSAMPLING_RATIO - 1) begin
             data_in_prev <= data_in_current;
             data_in_current <= data_in <<< 8; // 256배 곱해서 정밀도 손실 최소화
         end
+    end
 
-        // 다시 256으로 나눠서 원래 범위로 복원
-        data_out = (data_in_prev + ( (data_in_current - data_in_prev) * interval_cnt ) / OVERSAMPLING_RATIO) >>> 8;
+    // 다시 256으로 나눠서 원래 범위로 복원
+    assign data_out = (data_in_prev + ( (data_in_current - data_in_prev) * interval_cnt ) / OVERSAMPLING_RATIO) >>> 8;
+endmodule
+
+module fir_upsampler_2x #(
+        parameter integer DATA_WIDTH = 16,
+        parameter integer OVERSAMPLING_RATIO = 256
+    ) (
+        input wire clk,
+        input wire rst_n,
+        input wire signed [DATA_WIDTH-1:0] data_in,
+        input wire [15:0] interval_cnt,
+        output reg signed [DATA_WIDTH-1:0] data_out
+    );
+
+    // 15-tap Half-Band filter (8 non-zero coefficients)
+    reg signed [DATA_WIDTH-1:0] x_reg [0:7];
+    localparam signed [DATA_WIDTH-1:0] H_0_7 = -241;
+    localparam signed [DATA_WIDTH-1:0] H_1_6 = 1064;
+    localparam signed [DATA_WIDTH-1:0] H_2_5 = -4501;
+    localparam signed [DATA_WIDTH-1:0] H_3_4 = 20062;
+
+    integer j;
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            for (j = 0; j < 8; j = j + 1) begin
+                x_reg[j] <= 0;
+            end
+        end
+        else if (interval_cnt == 0) begin
+            x_reg[0] <= data_in;
+            for (j = 1; j < 8; j = j + 1) begin
+                x_reg[j] <= x_reg[j-1];
+            end
+        end
+    end
+
+    // -------------------------------------------------------------
+    // Pipeline Stage 1: Symmetric Pre-Adder (DSP48 내장 Pre-Adder 유도)
+    // -------------------------------------------------------------
+    reg signed [DATA_WIDTH:0] s0, s1, s2, s3; // 17-bit 이면 충분 (16+1)
+
+    // Odd Path용 타이밍 동기화 지연 파이프라인
+    reg signed [DATA_WIDTH-1:0] odd_pipe1;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            s0 <= 0; s1 <= 0; s2 <= 0; s3 <= 0;
+            odd_pipe1 <= 0;
+        end else begin
+            s0 <= $signed(x_reg[0]) + $signed(x_reg[7]);
+            s1 <= $signed(x_reg[1]) + $signed(x_reg[6]);
+            s2 <= $signed(x_reg[2]) + $signed(x_reg[5]);
+            s3 <= $signed(x_reg[3]) + $signed(x_reg[4]);
+
+            odd_pipe1 <= x_reg[3]; // Even 연산 1단계 지연과 매칭
+        end
+    end
+
+    // -------------------------------------------------------------
+    // Pipeline Stage 2: Multipliers (DSP48 내장 Multiplier 유도)
+    // -------------------------------------------------------------
+    // 17비트 * 16비트 계수 = 33비트 결과
+    reg signed [DATA_WIDTH+16:0] m0, m1, m2, m3;
+    reg signed [DATA_WIDTH-1:0]  odd_pipe2;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            m0 <= 0; m1 <= 0; m2 <= 0; m3 <= 0;
+            odd_pipe2 <= 0;
+        end else begin
+            m0 <= s0 * H_0_7;
+            m1 <= s1 * H_1_6;
+            m2 <= s2 * H_2_5;
+            m3 <= s3 * H_3_4;
+
+            odd_pipe2 <= odd_pipe1; // Even 연산 2단계 지연과 매칭
+        end
+    end
+
+    // -------------------------------------------------------------
+    // Pipeline Stage 3: Tree Accumulation & Slicing / Saturation
+    // -------------------------------------------------------------
+    reg signed [DATA_WIDTH-1:0] even_out;
+    reg signed [DATA_WIDTH-1:0] odd_pipe3;
+
+    wire signed [DATA_WIDTH+18:0] sum_tree; // 35비트 공간
+    assign sum_tree = m0 + m1 + m2 + m3;
+
+    wire signed [19:0] sum_shifted = sum_tree >>> 15;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            even_out  <= 0;
+            odd_pipe3 <= 0;
+        end else begin
+            // Saturation Logic
+            if (sum_shifted > 32767)
+                even_out <= 32767;
+            else if (sum_shifted < -32768)
+                even_out <= -32768;
+            else
+                even_out <= sum_shifted[15:0];
+
+            odd_pipe3 <= odd_pipe2; // Even 연산 3단계 지연과 매칭
+        end
+    end
+
+    // -------------------------------------------------------------
+    // Pipeline Stage 4: Output MUX (Clean Registered Output)
+    // -------------------------------------------------------------
+    // 모든 연산 레이턴시(3클럭)가 완벽히 매칭된 정돈된 출력을 내보냅니다.
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            data_out <= 0;
+        end else begin
+            if (interval_cnt < (OVERSAMPLING_RATIO / 2)) begin
+                data_out <= even_out;
+            end
+            else begin
+                data_out <= odd_pipe3;
+            end
+        end
     end
 endmodule
 
 module testbench;
     `define USE_3RD_ORDER
+    `define USE_FIR_UP_INTERPOLATION
     // `define USE_LINEAR_INTERPOLATION
     // `define USE_ZERO_ORDER_HOLD
 
@@ -131,12 +253,16 @@ module testbench;
     `define USE_OVERSAMPLING
     `elsif USE_LINEAR_INTERPOLATION
     `define USE_OVERSAMPLING
+    `elsif USE_FIR_UP_INTERPOLATION
+    `define USE_OVERSAMPLING
     `endif
     `ifdef USE_OVERSAMPLING
     parameter integer OVERSAMPLING_RATIO = 256;
-    integer data_interval_cnt;
+    reg [15:0] data_interval_cnt;
     `endif
-    `ifdef USE_LINEAR_INTERPOLATION
+    `ifdef USE_FIR_UP_INTERPOLATION
+    wire signed [15:0] data_val;
+    `elsif USE_LINEAR_INTERPOLATION
     wire signed [15:0] data_val;
     `else
     reg signed [15:0] data_val;
@@ -160,6 +286,8 @@ module testbench;
     real PI = 3.14159265;
     integer i;
     integer f;
+    integer f_val;
+    reg [31:0] cycle_cnt;
 
     `ifdef USE_3RD_ORDER
     sigma_delta_3rd_order #(.WIDTH(INTEGRATOR_WIDTH)) uut (
@@ -221,7 +349,26 @@ module testbench;
     end
 
 
-    `ifdef USE_LINEAR_INTERPOLATION
+    `ifdef USE_FIR_UP_INTERPOLATION
+    wire signed [15:0] fir_out;
+    wire [15:0] interval_cnt_128 = data_interval_cnt[6:0];
+
+    fir_upsampler_2x #(.DATA_WIDTH(16), .OVERSAMPLING_RATIO(OVERSAMPLING_RATIO)) upsampler (
+                         .clk(clk),
+                         .rst_n(rst_n),
+                         .data_in(data_in),
+                         .interval_cnt(data_interval_cnt),
+                         .data_out(fir_out)
+                     );
+
+    linear_interpolation #(.DATA_WIDTH(16), .OVERSAMPLING_RATIO(OVERSAMPLING_RATIO / 2)) interpolator (
+                             .clk(clk),
+                             .rst_n(rst_n),
+                             .data_in(fir_out),
+                             .interval_cnt(interval_cnt_128),
+                             .data_out(data_val)
+                         );
+    `elsif USE_LINEAR_INTERPOLATION
     linear_interpolation #(.DATA_WIDTH(16), .OVERSAMPLING_RATIO(OVERSAMPLING_RATIO)) interpolator (
                              .clk(clk),
                              .rst_n(rst_n),
@@ -231,14 +378,63 @@ module testbench;
                          );
     `endif
 
-    real amplitude = 32767.0;
+    real amplitude = 30000.0;
+
+    // cycle_cnt generation
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            cycle_cnt <= 0;
+        end
+        else begin
+            cycle_cnt <= cycle_cnt + 1;
+        end
+    end
+
+    // input generation
+    `ifdef USE_OVERSAMPLING
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            data_interval_cnt <= OVERSAMPLING_RATIO - 1;
+            data_in <= 0;
+            `ifdef USE_ZERO_ORDER_HOLD
+            data_val <= 0;
+            `endif
+        end
+        else begin
+            if (data_interval_cnt >= OVERSAMPLING_RATIO - 1) begin
+                data_interval_cnt <= 0;
+                data_in <= $rtoi(amplitude * $sin(2.0 * PI * TARGET_F0 * cycle_cnt / FS_HZ));
+                `ifdef USE_ZERO_ORDER_HOLD
+                data_val <= $rtoi(amplitude * $sin(2.0 * PI * TARGET_F0 * cycle_cnt / FS_HZ));
+                `endif
+            end
+            else begin
+                data_interval_cnt <= data_interval_cnt + 1;
+            end
+        end
+    end
+    `else
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            data_in <= 0;
+            data_val <= 0;
+        end
+        else begin
+            data_in <= $rtoi(amplitude * $sin(2.0 * PI * TARGET_F0 * cycle_cnt / FS_HZ));
+            data_val <= $rtoi(amplitude * $sin(2.0 * PI * TARGET_F0 * cycle_cnt / FS_HZ));
+        end
+    end
+    `endif
+
     initial begin
         $display("--- Testbench Configuration (16-bit Input) ---");
         $display("Modulator Freq : %0d Hz (%0f MHz)", FS_HZ, (FS_HZ * 1.0) / 1000000);
         `ifdef USE_OVERSAMPLING
         $display("Oversampling Ratio : %0d", OVERSAMPLING_RATIO);
         $display("Data input rate : %0f Hz", (FS_HZ * 1.0) / OVERSAMPLING_RATIO);
-        `ifdef USE_LINEAR_INTERPOLATION
+        `ifdef USE_FIR_UP_INTERPOLATION
+        $display("Interpolation Method : 2x FIR Upsampler + Linear");
+        `elsif USE_LINEAR_INTERPOLATION
         $display("Interpolation Method : Linear");
         `elsif USE_ZERO_ORDER_HOLD
         $display("Interpolation Method : Zero-Order Hold");
@@ -260,41 +456,10 @@ module testbench;
 
         f = $fopen("dout.txt", "w");
         rst_n = 0;
-        data_in = 0;
-        `ifdef USE_OVERSAMPLING
-        data_interval_cnt = OVERSAMPLING_RATIO - 1; // 첫 샘플에서 바로 데이터 갱신하도록 초기화
-        `endif
-
         #100 rst_n = 1;
 
         for (i = 0; i < N_SAMPLES; i = i + 1) begin
-            `ifdef USE_LINEAR_INTERPOLATION
-            // 선형 보간
-            if (data_interval_cnt >= OVERSAMPLING_RATIO - 1) begin
-                data_interval_cnt = 0;
-                // 16-bit amplitude (max 32767)
-                data_in = $rtoi(amplitude * $sin(2.0 * PI * TARGET_F0 * i / FS_HZ));
-            end
-            `elsif USE_ZERO_ORDER_HOLD
-            // 0차 홀드
-            if (data_interval_cnt >= OVERSAMPLING_RATIO - 1) begin
-                data_interval_cnt = 0;
-                // 16-bit amplitude (max 32767)
-                data_in = $rtoi(amplitude* $sin(2.0 * PI * TARGET_F0 * i / FS_HZ));
-                data_val = data_in; // ZOH 입력으로 직접 전달
-            end
-            `else
-            // 이상적 sine 입력 (매 샘플마다 갱신)
-            // 16-bit amplitude (max 32767)
-            data_in = $rtoi(amplitude * $sin(2.0 * PI * TARGET_F0 * i / FS_HZ));
-            data_val = data_in;
-            `endif
-
             @(posedge clk);
-
-            `ifdef USE_OVERSAMPLING
-            data_interval_cnt = data_interval_cnt + 1;
-            `endif
         end
         $display("int1 min: %d, max: %d", integrator1_min, integrator1_max);
         $display("int2 min: %d, max: %d", integrator2_min, integrator2_max);
