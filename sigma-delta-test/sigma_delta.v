@@ -1,248 +1,5 @@
 `timescale 1ns / 1ps
 
-module sigma_delta_3rd_order #(
-        parameter integer WIDTH = 32
-    ) (
-        input wire clk,
-        input wire rst_n,
-        input wire [15:0] din,
-        output reg dout
-    );
-
-    localparam signed [WIDTH-1:0] POS_FB = 32767 <<< 8;
-    localparam signed [WIDTH-1:0] NEG_FB = -32768 <<< 8;
-
-    wire signed [WIDTH-1:0] signed_din;
-    wire signed [WIDTH-1:0] fb;
-    wire signed [WIDTH-1:0] error;
-
-    assign signed_din = $signed(din) <<< 8;
-
-    reg signed [WIDTH-1:0] integrator1;
-    reg signed [WIDTH-1:0] integrator2;
-    reg signed [WIDTH-1:0] integrator3;
-
-    // Input scaling (approx 0.8125)
-    wire signed [WIDTH-1:0] reduced_din = (signed_din * 26) >>> 5;
-
-    assign fb = (dout == 1'b1) ? POS_FB : NEG_FB;
-    assign error = reduced_din - fb;
-
-    // CIFF Feed-forward Summation
-    // Using a wider bit-width to prevent overflow during addition
-    wire signed [WIDTH+2:0] sum = (integrator1 >>> 0) + (integrator2 >>> 2) + (integrator3 >>> 4) + (integrator3 >>> 6);
-
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            integrator1 <= 0;
-            integrator2 <= 0;
-            integrator3 <= 0;
-            dout       <= 1'b0;
-        end
-        else begin
-            integrator1 <= integrator1 + error;
-            integrator2 <= integrator2 + (integrator1 >>> 1);
-            integrator3 <= integrator3 + (integrator2 >>> 2);
-
-            dout <= (sum >= 0) ? 1'b1 : 1'b0;
-        end
-    end
-endmodule
-
-module sigma_delta_2nd_order #(
-        parameter integer WIDTH = 32
-    ) (
-        input wire clk,
-        input wire rst_n,
-        input wire [15:0] din,
-        output reg dout
-    );
-
-    // Internal precision remains 32-bit for stability and high SNR head-room
-
-    // Feedback and input are scaled to 16-bit signed range (max +/- 32767)
-    localparam signed [WIDTH-1:0] POS_FB = 32767 <<< 8;
-    localparam signed [WIDTH-1:0] NEG_FB = -32768 <<< 8;
-    wire signed [WIDTH-1:0] signed_din;
-
-    wire signed [WIDTH-1:0] fb;
-    wire signed [WIDTH-1:0] integrator1_next;
-
-    // Sign-extend 16-bit input to 32-bit internal width
-    assign signed_din = $signed(din) <<< 8;
-    reg signed [WIDTH-1:0] integrator1;
-    reg signed [WIDTH-1:0] integrator2;
-
-    // Input scaling (approx 0.8125)
-    wire signed [WIDTH-1:0] reduced_din = (signed_din * 26) >>> 5;
-    assign integrator1_next = integrator1 + (reduced_din - fb) / 2;
-
-    assign fb = (dout == 1'b1) ? POS_FB : NEG_FB;
-
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            integrator1 <= 0;
-            integrator2 <= 0;
-            dout       <= 1'b0;
-        end else begin
-            integrator1 <= integrator1_next;
-            integrator2 <= integrator2 + (integrator1_next / 2) - fb;
-
-            dout <= (integrator2 >= 0) ? 1'b1 : 1'b0;
-        end
-    end
-endmodule
-
-module linear_interpolation #(
-        parameter integer DATA_WIDTH = 16,
-        parameter integer OVERSAMPLING_RATIO = 256
-    ) (
-        input wire clk,
-        input wire rst_n,
-        input wire signed [DATA_WIDTH-1:0] data_in,
-        input wire [15:0] interval_cnt,
-        output wire signed [DATA_WIDTH-1:0] data_out
-    );
-
-    reg signed [DATA_WIDTH + 16 -1:0] data_in_prev;
-    reg signed [DATA_WIDTH + 16 -1:0] data_in_current;
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            data_in_prev <= 0;
-            data_in_current <= 0;
-        end
-        else if (interval_cnt == OVERSAMPLING_RATIO - 1) begin
-            data_in_prev <= data_in_current;
-            data_in_current <= data_in <<< 8; // 256배 곱해서 정밀도 손실 최소화
-        end
-    end
-
-    // 다시 256으로 나눠서 원래 범위로 복원
-    assign data_out = (data_in_prev + ( (data_in_current - data_in_prev) * interval_cnt ) / OVERSAMPLING_RATIO) >>> 8;
-endmodule
-
-module fir_upsampler_2x #(
-        parameter integer DATA_WIDTH = 16,
-        parameter integer OVERSAMPLING_RATIO = 256
-    ) (
-        input wire clk,
-        input wire rst_n,
-        input wire signed [DATA_WIDTH-1:0] data_in,
-        input wire [15:0] interval_cnt,
-        output reg signed [DATA_WIDTH-1:0] data_out
-    );
-
-    // 15-tap Half-Band filter (8 non-zero coefficients)
-    reg signed [DATA_WIDTH-1:0] x_reg [0:7];
-    localparam signed [DATA_WIDTH-1:0] H_0_7 = -241;
-    localparam signed [DATA_WIDTH-1:0] H_1_6 = 1064;
-    localparam signed [DATA_WIDTH-1:0] H_2_5 = -4501;
-    localparam signed [DATA_WIDTH-1:0] H_3_4 = 20062;
-
-    integer j;
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            for (j = 0; j < 8; j = j + 1) begin
-                x_reg[j] <= 0;
-            end
-        end
-        else if (interval_cnt == 0) begin
-            x_reg[0] <= data_in;
-            for (j = 1; j < 8; j = j + 1) begin
-                x_reg[j] <= x_reg[j-1];
-            end
-        end
-    end
-
-    // -------------------------------------------------------------
-    // Pipeline Stage 1: Symmetric Pre-Adder (DSP48 내장 Pre-Adder 유도)
-    // -------------------------------------------------------------
-    reg signed [DATA_WIDTH:0] s0, s1, s2, s3; // 17-bit 이면 충분 (16+1)
-
-    // Odd Path용 타이밍 동기화 지연 파이프라인
-    reg signed [DATA_WIDTH-1:0] odd_pipe1;
-
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            s0 <= 0; s1 <= 0; s2 <= 0; s3 <= 0;
-            odd_pipe1 <= 0;
-        end else begin
-            s0 <= $signed(x_reg[0]) + $signed(x_reg[7]);
-            s1 <= $signed(x_reg[1]) + $signed(x_reg[6]);
-            s2 <= $signed(x_reg[2]) + $signed(x_reg[5]);
-            s3 <= $signed(x_reg[3]) + $signed(x_reg[4]);
-
-            odd_pipe1 <= x_reg[3]; // Even 연산 1단계 지연과 매칭
-        end
-    end
-
-    // -------------------------------------------------------------
-    // Pipeline Stage 2: Multipliers (DSP48 내장 Multiplier 유도)
-    // -------------------------------------------------------------
-    // 17비트 * 16비트 계수 = 33비트 결과
-    reg signed [DATA_WIDTH+16:0] m0, m1, m2, m3;
-    reg signed [DATA_WIDTH-1:0]  odd_pipe2;
-
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            m0 <= 0; m1 <= 0; m2 <= 0; m3 <= 0;
-            odd_pipe2 <= 0;
-        end else begin
-            m0 <= s0 * H_0_7;
-            m1 <= s1 * H_1_6;
-            m2 <= s2 * H_2_5;
-            m3 <= s3 * H_3_4;
-
-            odd_pipe2 <= odd_pipe1; // Even 연산 2단계 지연과 매칭
-        end
-    end
-
-    // -------------------------------------------------------------
-    // Pipeline Stage 3: Tree Accumulation & Slicing / Saturation
-    // -------------------------------------------------------------
-    reg signed [DATA_WIDTH-1:0] even_out;
-    reg signed [DATA_WIDTH-1:0] odd_pipe3;
-
-    wire signed [DATA_WIDTH+18:0] sum_tree; // 35비트 공간
-    assign sum_tree = m0 + m1 + m2 + m3;
-
-    wire signed [19:0] sum_shifted = sum_tree >>> 15;
-
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            even_out  <= 0;
-            odd_pipe3 <= 0;
-        end else begin
-            // Saturation Logic
-            if (sum_shifted > 32767)
-                even_out <= 32767;
-            else if (sum_shifted < -32768)
-                even_out <= -32768;
-            else
-                even_out <= sum_shifted[15:0];
-
-            odd_pipe3 <= odd_pipe2; // Even 연산 3단계 지연과 매칭
-        end
-    end
-
-    // -------------------------------------------------------------
-    // Pipeline Stage 4: Output MUX (Clean Registered Output)
-    // -------------------------------------------------------------
-    // 모든 연산 레이턴시(3클럭)가 완벽히 매칭된 정돈된 출력을 내보냅니다.
-    always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            data_out <= 0;
-        end else begin
-            if (interval_cnt < (OVERSAMPLING_RATIO / 2)) begin
-                data_out <= even_out;
-            end
-            else begin
-                data_out <= odd_pipe3;
-            end
-        end
-    end
-endmodule
-
 module testbench;
     `define USE_3RD_ORDER
     `define USE_FIR_UP_INTERPOLATION
@@ -477,4 +234,247 @@ module testbench;
         end
     end
 
+endmodule
+
+
+module sigma_delta_3rd_order #(
+        parameter integer WIDTH = 32
+    ) (
+        input wire clk,
+        input wire rst_n,
+        input wire [15:0] din,
+        output reg dout
+    );
+
+    localparam signed [WIDTH-1:0] POS_FB = 32767 <<< 8;
+    localparam signed [WIDTH-1:0] NEG_FB = -32768 <<< 8;
+
+    wire signed [WIDTH-1:0] signed_din;
+    wire signed [WIDTH-1:0] fb;
+    wire signed [WIDTH-1:0] error;
+
+    assign signed_din = $signed(din) <<< 8;
+
+    reg signed [WIDTH-1:0] integrator1;
+    reg signed [WIDTH-1:0] integrator2;
+    reg signed [WIDTH-1:0] integrator3;
+
+    // Input scaling (approx 0.8125)
+    wire signed [WIDTH-1:0] reduced_din = (signed_din * 26) >>> 5;
+
+    assign fb = (dout == 1'b1) ? POS_FB : NEG_FB;
+    assign error = reduced_din - fb;
+
+    // CIFF Feed-forward Summation
+    // Using a wider bit-width to prevent overflow during addition
+    wire signed [WIDTH+2:0] sum = (integrator1 >>> 0) + (integrator2 >>> 2) + (integrator3 >>> 4) + (integrator3 >>> 6);
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            integrator1 <= 0;
+            integrator2 <= 0;
+            integrator3 <= 0;
+            dout       <= 1'b0;
+        end
+        else begin
+            integrator1 <= integrator1 + error;
+            integrator2 <= integrator2 + (integrator1 >>> 1);
+            integrator3 <= integrator3 + (integrator2 >>> 2);
+
+            dout <= (sum >= 0) ? 1'b1 : 1'b0;
+        end
+    end
+endmodule
+
+module sigma_delta_2nd_order #(
+        parameter integer WIDTH = 32
+    ) (
+        input wire clk,
+        input wire rst_n,
+        input wire [15:0] din,
+        output reg dout
+    );
+
+    // Internal precision remains 32-bit for stability and high SNR head-room
+
+    // Feedback and input are scaled to 16-bit signed range (max +/- 32767)
+    localparam signed [WIDTH-1:0] POS_FB = 32767 <<< 8;
+    localparam signed [WIDTH-1:0] NEG_FB = -32768 <<< 8;
+    wire signed [WIDTH-1:0] signed_din;
+
+    wire signed [WIDTH-1:0] fb;
+    wire signed [WIDTH-1:0] integrator1_next;
+
+    // Sign-extend 16-bit input to 32-bit internal width
+    assign signed_din = $signed(din) <<< 8;
+    reg signed [WIDTH-1:0] integrator1;
+    reg signed [WIDTH-1:0] integrator2;
+
+    // Input scaling (approx 0.8125)
+    wire signed [WIDTH-1:0] reduced_din = (signed_din * 26) >>> 5;
+    assign integrator1_next = integrator1 + (reduced_din - fb) / 2;
+
+    assign fb = (dout == 1'b1) ? POS_FB : NEG_FB;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            integrator1 <= 0;
+            integrator2 <= 0;
+            dout       <= 1'b0;
+        end else begin
+            integrator1 <= integrator1_next;
+            integrator2 <= integrator2 + (integrator1_next / 2) - fb;
+
+            dout <= (integrator2 >= 0) ? 1'b1 : 1'b0;
+        end
+    end
+endmodule
+
+module linear_interpolation #(
+        parameter integer DATA_WIDTH = 16,
+        parameter integer OVERSAMPLING_RATIO = 256
+    ) (
+        input wire clk,
+        input wire rst_n,
+        input wire signed [DATA_WIDTH-1:0] data_in,
+        input wire [15:0] interval_cnt,
+        output wire signed [DATA_WIDTH-1:0] data_out
+    );
+
+    reg signed [DATA_WIDTH + 16 -1:0] data_in_prev;
+    reg signed [DATA_WIDTH + 16 -1:0] data_in_current;
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            data_in_prev <= 0;
+            data_in_current <= 0;
+        end
+        else if (interval_cnt == OVERSAMPLING_RATIO - 1) begin
+            data_in_prev <= data_in_current;
+            data_in_current <= data_in <<< 8; // 256배 곱해서 정밀도 손실 최소화
+        end
+    end
+
+    // 다시 256으로 나눠서 원래 범위로 복원
+    assign data_out = (data_in_prev + ( (data_in_current - data_in_prev) * interval_cnt ) / OVERSAMPLING_RATIO) >>> 8;
+endmodule
+
+module fir_upsampler_2x #(
+        parameter integer DATA_WIDTH = 16,
+        parameter integer OVERSAMPLING_RATIO = 256
+    ) (
+        input wire clk,
+        input wire rst_n,
+        input wire signed [DATA_WIDTH-1:0] data_in,
+        input wire [15:0] interval_cnt,
+        output reg signed [DATA_WIDTH-1:0] data_out
+    );
+
+    // 15-tap Half-Band filter (8 non-zero coefficients)
+    reg signed [DATA_WIDTH-1:0] x_reg [0:7];
+    localparam signed [DATA_WIDTH-1:0] H0_7 = -241;
+    localparam signed [DATA_WIDTH-1:0] H1_6 = 1064;
+    localparam signed [DATA_WIDTH-1:0] H2_5 = -4501;
+    localparam signed [DATA_WIDTH-1:0] H3_4 = 20062;
+
+    integer j;
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            for (j = 0; j < 8; j = j + 1) begin
+                x_reg[j] <= 0;
+            end
+        end
+        else if (interval_cnt == 0) begin
+            x_reg[0] <= data_in;
+            for (j = 1; j < 8; j = j + 1) begin
+                x_reg[j] <= x_reg[j-1];
+            end
+        end
+    end
+
+    // -------------------------------------------------------------
+    // Pipeline Stage 1: Symmetric Pre-Adder
+    // -------------------------------------------------------------
+    reg signed [DATA_WIDTH:0] s0, s1, s2, s3; // 17-bit 이면 충분 (16+1)
+
+    // Odd Path용 타이밍 동기화 지연 파이프라인
+    reg signed [DATA_WIDTH-1:0] odd_pipe1;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            s0 <= 0; s1 <= 0; s2 <= 0; s3 <= 0;
+            odd_pipe1 <= 0;
+        end else begin
+            s0 <= $signed(x_reg[0]) + $signed(x_reg[7]);
+            s1 <= $signed(x_reg[1]) + $signed(x_reg[6]);
+            s2 <= $signed(x_reg[2]) + $signed(x_reg[5]);
+            s3 <= $signed(x_reg[3]) + $signed(x_reg[4]);
+
+            odd_pipe1 <= x_reg[3];
+        end
+    end
+
+    // -------------------------------------------------------------
+    // Pipeline Stage 2: Multipliers
+    // -------------------------------------------------------------
+    // 17비트 * 16비트 계수 = 33비트 결과
+    reg signed [DATA_WIDTH+16:0] m0, m1, m2, m3;
+    reg signed [DATA_WIDTH-1:0]  odd_pipe2;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            m0 <= 0; m1 <= 0; m2 <= 0; m3 <= 0;
+            odd_pipe2 <= 0;
+        end else begin
+            m0 <= s0 * H0_7;
+            m1 <= s1 * H1_6;
+            m2 <= s2 * H2_5;
+            m3 <= s3 * H3_4;
+
+            odd_pipe2 <= odd_pipe1;
+        end
+    end
+
+    // -------------------------------------------------------------
+    // Pipeline Stage 3: Tree Accumulation & Slicing / Saturation
+    // -------------------------------------------------------------
+    reg signed [DATA_WIDTH-1:0] even_out;
+    reg signed [DATA_WIDTH-1:0] odd_pipe3;
+
+    wire signed [DATA_WIDTH+18:0] sum_tree; // 35비트 공간
+    assign sum_tree = m0 + m1 + m2 + m3;
+
+    wire signed [19:0] sum_shifted = sum_tree >>> 15;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            even_out  <= 0;
+            odd_pipe3 <= 0;
+        end else begin
+            // Saturation Logic
+            if (sum_shifted > 32767)
+                even_out <= 32767;
+            else if (sum_shifted < -32768)
+                even_out <= -32768;
+            else
+                even_out <= sum_shifted[15:0];
+
+            odd_pipe3 <= odd_pipe2;
+        end
+    end
+
+    // -------------------------------------------------------------
+    // Pipeline Stage 4: Output MUX
+    // -------------------------------------------------------------
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            data_out <= 0;
+        end else begin
+            if (interval_cnt < (OVERSAMPLING_RATIO / 2)) begin
+                data_out <= even_out;
+            end
+            else begin
+                data_out <= odd_pipe3;
+            end
+        end
+    end
 endmodule
