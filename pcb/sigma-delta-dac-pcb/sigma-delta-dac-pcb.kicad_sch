@@ -3396,7 +3396,7 @@
 				)
 			)
 		)
-		(property "Value" "50"
+		(property "Value" "100"
 			(at 142.24 129.54 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3554,7 +3554,7 @@
 				)
 			)
 		)
-		(property "Value" "50"
+		(property "Value" "100"
 			(at 142.24 82.55 90)
 			(show_name no)
 			(do_not_autoplace no)
