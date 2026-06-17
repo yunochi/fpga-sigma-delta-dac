@@ -27,7 +27,7 @@ module top(
     
 
   wire sys_clk; //12.288MHz Clock
-  parameter OVERSAMPLE_RATIO = 256;
+  parameter OVERSAMPLE_RATIO = 128;
 
   wire reset_n;
   wire [31:0]axis_tdata;
@@ -43,29 +43,18 @@ module top(
         .M_AXIS_0_tvalid(axis_tvalid)
     );
    
-   reg signed [15:0] pdm_val_l;
-   reg signed [15:0] pdm_val_r;
-   reg signed [31:0] pdm_val_prev_l, pdm_val_current_l;
-   reg signed [31:0] pdm_val_prev_r, pdm_val_current_r;
-   
+   wire signed [15:0] pdm_val_l;
+   wire signed [15:0] pdm_val_r;
    reg signed [15:0] sample_wait_cnt;
+   
    always @(posedge sys_clk) begin
         if (!reset_n) begin
-            pdm_val_l <= 0;
-            pdm_val_r <= 0;
-            pdm_val_prev_l <= 0; pdm_val_current_l <= 0;
-            pdm_val_prev_r <= 0; pdm_val_current_r <= 0;
             axis_tready <= 0;
             sample_wait_cnt <= 0;
         end
         else begin
             if (axis_tvalid && axis_tready) begin
                 axis_tready <= 0;
-                pdm_val_prev_l <= pdm_val_current_l;
-                pdm_val_prev_r <= pdm_val_current_r;
-                // 256배 곱해서 보간시 하위 비트 손실 최소화
-                pdm_val_current_l <= $signed(axis_tdata[15:0]) <<< 8;
-                pdm_val_current_r <= $signed(axis_tdata[31:16]) <<< 8;
                 sample_wait_cnt <= 0;
             end
             else begin
@@ -73,18 +62,36 @@ module top(
                 if (sample_wait_cnt < OVERSAMPLE_RATIO-1) begin
                     sample_wait_cnt <= sample_wait_cnt + 1;
                 end
-                if (sample_wait_cnt >= OVERSAMPLE_RATIO-2) begin // 12.288MHz / 256 = 48kHz
+                if (sample_wait_cnt >= OVERSAMPLE_RATIO-2) begin // 12.288MHz / 128 =  96kHz
                     // 다음 클럭에 새 데이터 캡쳐하기 위해 미리 tready 를 1로 설정
                     axis_tready <= 1;
                 end
             end
-           // 다시 256으로 나눠서 원래 범위로 복원
-           pdm_val_l <= (pdm_val_prev_l + ((pdm_val_current_l - pdm_val_prev_l) * sample_wait_cnt) / OVERSAMPLE_RATIO) >>> 8;
-           pdm_val_r <= (pdm_val_prev_r + ((pdm_val_current_r - pdm_val_prev_r) * sample_wait_cnt) / OVERSAMPLE_RATIO) >>> 8;
         end
    end
 
-
+   linear_interpolation #(
+        .DATA_WIDTH(16),
+        .OVERSAMPLING_RATIO(OVERSAMPLE_RATIO)
+    ) interpolation_l (
+        .clk(sys_clk),
+        .rst_n(reset_n),
+        .data_in(axis_tdata[15:0]),
+        .interval_cnt(sample_wait_cnt),
+        .data_out(pdm_val_l)
+   );
+   
+  linear_interpolation #(
+        .DATA_WIDTH(16),
+        .OVERSAMPLING_RATIO(OVERSAMPLE_RATIO)
+  ) interpolation_r (
+        .clk(sys_clk),
+        .rst_n(reset_n),
+        .data_in(axis_tdata[31:16]),
+        .interval_cnt(sample_wait_cnt),
+        .data_out(pdm_val_r)
+   );
+   
    sigma_delta_3rd_order sg_inst_l (
     .clk(sys_clk),
     .rst_n(reset_n),
@@ -100,6 +107,33 @@ module top(
    
 endmodule
 
+module linear_interpolation #(
+        parameter integer DATA_WIDTH = 16,
+        parameter integer OVERSAMPLING_RATIO = 256
+    ) (
+        input wire clk,
+        input wire rst_n,
+        input wire signed [DATA_WIDTH-1:0] data_in,
+        input wire [15:0] interval_cnt,
+        output wire signed [DATA_WIDTH-1:0] data_out
+    );
+
+    reg signed [DATA_WIDTH + 16 -1:0] data_in_prev;
+    reg signed [DATA_WIDTH + 16 -1:0] data_in_current;
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            data_in_prev <= 0;
+            data_in_current <= 0;
+        end
+        else if (interval_cnt == OVERSAMPLING_RATIO - 1) begin
+            data_in_prev <= data_in_current;
+            data_in_current <= data_in <<< 8; // 256배 곱해서 정밀도 손실 최소화
+        end
+    end
+
+    // 다시 256으로 나눠서 원래 범위로 복원
+    assign data_out = (data_in_prev + ( (data_in_current - data_in_prev) * interval_cnt ) / OVERSAMPLING_RATIO) >>> 8;
+endmodule
 
 module sigma_delta_3rd_order #(
         parameter integer WIDTH = 32
