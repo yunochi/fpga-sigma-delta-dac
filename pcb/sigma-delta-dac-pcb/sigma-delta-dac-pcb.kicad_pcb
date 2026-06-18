@@ -234,61 +234,9 @@
 				)
 			)
 		)
-		(property "Sim.Device" "R"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "20f1295d-cea6-47d2-a11a-d2e5fbfcbe77")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Type" "="
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e5322f77-da3c-43fe-873b-99a9e8b3b7ba")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Params" "r=\"330 Ohm\""
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3c24b9fb-9861-460a-9f8c-f89b00792c2c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=+ 2=-"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d6b58445-4ccb-4158-a778-811ae619bb35")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "R_*")
 		(path "/774f13a0-06cb-4853-81c3-3763d49fb99a")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -356,7 +304,7 @@
 			(size 1.2 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.208333)
-			(net "/SDM_R")
+			(net "SDM_R")
 			(pintype "passive")
 			(uuid "c6b8479f-838d-48e0-b13e-0673966cd12d")
 		)
@@ -438,7 +386,7 @@
 		)
 		(property ki_fp_filters "Jack*")
 		(path "/372d31bd-f339-496b-8a30-2e61857de315")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -944,7 +892,7 @@
 			(drill oval 0.4 1.4)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "/A_OUT_R")
+			(net "A_OUT_R")
 			(pintype "passive")
 			(uuid "051c55d4-c5ab-4246-ad93-74b629e15ed1")
 		)
@@ -974,7 +922,7 @@
 			(drill oval 0.4 1.4)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "/A_OUT_L")
+			(net "A_OUT_L")
 			(pintype "passive")
 			(uuid "6825f73e-d61d-465b-8925-5f49b3c35a1e")
 		)
@@ -1150,7 +1098,7 @@
 		)
 		(property ki_fp_filters "CP_*")
 		(path "/0131168e-33f2-45fa-97ee-e05998cb8ea0")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -1516,7 +1464,7 @@
 			(size 3.5 1.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.15625)
-			(net "/A_OUT_R")
+			(net "A_OUT_R")
 			(pintype "passive")
 			(uuid "7bb08153-00b1-4940-be96-dd8ef86d7c7f")
 		)
@@ -1584,48 +1532,9 @@
 				)
 			)
 		)
-		(property "Sim.Device" "C"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "f8c23aff-4b69-4d21-8581-a283c0b156c1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=+ 2=-"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "f463d243-7d56-4395-99e7-a4495cb0acc1")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Params" "c=20n"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6f477f2d-1598-4786-9111-1310e29b22a4")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "C_*")
 		(path "/3cdf568b-ae20-4908-874e-c0d87118cb41")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -1821,9 +1730,22 @@
 				)
 			)
 		)
+		(property "Sim.Params" "POLE=10Mega"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5b45ff7f-bd86-431f-b302-b0479587499e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "SOIC*3.9x4.9mm*P1.27mm* DIP*W7.62mm* MSOP*3x3mm*P0.65mm* SSOP*2.95x2.8mm*P0.65mm* TSSOP*3x3mm*P0.65mm* VSSOP*P0.5mm* TO?99*")
 		(path "/e382af2e-ac2f-4208-985c-8b738fcab4f3")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -2223,7 +2145,7 @@
 				)
 			)
 		)
-		(property "Sim.Params" "r=\"330 Ohm\""
+		(property "Sim.Params" "r=\"22k\""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2251,7 +2173,7 @@
 		)
 		(property ki_fp_filters "R_*")
 		(path "/e521d162-cad5-454c-995f-642d54b50649")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -2396,48 +2318,9 @@
 				)
 			)
 		)
-		(property "Sim.Device" "C"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "daaf6881-90b3-4893-9d82-b9d0e831f0df")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=+ 2=-"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c8d72687-23af-4738-8369-62a019afa973")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Params" "c=20n"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8d2da36c-154c-4000-8610-3f079eb06fcc")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "C_*")
 		(path "/24d2e8c5-0cb3-467f-b691-7f9e6c7fca0a")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -2581,60 +2464,9 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "6f9e8d59-6ba5-4e34-bbdc-f63539c28f49")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Device" "C"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6a1fb78b-4efd-4fcb-92b7-71e669fa9015")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=+ 2=-"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e4c7c17f-ed80-4ad4-85fc-321bf5d5bb28")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Params" "c=20n"
-			(at 0 0 270)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "1870c6d4-9945-48df-a445-46969d56bb16")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "C_*")
 		(path "/34c6b525-20fc-4041-8b53-385d09c0b9f1")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -2780,7 +2612,7 @@
 		)
 		(property ki_fp_filters "CP_*")
 		(path "/14bc59b4-cba4-46a1-b677-8b8fdab6dc31")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -3146,7 +2978,7 @@
 			(size 3.5 1.6)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.15625)
-			(net "/A_OUT_L")
+			(net "A_OUT_L")
 			(pintype "passive")
 			(uuid "ac01cde9-4c6f-47e9-9aa0-710d174d5f2e")
 		)
@@ -3213,73 +3045,9 @@
 				)
 			)
 		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "f0ddf9de-0e65-480b-ad82-3b18be60546f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Device" "R"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8c67e62c-dd9e-4f12-a0c4-86db5f5ba4fb")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Type" "="
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "5f768e07-c3ff-4482-b656-ac8719ab753e")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Params" "r=\"330 Ohm\""
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c90a13f3-6075-49ca-bb9b-f489254cf76a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=+ 2=-"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "bdfec1b2-0a75-4cf6-88bc-78007a1fd7f0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "R_*")
 		(path "/e01a1ae4-b426-4bc6-827a-214a54092d64")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -3347,7 +3115,7 @@
 			(size 1.2 1.4)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.208333)
-			(net "/SDM_L")
+			(net "SDM_L")
 			(pintype "passive")
 			(uuid "267a1fc4-b9b3-49b1-8d09-bb35fa198d02")
 		)
@@ -3423,48 +3191,9 @@
 				)
 			)
 		)
-		(property "Sim.Device" "C"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6a4140dc-18d0-495f-948e-c29168321deb")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=+ 2=-"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c4d7b453-78b4-4ae2-b88f-443b3db95f32")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Params" "c=20n"
-			(at 0 0 90)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e8511efc-2c5a-41e8-8378-5d8a4bb4b163")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "C_*")
 		(path "/bda84c2b-3389-42dc-80ad-47b6cf43f070")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -3610,7 +3339,7 @@
 		)
 		(property ki_fp_filters "R_*")
 		(path "/75660f0f-724a-40e6-929b-24576b8bdf28")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -3721,7 +3450,7 @@
 				)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "4.7uF"
 			(at 0 1.68 0)
 			(layer "F.Fab")
 			(uuid "a0ff9ba1-bdb6-423a-a010-f25ae0a7b196")
@@ -3756,7 +3485,7 @@
 		)
 		(property ki_fp_filters "C_*")
 		(path "/1df257da-5fe5-4c1f-bd67-0f91b3feea14")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -3902,7 +3631,7 @@
 		)
 		(property ki_fp_filters "R_*")
 		(path "/4ff6d79f-cc47-472e-90fe-5421eb2771cd")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -4046,61 +3775,9 @@
 				)
 			)
 		)
-		(property "Sim.Device" "R"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c4fdb955-b3fb-43c2-9bab-b7e37d7580a9")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Type" "="
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b275622d-f52f-4b26-bf68-106e33b09a21")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Params" "r=\"330 Ohm\""
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "7d5afb17-a0ac-4502-a86d-23107335077c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=+ 2=-"
-			(at 0 0 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8da685f9-51c8-4c20-8ae8-b7fbc62c384a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(property ki_fp_filters "R_*")
 		(path "/a1265ee3-0f5b-41a4-a5b4-bdd42c3ee0a3")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -4246,7 +3923,7 @@
 		)
 		(property ki_fp_filters "C_*")
 		(path "/c962d2a0-e91e-4f2b-a861-7182aeec8e5f")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -4397,7 +4074,7 @@
 		)
 		(property ki_fp_filters "Connector*:*_2x??_*")
 		(path "/d726b1fe-599f-4527-a556-3defefcafc5d")
-		(sheetname "/")
+		(sheetname "/sigma-delta-dac-pcb/")
 		(sheetfile "sigma-delta-dac-pcb.kicad_sch")
 		(units
 			(unit
@@ -4606,7 +4283,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "/+3V3")
+			(net "+3V3")
 			(pinfunction "Pin_2_2")
 			(pintype "passive")
 			(uuid "3177f981-c3de-45f7-9d69-ee5d76cadd5d")
@@ -4639,7 +4316,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "/SDM_L")
+			(net "SDM_L")
 			(pinfunction "Pin_5_5")
 			(pintype "passive")
 			(uuid "29e3c1f1-332a-4cbc-9650-c6322b061968")
@@ -4650,7 +4327,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "/SDM_R")
+			(net "SDM_R")
 			(pinfunction "Pin_6_6")
 			(pintype "passive")
 			(uuid "c73bc5d1-e30d-4322-9b91-b146f2489cb6")
@@ -4879,38 +4556,6 @@
 		)
 	)
 	(segment
-		(start 101.5 103)
-		(end 103 101.5)
-		(width 0.3)
-		(layer "F.Cu")
-		(net "/SDM_R")
-		(uuid "38369ddc-d618-4354-ada3-ec1c1d8bb574")
-	)
-	(segment
-		(start 97 105.08)
-		(end 99.08 103)
-		(width 0.3)
-		(layer "F.Cu")
-		(net "/SDM_R")
-		(uuid "63d9a46a-ce67-4bd2-bb63-5cf5efd3ed65")
-	)
-	(segment
-		(start 99.08 103)
-		(end 101.5 103)
-		(width 0.3)
-		(layer "F.Cu")
-		(net "/SDM_R")
-		(uuid "e80e2876-fb0a-4181-83d5-4abb2ffd2f94")
-	)
-	(segment
-		(start 103 101.5)
-		(end 103 101)
-		(width 0.3)
-		(layer "F.Cu")
-		(net "/SDM_R")
-		(uuid "f1abc8d1-3262-4953-b124-3b9754d38d50")
-	)
-	(segment
 		(start 109.0375 99.5375)
 		(end 110 100.5)
 		(width 0.3)
@@ -4941,30 +4586,6 @@
 		(layer "F.Cu")
 		(net "Net-(C8-Pad1)")
 		(uuid "d4a3b49c-fdb0-4af3-bc74-225b1153c16e")
-	)
-	(segment
-		(start 137.5 113)
-		(end 140 110.5)
-		(width 0.3)
-		(layer "F.Cu")
-		(net "/A_OUT_R")
-		(uuid "2fe453e9-874a-4dae-bdf7-10b27f2e0c7b")
-	)
-	(segment
-		(start 134.8 113)
-		(end 137.5 113)
-		(width 0.3)
-		(layer "F.Cu")
-		(net "/A_OUT_R")
-		(uuid "6a876640-cb5e-4b50-a8b0-3e0b013e23e6")
-	)
-	(segment
-		(start 140 110.5)
-		(end 140 108)
-		(width 0.3)
-		(layer "F.Cu")
-		(net "/A_OUT_R")
-		(uuid "8a1dee28-bb98-4b07-a1a5-87139916fe98")
 	)
 	(via
 		(at 123.5 113)
@@ -5262,30 +4883,6 @@
 		(free yes)
 		(net "GND")
 		(uuid "fa3f9a7e-3c25-4b5f-b79f-a86e2e3414e8")
-	)
-	(segment
-		(start 137.5 91.5)
-		(end 140 94)
-		(width 0.3)
-		(layer "F.Cu")
-		(net "/A_OUT_L")
-		(uuid "13c9b1f2-cd52-408d-954a-5e10b7c7a783")
-	)
-	(segment
-		(start 140 94)
-		(end 140 98)
-		(width 0.3)
-		(layer "F.Cu")
-		(net "/A_OUT_L")
-		(uuid "4b5e7f87-5429-4d3d-8738-52351d31f722")
-	)
-	(segment
-		(start 134.8 91.5)
-		(end 137.5 91.5)
-		(width 0.3)
-		(layer "F.Cu")
-		(net "/A_OUT_L")
-		(uuid "acaa3826-566c-4b8b-a779-00c630bcfd9e")
 	)
 	(segment
 		(start 130 105)
@@ -5616,11 +5213,59 @@
 		(uuid "eae4af3b-dfa8-4f7f-86e7-e26f140cbae8")
 	)
 	(segment
+		(start 137.5 91.5)
+		(end 140 94)
+		(width 0.3)
+		(layer "F.Cu")
+		(net "A_OUT_L")
+		(uuid "13c9b1f2-cd52-408d-954a-5e10b7c7a783")
+	)
+	(segment
+		(start 140 94)
+		(end 140 98)
+		(width 0.3)
+		(layer "F.Cu")
+		(net "A_OUT_L")
+		(uuid "4b5e7f87-5429-4d3d-8738-52351d31f722")
+	)
+	(segment
+		(start 134.8 91.5)
+		(end 137.5 91.5)
+		(width 0.3)
+		(layer "F.Cu")
+		(net "A_OUT_L")
+		(uuid "acaa3826-566c-4b8b-a779-00c630bcfd9e")
+	)
+	(segment
+		(start 137.5 113)
+		(end 140 110.5)
+		(width 0.3)
+		(layer "F.Cu")
+		(net "A_OUT_R")
+		(uuid "2fe453e9-874a-4dae-bdf7-10b27f2e0c7b")
+	)
+	(segment
+		(start 134.8 113)
+		(end 137.5 113)
+		(width 0.3)
+		(layer "F.Cu")
+		(net "A_OUT_R")
+		(uuid "6a876640-cb5e-4b50-a8b0-3e0b013e23e6")
+	)
+	(segment
+		(start 140 110.5)
+		(end 140 108)
+		(width 0.3)
+		(layer "F.Cu")
+		(net "A_OUT_R")
+		(uuid "8a1dee28-bb98-4b07-a1a5-87139916fe98")
+	)
+	(segment
 		(start 100 107)
 		(end 103 104)
 		(width 0.3)
 		(layer "F.Cu")
-		(net "/SDM_L")
+		(net "SDM_L")
 		(uuid "137d483f-d024-4dfc-9ea3-b473892f4567")
 	)
 	(segment
@@ -5628,7 +5273,7 @@
 		(end 100 107)
 		(width 0.3)
 		(layer "F.Cu")
-		(net "/SDM_L")
+		(net "SDM_L")
 		(uuid "20e0dda0-3e1a-4db8-91e2-cc2c3cf69826")
 	)
 	(segment
@@ -5636,7 +5281,7 @@
 		(end 94.46 106.46)
 		(width 0.3)
 		(layer "F.Cu")
-		(net "/SDM_L")
+		(net "SDM_L")
 		(uuid "53c52f69-2c7d-41dd-88f6-ada738451be2")
 	)
 	(segment
@@ -5644,8 +5289,40 @@
 		(end 95 107)
 		(width 0.3)
 		(layer "F.Cu")
-		(net "/SDM_L")
+		(net "SDM_L")
 		(uuid "84290116-fbcd-4970-a1dc-5e2bfa848bc1")
+	)
+	(segment
+		(start 101.5 103)
+		(end 103 101.5)
+		(width 0.3)
+		(layer "F.Cu")
+		(net "SDM_R")
+		(uuid "38369ddc-d618-4354-ada3-ec1c1d8bb574")
+	)
+	(segment
+		(start 97 105.08)
+		(end 99.08 103)
+		(width 0.3)
+		(layer "F.Cu")
+		(net "SDM_R")
+		(uuid "63d9a46a-ce67-4bd2-bb63-5cf5efd3ed65")
+	)
+	(segment
+		(start 99.08 103)
+		(end 101.5 103)
+		(width 0.3)
+		(layer "F.Cu")
+		(net "SDM_R")
+		(uuid "e80e2876-fb0a-4181-83d5-4abb2ffd2f94")
+	)
+	(segment
+		(start 103 101.5)
+		(end 103 101)
+		(width 0.3)
+		(layer "F.Cu")
+		(net "SDM_R")
+		(uuid "f1abc8d1-3262-4953-b124-3b9754d38d50")
 	)
 	(zone
 		(net "+5V")

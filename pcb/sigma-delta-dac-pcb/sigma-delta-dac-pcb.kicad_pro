@@ -655,6 +655,14 @@
       "version": 1
     },
     "net_format_name": "",
+    "ngspice": {
+      "fix_include_paths": true,
+      "meta": {
+        "version": 0
+      },
+      "model_mode": 4,
+      "workbook_filename": "sigma-delta-dac-pcb.wbk"
+    },
     "page_layout_descr_file": "",
     "plot_directory": "",
     "reuse_designators": true,
@@ -672,15 +680,24 @@
         "filename": "sigma-delta-dac-pcb.kicad_sch",
         "name": "sigma-delta-dac-pcb",
         "uuid": "a35bdaff-6288-40da-b7db-a5834010c771"
+      },
+      {
+        "filename": "sim.kicad_sch",
+        "name": "sim",
+        "uuid": "b48147e6-cdbe-443e-b50e-c8c9ffc2b6f5"
       }
     ],
-    "used_designators": "",
+    "used_designators": "V5-8,U3,#PWR13-15",
     "variants": []
   },
   "sheets": [
     [
       "a35bdaff-6288-40da-b7db-a5834010c771",
       "sigma-delta-dac-pcb"
+    ],
+    [
+      "b48147e6-cdbe-443e-b50e-c8c9ffc2b6f5",
+      "sim"
     ]
   ],
   "text_variables": {},
