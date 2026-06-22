@@ -871,7 +871,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "715ad1ad-2914-4cd0-bdc5-16b0b664e43e")
-		(property "Reference" "V5"
+		(property "Reference" "V2"
 			(at 45.72 55.7501 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -978,8 +978,8 @@
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
-				(path "/b48147e6-cdbe-443e-b50e-c8c9ffc2b6f5"
-					(reference "V5")
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/d4f48e9e-9982-4ca4-9f98-cecc4545cf7e"
+					(reference "V2")
 					(unit 1)
 				)
 			)
@@ -996,7 +996,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "935c8e95-66b4-4ed7-8b14-09285d0ac8d2")
-		(property "Reference" "V7"
+		(property "Reference" "V3"
 			(at 71.12 55.7501 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1104,8 +1104,8 @@
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
-				(path "/b48147e6-cdbe-443e-b50e-c8c9ffc2b6f5"
-					(reference "V7")
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/d4f48e9e-9982-4ca4-9f98-cecc4545cf7e"
+					(reference "V3")
 					(unit 1)
 				)
 			)
@@ -1122,7 +1122,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "945cedaf-c3c9-497d-8232-239d82e2a9ec")
-		(property "Reference" "U3"
+		(property "Reference" "U1"
 			(at 140.97 41.8398 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1248,8 +1248,8 @@
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
-				(path "/b48147e6-cdbe-443e-b50e-c8c9ffc2b6f5"
-					(reference "U3")
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/d4f48e9e-9982-4ca4-9f98-cecc4545cf7e"
+					(reference "U1")
 					(unit 1)
 				)
 			)
@@ -1267,7 +1267,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b552c543-8f0b-469b-89a5-7d71cf8764ec")
-		(property "Reference" "V8"
+		(property "Reference" "V1"
 			(at 170.18 46.8601 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1364,8 +1364,8 @@
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
-				(path "/b48147e6-cdbe-443e-b50e-c8c9ffc2b6f5"
-					(reference "V8")
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/d4f48e9e-9982-4ca4-9f98-cecc4545cf7e"
+					(reference "V1")
 					(unit 1)
 				)
 			)
@@ -1383,7 +1383,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ba7ec3fa-6094-4d84-af17-6fba8a511bf0")
-		(property "Reference" "V6"
+		(property "Reference" "V4"
 			(at 45.72 102.7401 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1480,8 +1480,8 @@
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
-				(path "/b48147e6-cdbe-443e-b50e-c8c9ffc2b6f5"
-					(reference "V6")
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/d4f48e9e-9982-4ca4-9f98-cecc4545cf7e"
+					(reference "V4")
 					(unit 1)
 				)
 			)
@@ -1499,7 +1499,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c9cbc7a7-a752-45a9-966c-ab434f4245dc")
-		(property "Reference" "#PWR015"
+		(property "Reference" "#PWR06"
 			(at 130.81 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -1558,8 +1558,8 @@
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
-				(path "/b48147e6-cdbe-443e-b50e-c8c9ffc2b6f5"
-					(reference "#PWR015")
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/d4f48e9e-9982-4ca4-9f98-cecc4545cf7e"
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -1577,7 +1577,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d3fc3962-92b0-4707-80d5-6455212ba676")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR08"
 			(at 67.31 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -1636,8 +1636,8 @@
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
-				(path "/b48147e6-cdbe-443e-b50e-c8c9ffc2b6f5"
-					(reference "#PWR014")
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/d4f48e9e-9982-4ca4-9f98-cecc4545cf7e"
+					(reference "#PWR08")
 					(unit 1)
 				)
 			)
@@ -1655,7 +1655,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e2087033-20e1-4ad8-bd08-d8b61b61e8d4")
-		(property "Reference" "#PWR013"
+		(property "Reference" "#PWR07"
 			(at 41.91 72.39 0)
 			(hide yes)
 			(show_name no)
@@ -1714,16 +1714,11 @@
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
-				(path "/b48147e6-cdbe-443e-b50e-c8c9ffc2b6f5"
-					(reference "#PWR013")
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/d4f48e9e-9982-4ca4-9f98-cecc4545cf7e"
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
-		)
-	)
-	(sheet_instances
-		(path "/"
-			(page "2")
 		)
 	)
 )
