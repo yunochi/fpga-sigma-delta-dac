@@ -3,5 +3,10 @@ set_property PACKAGE_PIN AA11 [get_ports pdm_out_r]
 
 set_property IOSTANDARD LVCMOS33 [get_ports pdm_out_*]
 set_property DRIVE 16 [get_ports pdm_out_*]
-set_property SLEW FAST [get_ports pdm_out_*]
+set_property SLEW SLOW [get_ports pdm_out_*]
 
+set_property IOSTANDARD LVDS [get_ports clk_200M_*]
+set_property PACKAGE_PIN L3 [get_ports clk_200M_p]
+set_property PACKAGE_PIN L2 [get_ports clk_200M_n]
+set_property DIFF_TERM_ADV TERM_100 [get_ports clk_200M_*]
+create_clock -name clk_200M -period 5.000 [get_ports clk_200M_p]

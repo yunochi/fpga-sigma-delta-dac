@@ -22,9 +22,21 @@
 
 module top(
         output pdm_out_l,
-        output pdm_out_r
+        output pdm_out_r,
+        input clk_200M_p,
+        input clk_200M_n
     );
-    
+  wire diff_buf_out;
+  IBUFDS IBUFDS_inst (
+      .O(diff_buf_out),
+      .I(clk_200M_p),
+      .IB(clk_200M_n)
+   );
+  wire clk_200M;
+  BUFG BUFG_inst (
+      .O(clk_200M), // 1-bit output: Clock output.
+      .I(diff_buf_out)  // 1-bit input: Clock input.
+   );
 
   wire sys_clk; //12.288MHz Clock
   parameter OVERSAMPLE_RATIO = 128;
@@ -35,6 +47,7 @@ module top(
   reg axis_tready;
   wire axis_tvalid;
    design_1_wrapper design_1_wrapper_inst (
+        .clk_200M(clk_200M),
         .sys_clk(sys_clk),
         .reset_n(reset_n),
         .M_AXIS_0_tdata(axis_tdata),

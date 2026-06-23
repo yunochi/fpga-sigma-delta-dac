@@ -147,12 +147,12 @@ set_property -name "simulator.xsim_version" -value "2025.2" -objects $obj
 set_property -name "simulator_language" -value "Mixed" -objects $obj
 set_property -name "sim_compile_state" -value "1" -objects $obj
 set_property -name "use_inline_hdl_ip" -value "1" -objects $obj
-set_property -name "webtalk.modelsim_export_sim" -value "10" -objects $obj
-set_property -name "webtalk.questa_export_sim" -value "10" -objects $obj
-set_property -name "webtalk.riviera_export_sim" -value "10" -objects $obj
-set_property -name "webtalk.vcs_export_sim" -value "10" -objects $obj
-set_property -name "webtalk.xcelium_export_sim" -value "2" -objects $obj
-set_property -name "webtalk.xsim_export_sim" -value "10" -objects $obj
+set_property -name "webtalk.modelsim_export_sim" -value "11" -objects $obj
+set_property -name "webtalk.questa_export_sim" -value "11" -objects $obj
+set_property -name "webtalk.riviera_export_sim" -value "11" -objects $obj
+set_property -name "webtalk.vcs_export_sim" -value "11" -objects $obj
+set_property -name "webtalk.xcelium_export_sim" -value "3" -objects $obj
+set_property -name "webtalk.xsim_export_sim" -value "11" -objects $obj
 set_property -name "webtalk.xsim_launch_sim" -value "1" -objects $obj
 set_property -name "xpm_libraries" -value "XPM_CDC XPM_FIFO XPM_MEMORY" -objects $obj
 
@@ -345,6 +345,7 @@ proc cr_bd_design_1 { parentCell } {
    CONFIG.ASSOCIATED_BUSIF {M_AXIS_0} \
  ] $sys_clk
   set reset_n [ create_bd_port -dir O -from 0 -to 0 -type rst reset_n ]
+  set clk_200M [ create_bd_port -dir I -type clk -freq_hz 200000000 clk_200M ]
 
   # Create instance: zynq_ultra_ps_e_0, and set properties
   set zynq_ultra_ps_e_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:zynq_ultra_ps_e:3.5 zynq_ultra_ps_e_0 ]
@@ -382,7 +383,6 @@ proc cr_bd_design_1 { parentCell } {
     CONFIG.PSU__CRL_APB__LPD_SWITCH_CTRL__ACT_FREQMHZ {499.994995} \
     CONFIG.PSU__CRL_APB__PCAP_CTRL__ACT_FREQMHZ {187.498123} \
     CONFIG.PSU__CRL_APB__PL0_REF_CTRL__ACT_FREQMHZ {99.999001} \
-    CONFIG.PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ {100} \
     CONFIG.PSU__CRL_APB__QSPI_REF_CTRL__ACT_FREQMHZ {299.997009} \
     CONFIG.PSU__CRL_APB__TIMESTAMP_REF_CTRL__ACT_FREQMHZ {33.333000} \
     CONFIG.PSU__CRL_APB__UART0_REF_CTRL__ACT_FREQMHZ {99.999001} \
@@ -408,6 +408,7 @@ proc cr_bd_design_1 { parentCell } {
     CONFIG.PSU__ENET0__PERIPHERAL__IO {MIO 26 .. 37} \
     CONFIG.PSU__ENET0__PTP__ENABLE {0} \
     CONFIG.PSU__ENET0__TSU__ENABLE {0} \
+    CONFIG.PSU__FPGA_PL0_ENABLE {0} \
     CONFIG.PSU__GEM0_COHERENCY {0} \
     CONFIG.PSU__GEM0_ROUTE_THROUGH_FPD {0} \
     CONFIG.PSU__GEM__TSU__ENABLE {0} \
@@ -457,12 +458,12 @@ Port;FD4A0000;FD4AFFFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD05000
   # Create instance: clk_wiz_0, and set properties
   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
   set_property -dict [list \
-    CONFIG.CLKOUT1_JITTER {262.444} \
-    CONFIG.CLKOUT1_PHASE_ERROR {160.492} \
+    CONFIG.CLKOUT1_JITTER {324.089} \
+    CONFIG.CLKOUT1_PHASE_ERROR {396.481} \
     CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {12.288} \
-    CONFIG.MMCM_CLKFBOUT_MULT_F {18.125} \
-    CONFIG.MMCM_CLKOUT0_DIVIDE_F {73.750} \
-    CONFIG.MMCM_DIVCLK_DIVIDE {2} \
+    CONFIG.MMCM_CLKFBOUT_MULT_F {105.500} \
+    CONFIG.MMCM_CLKOUT0_DIVIDE_F {90.375} \
+    CONFIG.MMCM_DIVCLK_DIVIDE {19} \
     CONFIG.OPTIMIZE_CLOCKING_STRUCTURE_EN {true} \
     CONFIG.PRIM_SOURCE {No_buffer} \
     CONFIG.RESET_PORT {resetn} \
@@ -485,6 +486,8 @@ Port;FD4A0000;FD4AFFFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD05000
   connect_bd_intf_net -intf_net zynq_ultra_ps_e_0_M_AXI_HPM0_LPD [get_bd_intf_pins zynq_ultra_ps_e_0/M_AXI_HPM0_LPD] [get_bd_intf_pins smartconnect_0/S00_AXI]
 
   # Create port connections
+  connect_bd_net -net clk_200M_1  [get_bd_ports clk_200M] \
+  [get_bd_pins clk_wiz_0/clk_in1]
   connect_bd_net -net clk_wiz_0_clk_out1  [get_bd_pins clk_wiz_0/clk_out1] \
   [get_bd_pins proc_sys_reset_0/slowest_sync_clk] \
   [get_bd_pins axi_fifo_mm_s_0/s_axi_aclk] \
@@ -500,8 +503,6 @@ Port;FD4A0000;FD4AFFFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD05000
   [get_bd_pins axi_fifo_mm_s_0/s_axi_aresetn] \
   [get_bd_pins axis_data_fifo_0/s_axis_aresetn] \
   [get_bd_ports reset_n]
-  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0  [get_bd_pins zynq_ultra_ps_e_0/pl_clk0] \
-  [get_bd_pins clk_wiz_0/clk_in1]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0  [get_bd_pins zynq_ultra_ps_e_0/pl_resetn0] \
   [get_bd_pins clk_wiz_0/resetn] \
   [get_bd_pins proc_sys_reset_0/ext_reset_in]
