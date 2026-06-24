@@ -1203,16 +1203,6 @@
 	)
 	(wire
 		(pts
-			(xy 217.17 67.31) (xy 231.14 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "45ded535-a04f-41cf-9926-0540bd86a381")
-	)
-	(wire
-		(pts
 			(xy 96.52 34.29) (xy 104.14 34.29)
 		)
 		(stroke
@@ -1440,6 +1430,16 @@
 			(type default)
 		)
 		(uuid "b60ab692-ac83-4432-9978-3b599c56788b")
+	)
+	(wire
+		(pts
+			(xy 217.17 67.31) (xy 231.14 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b879f2be-7dc7-489e-84cd-64b7ab50019d")
 	)
 	(wire
 		(pts
@@ -1679,7 +1679,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "04cff6c9-0740-47f3-9303-f637146b6f6e")
-		(property "Reference" "C8"
+		(property "Reference" "C10"
 			(at 212.471 59.69 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1741,7 +1741,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C8")
+					(reference "C10")
 					(unit 1)
 				)
 			)
@@ -1919,7 +1919,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "21200756-6c2c-4f3d-9f18-6481f034ab4e")
-		(property "Reference" "C10"
+		(property "Reference" "C12"
 			(at 132.08 69.8499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1983,7 +1983,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C10")
+					(reference "C12")
 					(unit 1)
 				)
 			)
@@ -2001,7 +2001,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "25d525bc-22af-433e-a354-35dec7d5ea27")
-		(property "Reference" "#PWR09"
+		(property "Reference" "#PWR011"
 			(at 34.29 25.4 0)
 			(hide yes)
 			(show_name no)
@@ -2061,7 +2061,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR09")
+					(reference "#PWR011")
 					(unit 1)
 				)
 			)
@@ -2079,7 +2079,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "27943458-dc6d-4b61-a09f-58bd7f09e33f")
-		(property "Reference" "C9"
+		(property "Reference" "C11"
 			(at 106.68 69.8499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2143,7 +2143,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C9")
+					(reference "C11")
 					(unit 1)
 				)
 			)
@@ -2161,7 +2161,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4f1e9bf8-7377-4c02-88ab-9dbe69b862be")
-		(property "Reference" "C7"
+		(property "Reference" "C9"
 			(at 133.35 36.8299 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2225,7 +2225,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C7")
+					(reference "C9")
 					(unit 1)
 				)
 			)
@@ -2243,7 +2243,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "565a025f-584b-4a47-927f-a20ec08453de")
-		(property "Reference" "C3"
+		(property "Reference" "C5"
 			(at 213.741 26.67 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2305,7 +2305,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C3")
+					(reference "C5")
 					(unit 1)
 				)
 			)
@@ -2527,7 +2527,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "912e6d2b-93aa-4435-92cc-e59927147b4e")
-		(property "Reference" "C4"
+		(property "Reference" "C6"
 			(at 25.4 34.2899 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2591,7 +2591,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C4")
+					(reference "C6")
 					(unit 1)
 				)
 			)
@@ -2609,7 +2609,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "91f2c038-dc68-488f-b17d-567904f84fe2")
-		(property "Reference" "C5"
+		(property "Reference" "C7"
 			(at 38.1 34.2899 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2673,7 +2673,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C5")
+					(reference "C7")
 					(unit 1)
 				)
 			)
@@ -2691,7 +2691,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9990dd5b-7ca4-45f0-99aa-ad048a5b21c5")
-		(property "Reference" "#PWR013"
+		(property "Reference" "#PWR015"
 			(at 102.87 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -2751,7 +2751,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR013")
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -2824,6 +2824,61 @@
 				)
 			)
 		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 48.26 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_opamp_dual"
+			(at 48.26 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 48.26 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+			(at 48.26 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "POLE=10M GAIN=200k"
+			(at 48.26 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "d271fde0-854b-430a-bd18-9439359c633c")
 		)
@@ -2869,7 +2924,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a9e12774-9bd9-48b4-8498-02653d252c13")
-		(property "Reference" "#PWR012"
+		(property "Reference" "#PWR014"
 			(at 34.29 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -2929,7 +2984,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR012")
+					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -3027,7 +3082,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ad00b616-fadc-4a06-af52-5c5881f7ea10")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR016"
 			(at 128.27 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -3087,7 +3142,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR014")
+					(reference "#PWR016")
 					(unit 1)
 				)
 			)
@@ -3148,6 +3203,61 @@
 			)
 		)
 		(property "Description" "Dual Operational Amplifiers, SOIC-8/TSSOP-8/VSSOP-8"
+			(at 157.48 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 157.48 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_opamp_dual"
+			(at 157.48 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 157.48 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+			(at 157.48 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "POLE=10M GAIN=200k"
 			(at 157.48 69.85 0)
 			(hide yes)
 			(show_name no)
@@ -3246,6 +3356,61 @@
 			)
 		)
 		(property "Description" "Dual Operational Amplifiers, SOIC-8/TSSOP-8/VSSOP-8"
+			(at 158.75 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+			(at 158.75 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "kicad_builtin_opamp_dual"
+			(at 158.75 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 158.75 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+			(at 158.75 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "POLE=10M GAIN=200k"
 			(at 158.75 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -3381,7 +3546,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c068abd6-1ecc-4ff1-b504-5c17abc1707c")
-		(property "Reference" "#PWR010"
+		(property "Reference" "#PWR012"
 			(at 104.14 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -3441,7 +3606,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR010")
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -3459,7 +3624,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c31db9e8-e062-455d-8965-827f6759991d")
-		(property "Reference" "C6"
+		(property "Reference" "C8"
 			(at 107.95 36.8299 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3523,7 +3688,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C6")
+					(reference "C8")
 					(unit 1)
 				)
 			)
@@ -3541,7 +3706,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cbb9c95f-d904-4b5d-b20f-15fe3832c3d5")
-		(property "Reference" "#PWR011"
+		(property "Reference" "#PWR013"
 			(at 129.54 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -3601,7 +3766,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR011")
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)

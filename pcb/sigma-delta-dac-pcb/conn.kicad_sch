@@ -990,7 +990,7 @@
 	)
 	(wire
 		(pts
-			(xy 39.37 66.04) (xy 43.18 66.04)
+			(xy 39.37 76.2) (xy 43.18 76.2)
 		)
 		(stroke
 			(width 0)
@@ -1100,7 +1100,7 @@
 	)
 	(wire
 		(pts
-			(xy 50.8 57.15) (xy 55.88 57.15)
+			(xy 50.8 57.15) (xy 69.85 57.15)
 		)
 		(stroke
 			(width 0)
@@ -1160,7 +1160,7 @@
 	)
 	(wire
 		(pts
-			(xy 50.8 66.04) (xy 55.88 66.04)
+			(xy 50.8 76.2) (xy 69.85 76.2)
 		)
 		(stroke
 			(width 0)
@@ -1194,7 +1194,7 @@
 	)
 	(global_label "SDM_L"
 		(shape input)
-		(at 55.88 57.15 0)
+		(at 69.85 57.15 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1204,7 +1204,7 @@
 		)
 		(uuid "5d08349e-88c9-4f29-b007-dad69440bd4b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 64.7918 57.15 0)
+			(at 78.7618 57.15 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1218,7 +1218,7 @@
 	)
 	(global_label "SDM_R_IN"
 		(shape input)
-		(at 39.37 66.04 180)
+		(at 39.37 76.2 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1228,7 +1228,7 @@
 		)
 		(uuid "6d1f451d-b805-43fd-8bef-97fd91563d02")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 27.3134 66.04 0)
+			(at 27.3134 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1362,7 +1362,7 @@
 	)
 	(global_label "SDM_R"
 		(shape input)
-		(at 55.88 66.04 0)
+		(at 69.85 76.2 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1372,7 +1372,7 @@
 		)
 		(uuid "e691a9b5-a75f-41e2-96d1-86425cdb467e")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 65.0337 66.04 0)
+			(at 79.0037 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1571,7 +1571,7 @@
 		(at 30.48 181.61 0)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(in_pos_files yes)
@@ -1818,7 +1818,7 @@
 		(at 50.8 181.61 0)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board yes)
 		(in_pos_files yes)
@@ -1891,7 +1891,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 46.99 66.04 90)
+		(at 46.99 76.2 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1902,7 +1902,7 @@
 		(fields_autoplaced yes)
 		(uuid "ea74747d-4ea4-4efa-8704-9ae4e4ab151c")
 		(property "Reference" "R2"
-			(at 46.99 59.69 90)
+			(at 46.99 69.85 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1912,7 +1912,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at 46.99 62.23 90)
+			(at 46.99 72.39 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1922,7 +1922,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 47.244 65.024 90)
+			(at 47.244 75.184 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1933,7 +1933,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 46.99 66.04 0)
+			(at 46.99 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1944,7 +1944,7 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
-			(at 46.99 66.04 0)
+			(at 46.99 76.2 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

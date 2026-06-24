@@ -812,7 +812,7 @@
 			)
 		)
 	)
-	(global_label "SDM_L"
+	(global_label "SDM_L_IN"
 		(shape input)
 		(at 148.59 46.99 0)
 		(fields_autoplaced yes)
@@ -824,7 +824,7 @@
 		)
 		(uuid "536795a8-e7b1-4e1d-afd6-98359230c6c5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 157.5018 46.99 0)
+			(at 160.4047 46.99 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1499,7 +1499,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c9cbc7a7-a752-45a9-966c-ab434f4245dc")
-		(property "Reference" "#PWR06"
+		(property "Reference" "#PWR08"
 			(at 130.81 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -1559,7 +1559,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/d4f48e9e-9982-4ca4-9f98-cecc4545cf7e"
-					(reference "#PWR06")
+					(reference "#PWR08")
 					(unit 1)
 				)
 			)
@@ -1577,7 +1577,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d3fc3962-92b0-4707-80d5-6455212ba676")
-		(property "Reference" "#PWR08"
+		(property "Reference" "#PWR010"
 			(at 67.31 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -1637,7 +1637,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/d4f48e9e-9982-4ca4-9f98-cecc4545cf7e"
-					(reference "#PWR08")
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)
@@ -1655,7 +1655,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e2087033-20e1-4ad8-bd08-d8b61b61e8d4")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR09"
 			(at 41.91 72.39 0)
 			(hide yes)
 			(show_name no)
@@ -1715,7 +1715,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/d4f48e9e-9982-4ca4-9f98-cecc4545cf7e"
-					(reference "#PWR07")
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)

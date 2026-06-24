@@ -5,7 +5,7 @@
     {
       "analysis": "TRAN",
       "commands": [
-        ".tran 10n 1m 0 10n uic",
+        ".tran 1n 200u 0 1n uic",
         ".kicad adjustpaths",
         ".save all",
         ".probe alli",
@@ -22,13 +22,18 @@
       "showGrid": true,
       "traces": [
         {
+          "color": "rgb(152, 78, 163)",
+          "signal": "V(/Sim/v_ctrl)",
+          "trace_type": 257
+        },
+        {
           "color": "rgb(228, 26, 28)",
           "signal": "V(A_OUT_L)",
           "trace_type": 257
         },
         {
-          "color": "rgb(77, 175, 74)",
-          "signal": "V(SDM_L)",
+          "color": "rgb(255, 255, 51)",
+          "signal": "V(Net-_C8-Pad1_)",
           "trace_type": 257
         }
       ]
