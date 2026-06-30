@@ -18,6 +18,9 @@
 proc checkRequiredFiles { origin_dir} {
   set status true
   set files [list \
+ "[file normalize "$origin_dir/src/hdl/fir_upsample.v"]"\
+ "[file normalize "$origin_dir/src/hdl/linear_upsample.v"]"\
+ "[file normalize "$origin_dir/src/hdl/sigma-delta-3rd-order.v"]"\
  "[file normalize "$origin_dir/src/hdl/top.v"]"\
  "[file normalize "$origin_dir/src/xdc/puzhi/new/puzhi.xdc"]"\
  "[file normalize "$origin_dir/src/xdc/myir/new/myir.xdc"]"\
@@ -151,7 +154,6 @@ set_property -name "webtalk.modelsim_export_sim" -value "11" -objects $obj
 set_property -name "webtalk.questa_export_sim" -value "11" -objects $obj
 set_property -name "webtalk.riviera_export_sim" -value "11" -objects $obj
 set_property -name "webtalk.vcs_export_sim" -value "11" -objects $obj
-set_property -name "webtalk.xcelium_export_sim" -value "3" -objects $obj
 set_property -name "webtalk.xsim_export_sim" -value "11" -objects $obj
 set_property -name "webtalk.xsim_launch_sim" -value "1" -objects $obj
 set_property -name "xpm_libraries" -value "XPM_CDC XPM_FIFO XPM_MEMORY" -objects $obj
@@ -164,6 +166,9 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
 set files [list \
+ [file normalize "${origin_dir}/src/hdl/fir_upsample.v"] \
+ [file normalize "${origin_dir}/src/hdl/linear_upsample.v"] \
+ [file normalize "${origin_dir}/src/hdl/sigma-delta-3rd-order.v"] \
  [file normalize "${origin_dir}/src/hdl/top.v"] \
 ]
 add_files -norecurse -fileset $obj $files
@@ -353,9 +358,11 @@ proc cr_bd_design_1 { parentCell } {
     CONFIG.PSU_DDR_RAM_HIGHADDR {0x7FFFFFFF} \
     CONFIG.PSU_DDR_RAM_HIGHADDR_OFFSET {0x00000002} \
     CONFIG.PSU_DDR_RAM_LOWADDR_OFFSET {0x80000000} \
+    CONFIG.PSU_MIO_12_INPUT_TYPE {cmos} \
     CONFIG.PSU_MIO_1_DRIVE_STRENGTH {12} \
     CONFIG.PSU_MIO_1_SLEW {fast} \
     CONFIG.PSU_MIO_4_INPUT_TYPE {cmos} \
+    CONFIG.PSU_MIO_7_INPUT_TYPE {cmos} \
     CONFIG.PSU_MIO_TREE_PERIPHERALS {Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#####################Gem 0#Gem 0#Gem 0#Gem 0#Gem 0#Gem 0#Gem 0#Gem 0#Gem 0#Gem\
 0#Gem 0#Gem 0#####UART 0#UART 0#################################MDIO 0#MDIO 0} \
     CONFIG.PSU_MIO_TREE_SIGNALS {sclk_out#miso_mo1#mo2#mo3#mosi_mi0#n_ss_out#####################rgmii_tx_clk#rgmii_txd[0]#rgmii_txd[1]#rgmii_txd[2]#rgmii_txd[3]#rgmii_tx_ctl#rgmii_rx_clk#rgmii_rxd[0]#rgmii_rxd[1]#rgmii_rxd[2]#rgmii_rxd[3]#rgmii_rx_ctl#####rxd#txd#################################gem0_mdc#gem0_mdio_out}\
