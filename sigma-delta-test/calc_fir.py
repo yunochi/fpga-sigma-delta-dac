@@ -2,7 +2,7 @@ import numpy as np
 import scipy.signal as signal
 
 def design_halfband_filter():
-    taps = 15
+    taps = 63
 
     # 1. SciPy의 firwin을 이용하여 대칭 차단주파수가 0.5(즉, fs_out/4)인 필터 설계
     # Half-band 조건(대칭성)을 위해 cutoff를 정확히 0.5로 설정합니다.
@@ -13,7 +13,7 @@ def design_halfband_filter():
     h_scaled = np.round(h * scale).astype(int)
 
     # 3. 하프밴드 제약 조건 강제 적용 (이상적인 대칭성 보장)
-    center_idx = (taps - 1) // 2 # 15탭인 경우 7번 인덱스가 센터
+    center_idx = (taps - 1) // 2 # 63탭인 경우 31번 인덱스가 센터
 
     # 3.1. 홀수 오프셋 계수를 정확히 0으로 설정
     for i in range(taps):
@@ -27,7 +27,7 @@ def design_halfband_filter():
     # 짝수 위상(Even phase)의 계수 합이 홀수 위상(Center tap = 32768)과 동일하게 32768이 되도록 맞춤.
     # 좌우 대칭이므로 한쪽 사이드 계수들의 합이 16384가 되도록 스케일링 조절
     side_indices = [i for i in range(center_idx + 1, taps) if (i - center_idx) % 2 != 0]
-    # side_indices는 [8, 10, 12, 14]가 됨
+    # side_indices는 [32, 34, ..., 62]가 됨
 
     current_side_sum = sum(h_scaled[idx] for idx in side_indices)
     target_side_sum = 16384 # (32768 / 2)
@@ -40,7 +40,7 @@ def design_halfband_filter():
         adjusted_side.append(val)
         accum_sum += val
 
-    # 라운딩 에러로 인해 합이 16384에서 벗어난 오차가 있다면 가장 큰 계수(h[8])에 더해줌
+    # 라운딩 에러로 인해 합이 16384에서 벗어난 오차가 있다면 가장 큰 계수(h[32])에 더해줌
     diff = target_side_sum - accum_sum
     if diff != 0:
         max_idx = np.argmax([abs(x) for x in adjusted_side])
@@ -58,5 +58,5 @@ def design_halfband_filter():
 
 # 필터 설계 실행 및 출력
 coefs = design_halfband_filter()
-print("Designed 15-tap Half-Band FIR Coefficients:")
+print("Designed 63-tap Half-Band FIR Coefficients:")
 print(coefs)
