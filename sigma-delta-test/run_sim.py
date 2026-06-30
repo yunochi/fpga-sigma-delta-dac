@@ -6,7 +6,7 @@ import math
 
 def main():
     parser = argparse.ArgumentParser(description='Sigma-Delta Simulation and Analysis Wrapper')
-    parser.add_argument('--fs', type=int, default=1000000, help='Modulator Sampling Frequency (Hz)')
+    parser.add_argument('--fs', type=int, default=12288000, help='Modulator Sampling Frequency (Hz)')
     parser.add_argument('--f0', type=float, default=1000, help='Desired Target Frequency (Hz)')
     
     args = parser.parse_args()
