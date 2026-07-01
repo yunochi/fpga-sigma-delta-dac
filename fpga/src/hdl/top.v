@@ -24,7 +24,10 @@ module top(
         output pdm_out_l,
         output pdm_out_r,
         input clk_200M_p,
-        input clk_200M_n
+        input clk_200M_n,
+        input s_i2s_sck,
+        input s_i2s_ws,
+        input s_i2s_sd
     );
     wire diff_buf_out;
     IBUFDS IBUFDS_inst (
@@ -50,12 +53,21 @@ module top(
                          .clk_200M(clk_200M),
                          .sys_clk(sys_clk),
                          .reset_n(reset_n),
-                         .M_AXIS_0_tdata(axis_tdata),
-                         .M_AXIS_0_tlast(axis_tlast),
-                         .M_AXIS_0_tready(axis_tready),
-                         .M_AXIS_0_tvalid(axis_tvalid)
+                         .M_AXIS_0_tdata(),
+                         .M_AXIS_0_tlast(),
+                         .M_AXIS_0_tready(),
+                         .M_AXIS_0_tvalid()
                      );
-
+    i2s_rx i2s_rx_inst(
+               .clk(sys_clk),
+               .rst_n(reset_n),
+               .sck(s_i2s_sck),
+               .ws(s_i2s_ws),
+               .sd(s_i2s_sd),
+               .tready(axis_tready),
+               .tdata(axis_tdata),
+               .data_valid(axis_tvalid)
+           );
     wire signed [15:0] pdm_val_l;
     wire signed [15:0] pdm_val_r;
     wire signed [15:0] fir_out_l_2x;

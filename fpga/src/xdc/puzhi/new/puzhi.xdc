@@ -5,6 +5,12 @@ set_property IOSTANDARD LVCMOS33 [get_ports pdm_out_*]
 set_property DRIVE 16 [get_ports pdm_out_*]
 set_property SLEW SLOW [get_ports pdm_out_*]
 
+set_property IOSTANDARD LVCMOS33 [get_ports s_i2s_*]
+set_property PACKAGE_PIN Y12 [get_ports s_i2s_sck]
+set_property PACKAGE_PIN AG13 [get_ports s_i2s_ws]
+set_property PACKAGE_PIN AA12 [get_ports s_i2s_sd]
+
+
 set_property IOSTANDARD LVDS [get_ports clk_200M_*]
 set_property PACKAGE_PIN L3 [get_ports clk_200M_p]
 set_property PACKAGE_PIN L2 [get_ports clk_200M_n]
