@@ -54,15 +54,15 @@ module i2s_rx #(
     end
 
 
-    i2s_fifo i2s_fifo_inst (
-                 .clk(clk),      // input wire clk
-                 .srst(!rst_n),                // input wire srst
-                 .din(data_shift_reg),      // input wire [31 : 0] din
-                 .wr_en(wvalid),  // input wire wr_en
-                 .rd_en(tready),  // input wire rd_en
-                 .dout(tdata),    // output wire [31 : 0] dout
-                 .full(),    // output wire full
-                 .empty(),  // output wire empty
-                 .valid(data_valid)
-             );
+     i2s_fifo i2s_fifo_inst (
+                  .clk(clk),      // input wire clk
+                  .srst(!rst_n),                // input wire srst
+                  .din(data_shift_reg),      // input wire [31 : 0] din
+                  .wr_en(wvalid),  // input wire wr_en
+                  .rd_en(tready),  // input wire rd_en
+                  .dout(tdata),    // output wire [31 : 0] dout
+                  .full(),    // output wire full
+                  .empty(),  // output wire empty
+                  .valid(data_valid)
+              );
 endmodule
