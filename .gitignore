@@ -1,0 +1,18 @@
+# Vivado temporary files & logs
+*.log
+*.jou
+*.str
+.Xil/
+**/.Xil/
+
+# Vivado Project directory
+fpga/vivado_project/
+
+# Vivado generated IP output products (.gen contains generated HDL, simulation wrappers, etc.)
+# These can be fully regenerated from the .xci files.
+*.gen/
+**/*.gen/
+
+# SDK / Vitis generated files if any
+*.sdk/
+*.prm
