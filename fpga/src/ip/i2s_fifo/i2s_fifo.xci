@@ -4,7 +4,7 @@
     "xci_name": "i2s_fifo",
     "component_reference": "xilinx.com:ip:fifo_generator:13.2",
     "ip_revision": "14",
-    "gen_directory": "../../../../sigma-delta-dac.gen/sources_1/ip/i2s_fifo",
+    "gen_directory": "sigma-delta-dac.gen/sources_1/ip/i2s_fifo",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "i2s_fifo", "resolve_type": "user", "usage": "all" } ],
@@ -397,7 +397,7 @@
         "IPCONTEXT": [ { "value": "IP_Flow" } ],
         "IPREVISION": [ { "value": "14" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../sigma-delta-dac.gen/sources_1/ip/i2s_fifo" } ],
+        "OUTPUTDIR": [ { "value": "sigma-delta-dac.gen/sources_1/ip/i2s_fifo" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "." } ],
         "SWVERSION": [ { "value": "2025.2.1" } ],
@@ -460,5 +460,5 @@
       }
     }
   },
-  "checksum": "f3fdf796"
+  "checksum": "54738372"
 }
