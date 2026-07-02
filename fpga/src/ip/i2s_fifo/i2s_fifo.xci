@@ -24,8 +24,8 @@
         "Enable_Reset_Synchronization": [ { "value": "true", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
         "Reset_Type": [ { "value": "Synchronous_Reset", "resolve_type": "user", "usage": "all" } ],
         "Full_Flags_Reset_Value": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
-        "Use_Dout_Reset": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "Dout_Reset_Value": [ { "value": "0", "resolve_type": "user", "usage": "all" } ],
+        "Use_Dout_Reset": [ { "value": "false", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "Dout_Reset_Value": [ { "value": "0", "resolve_type": "user", "enabled": false, "usage": "all" } ],
         "dynamic_power_saving": [ { "value": "false", "resolve_type": "user", "format": "bool", "enabled": false, "usage": "all" } ],
         "Almost_Full_Flag": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Almost_Empty_Flag": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
@@ -224,7 +224,7 @@
         "C_RD_FREQ": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_RD_PNTR_WIDTH": [ { "value": "11", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_UNDERFLOW_LOW": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_USE_DOUT_RST": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_USE_DOUT_RST": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_USE_ECC": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_USE_EMBEDDED_REG": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_USE_PIPELINE_REG": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -460,5 +460,5 @@
       }
     }
   },
-  "checksum": "54738372"
+  "checksum": "5cafffb1"
 }
