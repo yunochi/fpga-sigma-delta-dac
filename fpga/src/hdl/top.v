@@ -28,8 +28,8 @@ module top(
         input s_i2s_sck,
         input s_i2s_ws,
         input s_i2s_sd,
-        output wire prog_full,
-        output wire prog_empty,
+        output wire fifo_full,
+        output wire fifo_empty,
         output wire data_act_led
     );
     wire diff_buf_out;
@@ -46,12 +46,17 @@ module top(
 
     wire sys_clk; //12.288MHz Clock
     parameter OVERSAMPLE_RATIO = 256;
-
+    
+    (* MARK_DEBUG="true" *)
+    wire [11:0] fifo_data_count;
+    assign fifo_full = fifo_data_count > 12'd2000;
+    assign fifo_empty = fifo_data_count < 12'd4;
     wire reset_n;
     wire [31:0]axis_tdata;
     wire axis_tlast;
     reg axis_tready;
     wire axis_tvalid;
+    
     design_1_wrapper design_1_wrapper_inst (
                          .clk_200M(clk_200M),
                          .sys_clk(sys_clk),
@@ -71,8 +76,7 @@ module top(
                .tdata(axis_tdata),
                .data_valid(axis_tvalid),
                .data_act_led(data_act_led),
-               .prog_empty(prog_empty),
-               .prog_full(prog_full)
+               .fifo_data_count(fifo_data_count)
            );
     wire signed [15:0] pdm_val_l;
     wire signed [15:0] pdm_val_r;
