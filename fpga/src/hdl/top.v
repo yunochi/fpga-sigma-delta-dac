@@ -27,7 +27,10 @@ module top(
         input clk_200M_n,
         input s_i2s_sck,
         input s_i2s_ws,
-        input s_i2s_sd
+        input s_i2s_sd,
+        output wire prog_full,
+        output wire prog_empty,
+        output wire data_act_led
     );
     wire diff_buf_out;
     IBUFDS IBUFDS_inst (
@@ -66,7 +69,10 @@ module top(
                .sd(s_i2s_sd),
                .tready(axis_tready),
                .tdata(axis_tdata),
-               .data_valid(axis_tvalid)
+               .data_valid(axis_tvalid),
+               .data_act_led(data_act_led),
+               .prog_empty(prog_empty),
+               .prog_full(prog_full)
            );
     wire signed [15:0] pdm_val_l;
     wire signed [15:0] pdm_val_r;
