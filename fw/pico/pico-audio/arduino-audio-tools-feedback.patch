@@ -1,0 +1,30 @@
+diff --git a/src/AudioTools/Communication/USB/USBAudioDeviceBase.h b/src/AudioTools/Communication/USB/USBAudioDeviceBase.h
+index bdf2073..b38ff1c 100644
+--- a/src/AudioTools/Communication/USB/USBAudioDeviceBase.h
++++ b/src/AudioTools/Communication/USB/USBAudioDeviceBase.h
+@@ -1124,19 +1124,19 @@ class USBAudioDeviceBase : public AudioStream, public VolumeSupport {
+             audio->feedback.compute.fifo_count.fifo_lvl_avg -
+             (audio->feedback.compute.fifo_count.fifo_lvl_avg >> 8) +
+             ((uint32_t)ff_count << 8);
+-        uint32_t avg = audio->feedback.compute.fifo_count.fifo_lvl_avg >> 8;
++        uint32_t avg = audio->feedback.compute.fifo_count.fifo_lvl_avg >> 16;
+         uint32_t thr = audio->feedback.compute.fifo_count.fifo_lvl_thr;
+         uint32_t nom = audio->feedback.compute.fifo_count.nom_value;
+         if (avg > thr) {
+-          audio->feedback.value =
+-              nom + (uint32_t)audio->feedback.compute.fifo_count.rate_const[0] *
+-                        (avg - thr);
+-        } else {
+           uint32_t drop =
+               (uint32_t)audio->feedback.compute.fifo_count.rate_const[1] *
+-              (thr - avg);
++              (avg - thr);
+           audio->feedback.value =
+               (nom > drop) ? nom - drop : audio->feedback.min_value;
++        } else {
++          audio->feedback.value =
++              nom + (uint32_t)audio->feedback.compute.fifo_count.rate_const[0] *
++                        (thr - avg);
+         }
+         audio->feedback.value =
+             TU_MIN(TU_MAX(audio->feedback.value, audio->feedback.min_value),
