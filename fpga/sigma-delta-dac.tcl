@@ -152,12 +152,11 @@ set_property -name "simulator.xsim_version" -value "2025.2" -objects $obj
 set_property -name "simulator_language" -value "Mixed" -objects $obj
 set_property -name "sim_compile_state" -value "1" -objects $obj
 set_property -name "use_inline_hdl_ip" -value "1" -objects $obj
-set_property -name "webtalk.modelsim_export_sim" -value "18" -objects $obj
-set_property -name "webtalk.questa_export_sim" -value "18" -objects $obj
-set_property -name "webtalk.riviera_export_sim" -value "18" -objects $obj
-set_property -name "webtalk.vcs_export_sim" -value "18" -objects $obj
-set_property -name "webtalk.xcelium_export_sim" -value "3" -objects $obj
-set_property -name "webtalk.xsim_export_sim" -value "18" -objects $obj
+set_property -name "webtalk.modelsim_export_sim" -value "21" -objects $obj
+set_property -name "webtalk.questa_export_sim" -value "21" -objects $obj
+set_property -name "webtalk.riviera_export_sim" -value "21" -objects $obj
+set_property -name "webtalk.vcs_export_sim" -value "21" -objects $obj
+set_property -name "webtalk.xsim_export_sim" -value "21" -objects $obj
 set_property -name "webtalk.xsim_launch_sim" -value "1" -objects $obj
 set_property -name "xpm_libraries" -value "XPM_CDC XPM_FIFO XPM_MEMORY" -objects $obj
 
@@ -242,7 +241,9 @@ set_property -name "file_type" -value "XDC" -objects $file_obj
 
 # Set 'puzhi' fileset properties
 set obj [get_filesets puzhi]
+set_property -name "target_constrs_file" -value "[file normalize "$origin_dir/src/xdc/puzhi/new/puzhi.xdc"]" -objects $obj
 set_property -name "target_part" -value "xczu4cg-sfvc784-1-i" -objects $obj
+set_property -name "target_ucf" -value "[file normalize "$origin_dir/src/xdc/puzhi/new/puzhi.xdc"]" -objects $obj
 
 # Create 'myir' fileset (if not found)
 if {[string equal [get_filesets -quiet myir] ""]} {
@@ -490,12 +491,12 @@ Port;FD4A0000;FD4AFFFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD05000
   # Create instance: clk_wiz_0, and set properties
   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
   set_property -dict [list \
-    CONFIG.CLKOUT1_JITTER {324.089} \
-    CONFIG.CLKOUT1_PHASE_ERROR {396.481} \
-    CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {12.288} \
-    CONFIG.MMCM_CLKFBOUT_MULT_F {105.500} \
-    CONFIG.MMCM_CLKOUT0_DIVIDE_F {90.375} \
-    CONFIG.MMCM_DIVCLK_DIVIDE {19} \
+    CONFIG.CLKOUT1_JITTER {346.412} \
+    CONFIG.CLKOUT1_PHASE_ERROR {463.188} \
+    CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {24.576} \
+    CONFIG.MMCM_CLKFBOUT_MULT_F {85.125} \
+    CONFIG.MMCM_CLKOUT0_DIVIDE_F {40.750} \
+    CONFIG.MMCM_DIVCLK_DIVIDE {17} \
     CONFIG.OPTIMIZE_CLOCKING_STRUCTURE_EN {true} \
     CONFIG.PRIM_SOURCE {No_buffer} \
     CONFIG.RESET_PORT {resetn} \

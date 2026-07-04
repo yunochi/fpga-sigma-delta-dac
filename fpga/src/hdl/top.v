@@ -44,8 +44,8 @@ module top(
              .I(diff_buf_out)  // 1-bit input: Clock input.
          );
 
-    wire sys_clk; //12.288MHz Clock
-    parameter OVERSAMPLE_RATIO = 256;
+    wire sys_clk; //24.576MHz Clock
+    parameter OVERSAMPLE_RATIO = 512;
     
     (* MARK_DEBUG="true" *)
     wire [11:0] fifo_data_count;
@@ -85,7 +85,8 @@ module top(
     wire signed [15:0] fir_out_r_2x;
     wire signed [15:0] fir_out_r_4x;
 
-    reg signed [15:0] sample_wait_cnt;
+    reg [15:0] sample_wait_cnt;
+    wire [15:0] wait_cnt_256 = sample_wait_cnt[7:0];
     wire [15:0] wait_cnt_128 = sample_wait_cnt[6:0];
     wire [15:0] wait_cnt_64 = sample_wait_cnt[5:0];
     wire [15:0] wait_cnt_32 = sample_wait_cnt[4:0];
@@ -136,7 +137,7 @@ module top(
                          .clk(sys_clk),
                          .rst_n(reset_n),
                          .data_in(fir_out_l_2x),
-                         .interval_cnt(wait_cnt_128),
+                         .interval_cnt(wait_cnt_256),
                          .data_out(fir_out_l_4x)
                      );
     linear_interpolation #(
@@ -146,7 +147,7 @@ module top(
                              .clk(sys_clk),
                              .rst_n(reset_n),
                              .data_in(fir_out_l_4x),
-                             .interval_cnt(wait_cnt_64),
+                             .interval_cnt(wait_cnt_128),
                              .data_out(pdm_val_l)
                          );
 
@@ -167,7 +168,7 @@ module top(
                          .clk(sys_clk),
                          .rst_n(reset_n),
                          .data_in(fir_out_r_2x),
-                         .interval_cnt(wait_cnt_128),
+                         .interval_cnt(wait_cnt_256),
                          .data_out(fir_out_r_4x)
                      );
     linear_interpolation #(
@@ -177,7 +178,7 @@ module top(
                              .clk(sys_clk),
                              .rst_n(reset_n),
                              .data_in(fir_out_r_4x),
-                             .interval_cnt(wait_cnt_64),
+                             .interval_cnt(wait_cnt_128),
                              .data_out(pdm_val_r)
                          );
 
