@@ -2,7 +2,7 @@ import numpy as np
 import scipy.signal as signal
 
 def design_halfband_filter():
-    taps = 63
+    taps = 127
 
     # 1. SciPy의 firwin을 이용하여 대칭 차단주파수가 0.5(즉, fs_out/4)인 필터 설계
     # Half-band 조건(대칭성)을 위해 cutoff를 정확히 0.5로 설정합니다.

@@ -15,19 +15,19 @@ module fir_upsampler_2x #(
     // 63-tap symmetric Half-Band FIR filter.
     // Since it's a Half-Band filter, every odd tap (except the center tap) is zero.
     // Thus, we only need to store 32 input samples to compute the symmetric even samples.
-    reg signed [DATA_WIDTH-1:0] x_reg [0:31];
+    reg signed [DATA_WIDTH-1:0] x_reg [0:63];
 
     // Shift register for input samples.
     // Triggered at the beginning of a new input sample period (interval_cnt == 0).
     integer i;
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            for (i = 0; i < 32; i = i + 1) begin
+            for (i = 0; i < 64; i = i + 1) begin
                 x_reg[i] <= {DATA_WIDTH{1'b0}};
             end
         end else if (interval_cnt == 16'd0) begin
             x_reg[0] <= data_in;
-            for (i = 1; i < 32; i = i + 1) begin
+            for (i = 1; i < 64; i = i + 1) begin
                 x_reg[i] <= x_reg[i-1];
             end
         end
@@ -35,25 +35,41 @@ module fir_upsampler_2x #(
 
     // 16 non-zero coefficients for the symmetric taps (left/right half).
     // Q15 fixed-point representation.
-    function signed [15:0] get_coef(input [3:0] idx);
+    function signed [15:0] get_coef(input [4:0] idx);
         begin
             case (idx)
-                4'd0:  get_coef = -16'sd54;
-                4'd1:  get_coef = 16'sd64;
-                4'd2:  get_coef = -16'sd90;
-                4'd3:  get_coef = 16'sd136;
-                4'd4:  get_coef = -16'sd202;
-                4'd5:  get_coef = 16'sd294;
-                4'd6:  get_coef = -16'sd418;
-                4'd7:  get_coef = 16'sd578;
-                4'd8:  get_coef = -16'sd785;
-                4'd9:  get_coef = 16'sd1053;
-                4'd10: get_coef = -16'sd1411;
-                4'd11: get_coef = 16'sd1908;
-                4'd12: get_coef = -16'sd2654;
-                4'd13: get_coef = 16'sd3937;
-                4'd14: get_coef = -16'sd6818;
-                4'd15: get_coef = 16'sd20846;
+                5'd0:  get_coef = -16'sd26;
+                5'd1:  get_coef = 16'sd28;
+                5'd2:  get_coef = -16'sd32;
+                5'd3:  get_coef = 16'sd36;
+                5'd4:  get_coef = -16'sd44;
+                5'd5:  get_coef = 16'sd54;
+                5'd6:  get_coef = -16'sd66;
+                5'd7:  get_coef = 16'sd80;
+                5'd8:  get_coef = -16'sd98;
+                5'd9:  get_coef = 16'sd118;
+                5'd10: get_coef = -16'sd140;
+                5'd11: get_coef = 16'sd168;
+                5'd12: get_coef = -16'sd200;
+                5'd13: get_coef = 16'sd234;
+                5'd14: get_coef = -16'sd274;
+                5'd15: get_coef = 16'sd320;
+                5'd16: get_coef = -16'sd372;
+                5'd17: get_coef = 16'sd430;
+                5'd18: get_coef = -16'sd496;
+                5'd19: get_coef = 16'sd574;
+                5'd20: get_coef = -16'sd662;
+                5'd21: get_coef = 16'sd766;
+                5'd22: get_coef = -16'sd888;
+                5'd23: get_coef = 16'sd1036;
+                5'd24: get_coef = -16'sd1220;
+                5'd25: get_coef = 16'sd1456;
+                5'd26: get_coef = -16'sd1770;
+                5'd27: get_coef = 16'sd2215;
+                5'd28: get_coef = -16'sd2899;
+                5'd29: get_coef = 16'sd4115;
+                5'd30: get_coef = -16'sd6922;
+                5'd31: get_coef = 16'sd20863;
                 default: get_coef = 16'sd0;
             endcase
         end
@@ -71,17 +87,17 @@ module fir_upsampler_2x #(
     // Cycle t+3 (interval_cnt 18)      : Saturation and Registering even output
 
     // Pipeline Stage Enables
-    wire preadd_en  = (interval_cnt < 16);
-    wire mul_en     = (interval_cnt >= 1 && interval_cnt <= 16);
+    wire preadd_en  = (interval_cnt < 32);
+    wire mul_en     = (interval_cnt >= 1 && interval_cnt <= 32);
     wire accum_init = (interval_cnt == 2);
-    wire accum_en   = (interval_cnt >= 3 && interval_cnt <= 17);
-    wire out_en     = (interval_cnt == 18);
+    wire accum_en   = (interval_cnt >= 3 && interval_cnt <= 33);
+    wire out_en     = (interval_cnt == 34);
 
     // Datapath Registers
     reg signed [DATA_WIDTH:0]    pre_add;  // Pre-adder output (17 bits for 16-bit input)
     reg signed [15:0]            coef_reg; // Coefficient register
     reg signed [DATA_WIDTH+16:0] mul_val;  // Multiplier output (33 bits)
-    reg signed [DATA_WIDTH+20:0] accum;    // Accumulator (adds 16 products, needs +4 bits headroom)
+    reg signed [DATA_WIDTH+21:0] accum;    // Accumulator (adds 32 products, needs +5 bits headroom)
     reg signed [DATA_WIDTH-1:0]  even_out; // Registered even output sample
 
     // Cycle t: Pre-adder & Coefficient fetch (1-cycle latency)
@@ -91,8 +107,8 @@ module fir_upsampler_2x #(
             pre_add  <= {(DATA_WIDTH+1){1'b0}};
             coef_reg <= 16'sd0;
         end else if (preadd_en) begin
-            pre_add  <= $signed(x_reg[interval_cnt[3:0]]) + $signed(x_reg[31 - interval_cnt[3:0]]);
-            coef_reg <= get_coef(interval_cnt[3:0]);
+            pre_add  <= $signed(x_reg[interval_cnt[4:0]]) + $signed(x_reg[63 - interval_cnt[4:0]]);
+            coef_reg <= get_coef(interval_cnt[4:0]);
         end
     end
 
@@ -122,7 +138,7 @@ module fir_upsampler_2x #(
     // Cycle t+3: Saturation & Rounding (1-cycle latency)
     // The coefficients are in Q15 format, so we shift right by 15.
     // The accumulated sum is saturated to prevent overflow before assigning to 16-bit output.
-    wire signed [21:0] sum_shifted = accum >>> 15;
+    wire signed [22:0] sum_shifted = accum >>> 15;
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
@@ -144,23 +160,23 @@ module fir_upsampler_2x #(
     // For a half-band filter, the center tap is 0.5. To match the latency of the
     // even sample calculations (19 clock cycles), the center tap sample (x_reg[15])
     // must be delayed by exactly 19 clock cycles.
-    reg signed [DATA_WIDTH-1:0] odd_delay [0:18];
+    reg signed [DATA_WIDTH-1:0] odd_delay [0:34];
     integer k;
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            for (k = 0; k < 19; k = k + 1) begin
+            for (k = 0; k < 35; k = k + 1) begin
                 odd_delay[k] <= {DATA_WIDTH{1'b0}};
             end
         end else begin
-            odd_delay[0] <= x_reg[15];
-            for (k = 1; k < 19; k = k + 1) begin
+            odd_delay[0] <= x_reg[31];
+            for (k = 1; k < 35; k = k + 1) begin
                 odd_delay[k] <= odd_delay[k-1];
             end
         end
     end
 
-    wire signed [DATA_WIDTH-1:0] odd_out = odd_delay[18];
+    wire signed [DATA_WIDTH-1:0] odd_out = odd_delay[34];
 
     // =========================================================================
     // Output Multiplexer (Even/Odd Interleaving)
