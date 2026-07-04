@@ -12,9 +12,9 @@ module fir_upsampler_2x #(
     // =========================================================================
     // Filter Architecture & Storage
     // =========================================================================
-    // 63-tap symmetric Half-Band FIR filter.
+    // 127-tap symmetric Half-Band FIR filter.
     // Since it's a Half-Band filter, every odd tap (except the center tap) is zero.
-    // Thus, we only need to store 32 input samples to compute the symmetric even samples.
+    // Thus, we store 64 input samples to compute the symmetric even samples.
     reg signed [DATA_WIDTH-1:0] x_reg [0:63];
 
     // Shift register for input samples.
@@ -33,7 +33,7 @@ module fir_upsampler_2x #(
         end
     end
 
-    // 16 non-zero coefficients for the symmetric taps (left/right half).
+    // 32 non-zero coefficients for the symmetric taps (left/right half).
     // Q15 fixed-point representation.
     function signed [15:0] get_coef(input [4:0] idx);
         begin
@@ -81,10 +81,10 @@ module fir_upsampler_2x #(
     // The MAC unit computes the even sample using symmetric pre-addition.
     //
     // Pipeline Timeline:
-    // Cycle t   (interval_cnt 0 ~ 15)  : Pre-adder & Coefficient fetch
-    // Cycle t+1 (interval_cnt 1 ~ 16)  : Multiplication
-    // Cycle t+2 (interval_cnt 2 ~ 17)  : Accumulation (init on cycle 2)
-    // Cycle t+3 (interval_cnt 18)      : Saturation and Registering even output
+    // Cycle t   (interval_cnt 0 ~ 31)  : Pre-adder & Coefficient fetch
+    // Cycle t+1 (interval_cnt 1 ~ 32)  : Multiplication
+    // Cycle t+2 (interval_cnt 2 ~ 33)  : Accumulation (init on cycle 2)
+    // Cycle t+3 (interval_cnt 34)      : Saturation and Registering even output
 
     // Pipeline Stage Enables
     wire preadd_en  = (interval_cnt < 32);
