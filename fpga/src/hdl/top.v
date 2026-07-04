@@ -45,7 +45,7 @@ module top(
          );
 
     wire sys_clk; //24.576MHz Clock
-    parameter OVERSAMPLE_RATIO = 512;
+    parameter OVERSAMPLE_RATIO = 256;
     
     (* MARK_DEBUG="true" *)
     wire [11:0] fifo_data_count;
@@ -137,7 +137,7 @@ module top(
                          .clk(sys_clk),
                          .rst_n(reset_n),
                          .data_in(fir_out_l_2x),
-                         .interval_cnt(wait_cnt_256),
+                         .interval_cnt(wait_cnt_128),
                          .data_out(fir_out_l_4x)
                      );
     linear_interpolation #(
@@ -147,7 +147,7 @@ module top(
                              .clk(sys_clk),
                              .rst_n(reset_n),
                              .data_in(fir_out_l_4x),
-                             .interval_cnt(wait_cnt_128),
+                             .interval_cnt(wait_cnt_64),
                              .data_out(pdm_val_l)
                          );
 
@@ -168,7 +168,7 @@ module top(
                          .clk(sys_clk),
                          .rst_n(reset_n),
                          .data_in(fir_out_r_2x),
-                         .interval_cnt(wait_cnt_256),
+                         .interval_cnt(wait_cnt_128),
                          .data_out(fir_out_r_4x)
                      );
     linear_interpolation #(
@@ -178,7 +178,7 @@ module top(
                              .clk(sys_clk),
                              .rst_n(reset_n),
                              .data_in(fir_out_r_4x),
-                             .interval_cnt(wait_cnt_128),
+                             .interval_cnt(wait_cnt_64),
                              .data_out(pdm_val_r)
                          );
 

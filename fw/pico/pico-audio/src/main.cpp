@@ -1,26 +1,32 @@
 #include <Arduino.h>
+#include <I2S.h>
 #include "AudioTools.h"
 #include "AudioTools/Communication/USB/USBAudioStream.h"
 
-// Define audio format: 48000 Hz, 2 channels, 16-bit PCM
-AudioInfo info(48000, 2, 16);
+#define AUDIO_SAMPLE_RATE 96000
 
-USBAudioStream usb_in;   // USB Audio Source (Receives audio from PC)
-I2SStream i2s_out;       // I2S Sink (Sends audio to external DAC)
-StreamCopy copier(i2s_out, usb_in); // Copies audio data from USB to I2S
+// 2 channels, 16-bit PCM
+AudioInfo info(AUDIO_SAMPLE_RATE, 2, 16);
 
-// Define I2S GPIO pins for RP2350 / RP2040
-// You can change these pins to match your hardware connections.
-#define I2S_PIN_BCK  0  // GP22 (BCLK/BCK)
-#define I2S_PIN_WS   1  // GP21 (LRCK/WS)
-#define I2S_PIN_DATA 2  // GP20 (DIN/SD)
+USBAudioStream usb_in;
+I2S i2s_out(OUTPUT);
 
-void setup() {
-  // Start serial communication for debugging
+#define I2S_PIN_BCK 0
+#define I2S_PIN_WS 1
+#define I2S_PIN_DATA 2
+
+// Static buffer limit config (USB ring buffer capacity 12288 bytes)
+const int TOTAL_CAPACITY = 12288;
+const int CENTER_LIMIT = TOTAL_CAPACITY / 2; // 6144 bytes target center
+
+void setup()
+{
+  // Initialize Serial for non-blocking debugging log
   Serial.begin(115200);
-  
+
   // Required on cores without automatic TinyUSB initialization
-  if (!TinyUSBDevice.isInitialized()) {
+  if (!TinyUSBDevice.isInitialized())
+  {
     TinyUSBDevice.begin(0);
   }
 
@@ -28,39 +34,122 @@ void setup() {
   auto usb_cfg = usb_in.defaultConfig(RX_MODE);
   usb_cfg.copyFrom(info);
   usb_cfg.product = "Pico I2S DAC";
-  usb_cfg.enable_feedback_ep = true; // Enable feedback endpoint for synchronization
+  usb_cfg.enable_feedback_ep = false; // Disable feedback endpoint to eliminate host driver jitter/pops
   usb_in.begin(usb_cfg);
 
-  // 2. Configure I2S Output Stream
-  auto i2s_cfg = i2s_out.defaultConfig(TX_MODE);
-  i2s_cfg.copyFrom(info);
-  i2s_cfg.pin_data = I2S_PIN_DATA;
-  i2s_cfg.pin_ws = I2S_PIN_WS;
-  i2s_cfg.pin_bck = I2S_PIN_BCK;
-  
-  // Start I2S
-  i2s_out.begin(i2s_cfg);
+  // 2. Configure Native I2S Output
+  i2s_out.setBCLK(I2S_PIN_BCK);
+  i2s_out.setDATA(I2S_PIN_DATA);
+  i2s_out.setBitsPerSample(16);
+  // Set buffer: 8 buffers, 256 words (1024 bytes) each -> total 8192 bytes DMA queue
+  i2s_out.setBuffers(8, 256, 0);
 
+  // Start I2S at target sample rate
+  i2s_out.begin(AUDIO_SAMPLE_RATE);
+}
 
-  Serial.println("USB Audio to I2S Bridge Initialized!");
+// Software PLL / Clock Recovery for Adaptive I2S Sync
+void adjust_i2s_clock(int avail)
+{
+  static uint32_t last_adjust_ms = 0;
+  uint32_t now = millis();
 
-  // Re-enumerate USB to force the host computer to detect the new audio interface
-  if (TinyUSBDevice.mounted()) {
-    TinyUSBDevice.detach();
-    delay(100);
-    TinyUSBDevice.attach();
+  // Only evaluate frequency changes once every 100 milliseconds
+  if (now - last_adjust_ms < 10)
+  {
+    return;
+  }
+  last_adjust_ms = now;
+
+  // 24b.8b 고정소수점. 16샘플 이동평균
+  static uint32_t avail_moving_avarage = CENTER_LIMIT << 12;
+  avail_moving_avarage -= avail_moving_avarage >> 4;
+  avail_moving_avarage += avail << 8;
+  int avg_avail = avail_moving_avarage >> 12;
+
+  static int last_hz = AUDIO_SAMPLE_RATE;
+  int target_hz = AUDIO_SAMPLE_RATE;
+  const int margin = 1;
+  if (avg_avail > CENTER_LIMIT + margin || avg_avail < CENTER_LIMIT - margin)
+  {
+    int error = (avg_avail - CENTER_LIMIT);
+    // error = (error > 0) ? error - (margin/2) : error + (margin/2);
+    int freq_adjust = error / (CENTER_LIMIT / 200);
+    target_hz = AUDIO_SAMPLE_RATE + freq_adjust;
+  }
+
+  // Set the frequency only when a shift is requested to keep PIO BCLK noise free
+  if (target_hz != last_hz)
+  {
+    last_hz = target_hz;
+    i2s_out.setFrequency(target_hz);
+    Serial.printf("[PLL] Frequency adjusted: %d Hz (Buffer: %d/%d)\n", target_hz, avg_avail, TOTAL_CAPACITY);
+  }
+
+  // Throttled periodic status report (once per 1000 milliseconds)
+  static uint32_t last_report_ms = 0;
+  if (now - last_report_ms >= 1000)
+  {
+    last_report_ms = now;
+    Serial.printf("[STATUS] Buffer Level: %d | Center: %d | Capacity: %d | Current I2S Freq: %d Hz\n",
+                  avg_avail, CENTER_LIMIT, TOTAL_CAPACITY, last_hz);
   }
 }
 
-unsigned long last_print = 0;
-void loop() {
+// Single-Core loop: Handles USB task and copies data directly to native I2S with Pacing Control & Cool-down
+void loop()
+{
   TinyUSBDevice.task(); // Handle USB tasks (required for TinyUSB)
-  // Read from USB and write to I2S
-  copier.copy();
 
-  if (millis() - last_print > 1000) {
-    last_print = millis();
-    Serial.print("USB Avail: ");
-    Serial.println(usb_in.available());
+  static bool playback_started = false;
+  static uint32_t last_reset_ms = 0;
+  static uint8_t copy_buf[1024]; // 1024 bytes buffer
+  const int MIN_CHUNK_SIZE = 64;
+
+  int avail = usb_in.available();
+
+  if (playback_started && avail < 128)
+  {
+    playback_started = false;
+    last_reset_ms = millis();                // Record physical reset time
+    i2s_out.setFrequency(AUDIO_SAMPLE_RATE); // Reset clock to nominal
+    Serial.printf("[SYSTEM] Underrun threat detected (%d bytes). Resetting and cool-down...\n", avail);
+  }
+
+  if (!playback_started)
+  {
+    // Force a 50ms cool-down period to let physical USB memory fill up.
+    if (millis() - last_reset_ms < 50)
+    {
+      return;
+    }
+    if (avail >= CENTER_LIMIT)
+    {
+      playback_started = true;
+      Serial.printf("[SYSTEM] Pre-buffering complete. Starting play. Capacity: %d bytes\n", TOTAL_CAPACITY);
+    }
+    else
+    {
+      return; // Keep buffering and wait, leaving I2S clock at nominal
+    }
+  }
+
+  // Actively track and correct the clock frequency based on buffer watermarks
+  adjust_i2s_clock(usb_in.available());
+
+  // Pacing Control: Consume 512 bytes *only* when both:
+  // 1) USB stream has at least 512 bytes available, AND
+  // 2) Native I2S DMA queue has space to accept at least 512 bytes without blocking.
+  if (avail >= MIN_CHUNK_SIZE && i2s_out.availableForWrite() >= MIN_CHUNK_SIZE)
+  {
+    int to_read = MIN_CHUNK_SIZE;
+    to_read = (to_read / 4) * 4; // Align to 4-byte frame boundaries (Stereo 16-bit)
+
+    int read_bytes = usb_in.readBytes(copy_buf, to_read);
+    if (read_bytes > 0)
+    {
+      // Write directly to Native I2S using DMA block write
+      i2s_out.write(copy_buf, read_bytes);
+    }
   }
 }
