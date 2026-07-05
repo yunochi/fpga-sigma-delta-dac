@@ -10,7 +10,7 @@ module i2s_rx #(
         output wire [31:0] tdata,
         output wire data_valid,
         output wire data_act_led,
-        output wire [11:0] fifo_data_count
+        output wire [12:0] fifo_data_count
     );
 
 
@@ -63,16 +63,16 @@ module i2s_rx #(
         end
     end
 
-     i2s_fifo i2s_fifo_inst (
-                  .clk(clk),      // input wire clk
-                  .srst(!rst_n),                // input wire srst
-                  .din(data_shift_reg),      // input wire [31 : 0] din
-                  .wr_en(wvalid),  // input wire wr_en
-                  .rd_en(tready),  // input wire rd_en
-                  .dout(tdata),    // output wire [31 : 0] dout
-                  .full(),    // output wire full
-                  .empty(),  // output wire empty
-                  .valid(data_valid),
-                  .data_count(fifo_data_count)    // output wire [11 : 0] data_count
-              );
+    i2s_fifo i2s_fifo_inst (
+                 .clk(clk),      // input wire clk
+                 .srst(!rst_n),                // input wire srst
+                 .din(data_shift_reg),      // input wire [31 : 0] din
+                 .wr_en(wvalid),  // input wire wr_en
+                 .rd_en(tready),  // input wire rd_en
+                 .dout(tdata),    // output wire [31 : 0] dout
+                 .full(),    // output wire full
+                 .empty(),  // output wire empty
+                 .valid(data_valid),
+                 .data_count(fifo_data_count)   // output wire [12 : 0] data_count
+             );
 endmodule

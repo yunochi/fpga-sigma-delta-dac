@@ -46,17 +46,17 @@ module top(
 
     wire sys_clk; //24.576MHz Clock
     parameter OVERSAMPLE_RATIO = 256;
-    
+
     (* MARK_DEBUG="true" *)
-    wire [11:0] fifo_data_count;
-    assign fifo_full = fifo_data_count > 12'd2000;
-    assign fifo_empty = fifo_data_count < 12'd4;
+    wire [12:0] fifo_data_count;
+    assign fifo_full = fifo_data_count > 13'd4090;
+    assign fifo_empty = fifo_data_count < 13'd4;
     wire reset_n;
     wire [31:0]axis_tdata;
     wire axis_tlast;
     reg axis_tready;
     wire axis_tvalid;
-    
+
     design_1_wrapper design_1_wrapper_inst (
                          .clk_200M(clk_200M),
                          .sys_clk(sys_clk),
@@ -86,10 +86,8 @@ module top(
     wire signed [15:0] fir_out_r_4x;
 
     reg [15:0] sample_wait_cnt;
-    wire [15:0] wait_cnt_256 = sample_wait_cnt[7:0];
-    wire [15:0] wait_cnt_128 = sample_wait_cnt[6:0];
-    wire [15:0] wait_cnt_64 = sample_wait_cnt[5:0];
-    wire [15:0] wait_cnt_32 = sample_wait_cnt[4:0];
+    wire [15:0] wait_cnt_div2 = sample_wait_cnt >> 1;
+    wire [15:0] wait_cnt_div4 = sample_wait_cnt >> 2;
     reg [15:0] pcm_in_l;
     reg [15:0] pcm_in_r;
 
@@ -137,7 +135,7 @@ module top(
                          .clk(sys_clk),
                          .rst_n(reset_n),
                          .data_in(fir_out_l_2x),
-                         .interval_cnt(wait_cnt_128),
+                         .interval_cnt(wait_cnt_div2),
                          .data_out(fir_out_l_4x)
                      );
     linear_interpolation #(
@@ -147,7 +145,7 @@ module top(
                              .clk(sys_clk),
                              .rst_n(reset_n),
                              .data_in(fir_out_l_4x),
-                             .interval_cnt(wait_cnt_64),
+                             .interval_cnt(wait_cnt_div4),
                              .data_out(pdm_val_l)
                          );
 
@@ -168,7 +166,7 @@ module top(
                          .clk(sys_clk),
                          .rst_n(reset_n),
                          .data_in(fir_out_r_2x),
-                         .interval_cnt(wait_cnt_128),
+                         .interval_cnt(wait_cnt_div2),
                          .data_out(fir_out_r_4x)
                      );
     linear_interpolation #(
@@ -178,7 +176,7 @@ module top(
                              .clk(sys_clk),
                              .rst_n(reset_n),
                              .data_in(fir_out_r_4x),
-                             .interval_cnt(wait_cnt_64),
+                             .interval_cnt(wait_cnt_div4),
                              .data_out(pdm_val_r)
                          );
 

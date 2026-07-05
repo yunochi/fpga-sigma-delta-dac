@@ -152,11 +152,12 @@ set_property -name "simulator.xsim_version" -value "2025.2" -objects $obj
 set_property -name "simulator_language" -value "Mixed" -objects $obj
 set_property -name "sim_compile_state" -value "1" -objects $obj
 set_property -name "use_inline_hdl_ip" -value "1" -objects $obj
-set_property -name "webtalk.modelsim_export_sim" -value "21" -objects $obj
-set_property -name "webtalk.questa_export_sim" -value "21" -objects $obj
-set_property -name "webtalk.riviera_export_sim" -value "21" -objects $obj
-set_property -name "webtalk.vcs_export_sim" -value "21" -objects $obj
-set_property -name "webtalk.xsim_export_sim" -value "21" -objects $obj
+set_property -name "webtalk.modelsim_export_sim" -value "22" -objects $obj
+set_property -name "webtalk.questa_export_sim" -value "22" -objects $obj
+set_property -name "webtalk.riviera_export_sim" -value "22" -objects $obj
+set_property -name "webtalk.vcs_export_sim" -value "22" -objects $obj
+set_property -name "webtalk.xcelium_export_sim" -value "1" -objects $obj
+set_property -name "webtalk.xsim_export_sim" -value "22" -objects $obj
 set_property -name "webtalk.xsim_launch_sim" -value "1" -objects $obj
 set_property -name "xpm_libraries" -value "XPM_CDC XPM_FIFO XPM_MEMORY" -objects $obj
 
