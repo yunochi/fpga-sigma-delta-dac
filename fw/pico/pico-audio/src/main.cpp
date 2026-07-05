@@ -44,8 +44,13 @@ void setup()
   // Set buffer: 8 buffers, 256 words (1024 bytes) each -> total 8192 bytes DMA queue
   i2s_out.setBuffers(8, 256, 0);
 
-  // Start I2S at target sample rate
-  i2s_out.begin(AUDIO_SAMPLE_RATE);
+  // Start I2S at target sample rate (Initially disabled to prevent noise, set pins to LOW)
+  pinMode(I2S_PIN_BCK, OUTPUT);
+  digitalWrite(I2S_PIN_BCK, LOW);
+  pinMode(I2S_PIN_WS, OUTPUT);
+  digitalWrite(I2S_PIN_WS, LOW);
+  pinMode(I2S_PIN_DATA, OUTPUT);
+  digitalWrite(I2S_PIN_DATA, LOW);
 }
 
 // Software PLL / Clock Recovery for Adaptive I2S Sync
@@ -113,6 +118,16 @@ void loop()
     playback_started = false;
     last_reset_ms = millis();                // Record physical reset time
     i2s_out.setFrequency(AUDIO_SAMPLE_RATE); // Reset clock to nominal
+
+    // Stop I2S output and set pins to LOW to prevent noise
+    i2s_out.end();
+    pinMode(I2S_PIN_BCK, OUTPUT);
+    digitalWrite(I2S_PIN_BCK, LOW);
+    pinMode(I2S_PIN_WS, OUTPUT);
+    digitalWrite(I2S_PIN_WS, LOW);
+    pinMode(I2S_PIN_DATA, OUTPUT);
+    digitalWrite(I2S_PIN_DATA, LOW);
+
     Serial.printf("[SYSTEM] Underrun threat detected (%d bytes). Resetting and cool-down...\n", avail);
   }
 
@@ -126,6 +141,10 @@ void loop()
     if (avail >= CENTER_LIMIT)
     {
       playback_started = true;
+      
+      // Start I2S output when playback starts
+      i2s_out.begin(AUDIO_SAMPLE_RATE);
+
       Serial.printf("[SYSTEM] Pre-buffering complete. Starting play. Capacity: %d bytes\n", TOTAL_CAPACITY);
     }
     else
