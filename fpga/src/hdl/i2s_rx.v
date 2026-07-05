@@ -1,5 +1,5 @@
 module i2s_rx #(
-        parameter integer DATA_WIDTH = 16
+        parameter integer unsigned DATA_WIDTH = 16
     ) (
         input wire clk,
         input wire rst_n,
@@ -39,24 +39,46 @@ module i2s_rx #(
     end
     // ----------------------------------------------
     // ------------- Data push ---------------------
-    reg [31:0] data_shift_reg;
-    reg last_ws;
+    reg [DATA_WIDTH-1:0] data_left;
+    reg [DATA_WIDTH-1:0] data_right;
+    wire [(DATA_WIDTH*2)-1:0] data_left_right;
+    assign data_left_right = {data_right, data_left};
+    reg ws_sync_d;
     reg wvalid;
-    wire frame_end = (last_ws == 1 && ws_sync == 0);
-    reg [10:0] data_cnt;
+    wire frame_end = (ws_sync_d == 1 && ws_sync == 0);
+    reg [10:0] data_led_cnt;
+    reg [4:0] data_cnt;
     always @(posedge clk) begin
         wvalid <= 0;
         if (!rst_n) begin
-            last_ws <= 0; data_shift_reg <= 0;
-            data_act_reg <= 0; data_cnt <= 0;
+            ws_sync_d <= 0; data_left <= 0; data_right <= 0;
+            data_act_reg <= 0; data_led_cnt <= 0;
+            data_cnt <= 5'd0;
         end
         else if (sck_rise_edge) begin
-            last_ws <= ws_sync;
-            data_shift_reg <= {data_shift_reg[30:0], sd_sync};
+            ws_sync_d <= ws_sync;
+            // 표준 i2s는 WS가 한 클럭 늦음
+            if (ws_sync_d == 1'b0) begin
+                // Left channel
+                if (data_cnt < DATA_WIDTH) begin
+                    data_left <= {data_left[DATA_WIDTH-2:0], sd_sync};
+                    data_cnt <= data_cnt + 1;
+                end
+            end
+            else begin
+                if (data_cnt < DATA_WIDTH) begin
+                    data_right <= {data_right[DATA_WIDTH-2:0], sd_sync};
+                    data_cnt <= data_cnt + 1;
+                end
+            end
+            if (ws_sync != ws_sync_d) begin
+                // Left / Right 전환
+                data_cnt <= 0;
+            end
             if (frame_end) begin
                 wvalid <= 1;
-                data_cnt <= data_cnt + 1;
-                if (data_cnt == 11'd2047) begin
+                data_led_cnt <= data_led_cnt + 1;
+                if (data_led_cnt == 11'd2047) begin
                     data_act_reg <= ~data_act_reg;
                 end
             end
@@ -66,7 +88,7 @@ module i2s_rx #(
     i2s_fifo i2s_fifo_inst (
                  .clk(clk),      // input wire clk
                  .srst(!rst_n),                // input wire srst
-                 .din(data_shift_reg),      // input wire [31 : 0] din
+                 .din(data_left_right),      // input wire [31 : 0] din
                  .wr_en(wvalid),  // input wire wr_en
                  .rd_en(tready),  // input wire rd_en
                  .dout(tdata),    // output wire [31 : 0] dout

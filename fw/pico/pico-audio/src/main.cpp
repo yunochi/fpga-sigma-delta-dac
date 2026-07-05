@@ -108,12 +108,12 @@ void loop()
 
   static bool playback_started = false;
   static uint32_t last_reset_ms = 0;
-  static uint8_t copy_buf[1024]; // 1024 bytes buffer
-  const int MIN_CHUNK_SIZE = 64;
+  const int DATA_CHUNK_SIZE = 256;
+  static uint8_t copy_buf[DATA_CHUNK_SIZE];
 
   int avail = usb_in.available();
 
-  if (playback_started && avail < 128)
+  if (playback_started && avail < DATA_CHUNK_SIZE)
   {
     playback_started = false;
     last_reset_ms = millis();                // Record physical reset time
@@ -128,7 +128,7 @@ void loop()
     pinMode(I2S_PIN_DATA, OUTPUT);
     digitalWrite(I2S_PIN_DATA, LOW);
 
-    Serial.printf("[SYSTEM] Underrun threat detected (%d bytes). Resetting and cool-down...\n", avail);
+    Serial.printf("[SYSTEM] Underrun detected (%d bytes). Resetting and cool-down...\n", avail);
   }
 
   if (!playback_started)
@@ -156,19 +156,25 @@ void loop()
   // Actively track and correct the clock frequency based on buffer watermarks
   adjust_i2s_clock(usb_in.available());
 
-  // Pacing Control: Consume 512 bytes *only* when both:
-  // 1) USB stream has at least 512 bytes available, AND
-  // 2) Native I2S DMA queue has space to accept at least 512 bytes without blocking.
-  if (avail >= MIN_CHUNK_SIZE && i2s_out.availableForWrite() >= MIN_CHUNK_SIZE)
+  // Pacing Control: Consume 256 bytes *only* when both:
+  // 1) USB stream has at least 256 bytes available, AND
+  // 2) Native I2S DMA queue has space to accept at least 256 bytes without blocking.
+  if (avail >= DATA_CHUNK_SIZE && i2s_out.availableForWrite() >= DATA_CHUNK_SIZE)
   {
-    int to_read = MIN_CHUNK_SIZE;
+    int to_read = DATA_CHUNK_SIZE;
     to_read = (to_read / 4) * 4; // Align to 4-byte frame boundaries (Stereo 16-bit)
 
     int read_bytes = usb_in.readBytes(copy_buf, to_read);
     if (read_bytes > 0)
     {
-      // Write directly to Native I2S using DMA block write
-      i2s_out.write(copy_buf, read_bytes);
+      int16_t *samples = (int16_t *)copy_buf;
+      int num_frames = read_bytes / 4;
+      for (int i = 0; i < num_frames; i++)
+      {
+        uint16_t data_left = samples[2 * i];
+        uint16_t data_right = samples[2 * i + 1];
+        i2s_out.write16(data_left, data_right);
+      }
     }
   }
 }
