@@ -29,7 +29,7 @@ module sigma_delta_2nd_order #(
 
     assign fb = (dout == 1'b1) ? POS_FB : NEG_FB;
 
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             integrator1 <= 0;
             integrator2 <= 0;

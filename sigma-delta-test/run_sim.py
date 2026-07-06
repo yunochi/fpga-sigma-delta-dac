@@ -35,6 +35,7 @@ def main():
         if args.rebuild or not os.path.exists(VERILATOR_BIN):
             print(f"--- Step 1: Building Verilator binary ---")
             try:
+                subprocess.run(["make", "clean"], check=True)
                 subprocess.run(["make"], check=True)
             except subprocess.CalledProcessError:
                 print("Verilator build failed. Falling back to icarus (--sim icarus).")
