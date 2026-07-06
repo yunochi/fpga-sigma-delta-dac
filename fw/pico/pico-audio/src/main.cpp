@@ -15,9 +15,27 @@ I2S i2s_out(OUTPUT);
 #define I2S_PIN_WS 1
 #define I2S_PIN_DATA 2
 
-// Static buffer limit config (USB ring buffer capacity 12288 bytes)
-const int TOTAL_CAPACITY = 12288;
-const int CENTER_LIMIT = TOTAL_CAPACITY / 2; // 6144 bytes target center
+// USB ring buffer capacity, detected at runtime from the library config.
+int TOTAL_CAPACITY = 0;
+int CENTER_LIMIT = 0; // 50% target center
+
+// Software PLL / Clock Recovery for Adaptive I2S Sync
+// Tuning parameters
+static const int PLL_DEADBAND = 512;        // bytes — ignore jitter below this (USB packet burst noise)
+static const int PLL_P_DIVISOR = 512;       // P gain: 1 Hz per 512 bytes of error
+static const int PLL_I_DIVISOR = 65536;     // I gain: very slow accumulation for steady-state offset
+static const int PLL_SLEW_LIMIT_HZ = 30;    // max Hz change per call (~3000 Hz/s at 10ms interval)
+
+static uint32_t avail_moving_average = 0;
+static int32_t pll_integral = 0;
+static int last_hz = AUDIO_SAMPLE_RATE;
+
+void reset_pll_state()
+{
+  avail_moving_average = CENTER_LIMIT << 12;
+  pll_integral = 0;
+  last_hz = AUDIO_SAMPLE_RATE;
+}
 
 void setup()
 {
@@ -37,6 +55,20 @@ void setup()
   usb_cfg.enable_feedback_ep = false; // Disable feedback endpoint to eliminate host driver jitter/pops
   usb_in.begin(usb_cfg);
 
+  // Detect actual FIFO capacity from the library (packetSize * fifo_packets, rounded up to power of 2)
+  // audioPacketSize() is public; fifo_packets comes from the config we just applied.
+  {
+    int p = 256;
+    int sz = (int)usb_in.audioPacketSize() * (int)usb_cfg.fifo_packets;
+    while (p < sz) p <<= 1;
+    TOTAL_CAPACITY = p;
+  }
+  CENTER_LIMIT = TOTAL_CAPACITY / 2;
+  Serial.printf("[INIT] USB FIFO capacity: %d bytes (center target: %d)\n", TOTAL_CAPACITY, CENTER_LIMIT);
+
+  // Initialize PLL state to the detected center level
+  reset_pll_state();
+
   // 2. Configure Native I2S Output
   i2s_out.setBCLK(I2S_PIN_BCK);
   i2s_out.setDATA(I2S_PIN_DATA);
@@ -53,13 +85,12 @@ void setup()
   digitalWrite(I2S_PIN_DATA, LOW);
 }
 
-// Software PLL / Clock Recovery for Adaptive I2S Sync
 void adjust_i2s_clock(int avail)
 {
   static uint32_t last_adjust_ms = 0;
   uint32_t now = millis();
 
-  // Only evaluate frequency changes once every 100 milliseconds
+  // Evaluate frequency at most once every 10 milliseconds
   if (now - last_adjust_ms < 10)
   {
     return;
@@ -67,23 +98,35 @@ void adjust_i2s_clock(int avail)
   last_adjust_ms = now;
 
   // 24b.8b 고정소수점. 16샘플 이동평균
-  static uint32_t avail_moving_avarage = CENTER_LIMIT << 12;
-  avail_moving_avarage -= avail_moving_avarage >> 4;
-  avail_moving_avarage += avail << 8;
-  int avg_avail = avail_moving_avarage >> 12;
+  avail_moving_average -= avail_moving_average >> 4;
+  avail_moving_average += avail << 8;
+  int avg_avail = avail_moving_average >> 12;
 
-  static int last_hz = AUDIO_SAMPLE_RATE;
-  int target_hz = AUDIO_SAMPLE_RATE;
-  const int margin = 1;
-  if (avg_avail > CENTER_LIMIT + margin || avg_avail < CENTER_LIMIT - margin)
+  int target_hz = last_hz;
+  int error = avg_avail - CENTER_LIMIT;
+  if (error > PLL_DEADBAND || error < -PLL_DEADBAND)
   {
-    int error = (avg_avail - CENTER_LIMIT);
-    // error = (error > 0) ? error - (margin/2) : error + (margin/2);
-    int freq_adjust = error / (CENTER_LIMIT / 200);
-    target_hz = AUDIO_SAMPLE_RATE + freq_adjust;
+    // Subtract deadband so output is zero at the band edge
+    int deadb_error = (error > 0) ? (error - PLL_DEADBAND) : (error + PLL_DEADBAND);
+    int p_term = deadb_error / PLL_P_DIVISOR;
+    pll_integral += deadb_error;
+    int i_term = pll_integral / PLL_I_DIVISOR;
+    int desired = AUDIO_SAMPLE_RATE + p_term + i_term;
+
+    // Slew limit to prevent audible pitch jumps
+    int delta = desired - last_hz;
+    if (delta > PLL_SLEW_LIMIT_HZ) delta = PLL_SLEW_LIMIT_HZ;
+    else if (delta < -PLL_SLEW_LIMIT_HZ) delta = -PLL_SLEW_LIMIT_HZ;
+    target_hz = last_hz + delta;
+  }
+  else
+  {
+    // Inside deadband: slowly leak the integrator back to zero
+    pll_integral = (pll_integral * 15) / 16;
+    target_hz = AUDIO_SAMPLE_RATE;
   }
 
-  // Set the frequency only when a shift is requested to keep PIO BCLK noise free
+  // Set the frequency only when a change is requested to keep PIO BCLK noise free
   if (target_hz != last_hz)
   {
     last_hz = target_hz;
@@ -117,7 +160,7 @@ void loop()
   {
     playback_started = false;
     last_reset_ms = millis();                // Record physical reset time
-    i2s_out.setFrequency(AUDIO_SAMPLE_RATE); // Reset clock to nominal
+    reset_pll_state();                       // Reset PLL state to center to avoid biased restart
 
     // Stop I2S output and set pins to LOW to prevent noise
     i2s_out.end();
@@ -143,7 +186,10 @@ void loop()
       playback_started = true;
       
       // Start I2S output when playback starts
-      i2s_out.begin(AUDIO_SAMPLE_RATE);
+      if (!i2s_out.begin(AUDIO_SAMPLE_RATE))
+      {
+        Serial.println("[ERROR] I2S begin() failed");
+      }
 
       Serial.printf("[SYSTEM] Pre-buffering complete. Starting play. Capacity: %d bytes\n", TOTAL_CAPACITY);
     }
@@ -154,7 +200,7 @@ void loop()
   }
 
   // Actively track and correct the clock frequency based on buffer watermarks
-  adjust_i2s_clock(usb_in.available());
+  adjust_i2s_clock(avail);
 
   // Pacing Control: Consume 256 bytes *only* when both:
   // 1) USB stream has at least 256 bytes available, AND
