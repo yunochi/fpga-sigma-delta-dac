@@ -1,4 +1,6 @@
 *.png
 dout.txt
-sigma_delta_sim
+sim_icarus
+obj_dir/
+__pycache__/
 

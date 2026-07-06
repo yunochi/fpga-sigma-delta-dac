@@ -4,7 +4,7 @@ from scipy.signal import windows
 import os
 import argparse
 
-def analyze_sigma_delta_performance(file_path, fs, target_freq, audio_max_freq=20000):
+def analyze_sigma_delta_performance(file_path, fs, target_freq, audio_max_freq=20000, window_name='kaiser'):
     """
     시그마-델타 비트스트림을 분석하여 SNR 및 노이즈 쉐이핑 특성을 측정합니다.
     """
@@ -28,8 +28,11 @@ def analyze_sigma_delta_performance(file_path, fs, target_freq, audio_max_freq=2
     
     # 2. Windowing (Kaiser with high beta)
     # Kaiser window with beta=20 provides extreme side-lobe suppression (> 150dB)
-    window = windows.kaiser(n, beta=20)
-    # window = windows.boxcar(n)
+    if window_name == 'boxcar':
+        window = windows.boxcar(n)
+    else:
+        window = windows.kaiser(n, beta=20)
+        # window = windows.boxcar(n)
     # DC 오프셋 제거 및 윈도우 적용
     windowed_data = (data - np.mean(data)) * window
     
@@ -130,7 +133,8 @@ if __name__ == "__main__":
     parser.add_argument('--fs', type=float, default=1e6, help='Sampling frequency (Hz)')
     parser.add_argument('--f0', type=float, default=1000, help='Target signal frequency (Hz)')
     parser.add_argument('--bw', type=float, default=20000, help='Audio bandwidth (Hz)')
+    parser.add_argument('--window', type=str, default='kaiser', choices=['kaiser', 'boxcar'], help='FFT window (use boxcar for coherent sampling)')
     
     args = parser.parse_args()
     
-    analyze_sigma_delta_performance(args.file, args.fs, args.f0, args.bw)
+    analyze_sigma_delta_performance(args.file, args.fs, args.f0, args.bw, args.window)
