@@ -11,7 +11,7 @@ module linear_interpolation #(
 
     reg signed [DATA_WIDTH + 16 -1:0] data_in_prev;
     reg signed [DATA_WIDTH + 16 -1:0] data_in_current;
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             data_in_prev <= 0;
             data_in_current <= 0;
@@ -23,6 +23,6 @@ module linear_interpolation #(
     end
 
     // 다시 256으로 나눠서 원래 범위로 복원
-    assign data_out = (data_in_prev + ( (data_in_current - data_in_prev) * interval_cnt ) / OVERSAMPLING_RATIO) >>> 8;
+    assign data_out = (data_in_prev + ( (data_in_current - data_in_prev) * interval_cnt ) >>> $clog2(OVERSAMPLING_RATIO)) >>> 8;
 endmodule
 

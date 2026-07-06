@@ -28,9 +28,9 @@ module sigma_delta_3rd_order #(
 
     // CIFF Feed-forward Summation
     // Using a wider bit-width to prevent overflow during addition
-    wire signed [WIDTH+2:0] sum = (integrator1 >>> 0) + (integrator2 >>> 2) + (integrator3 >>> 4) + (integrator3 >>> 6);
+    wire signed [WIDTH+3:0] sum = (integrator1 >>> 0) + (integrator2 >>> 2) + (integrator3 >>> 4) + (integrator3 >>> 6);
 
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             integrator1 <= 0;
             integrator2 <= 0;

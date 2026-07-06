@@ -20,7 +20,7 @@ module fir_upsampler_2x #(
     // Shift register for input samples.
     // Triggered at the beginning of a new input sample period (interval_cnt == 0).
     integer i;
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             for (i = 0; i < 64; i = i + 1) begin
                 x_reg[i] <= {DATA_WIDTH{1'b0}};
@@ -102,7 +102,7 @@ module fir_upsampler_2x #(
 
     // Cycle t: Pre-adder & Coefficient fetch (1-cycle latency)
     // Pre-adds symmetric input samples: x[idx] + x[31 - idx]
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             pre_add  <= {(DATA_WIDTH+1){1'b0}};
             coef_reg <= 16'sd0;
@@ -114,7 +114,7 @@ module fir_upsampler_2x #(
 
     // Cycle t+1: Multiplier (1-cycle latency)
     // Computes pre_add * coef_reg
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             mul_val <= {(DATA_WIDTH+17){1'b0}};
         end else if (mul_en) begin
@@ -123,7 +123,7 @@ module fir_upsampler_2x #(
     end
 
     // Cycle t+2: Accumulator (1-cycle latency)
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             accum <= {(DATA_WIDTH+21){1'b0}};
         end else begin
@@ -138,9 +138,9 @@ module fir_upsampler_2x #(
     // Cycle t+3: Saturation & Rounding (1-cycle latency)
     // The coefficients are in Q15 format, so we shift right by 15.
     // The accumulated sum is saturated to prevent overflow before assigning to 16-bit output.
-    wire signed [22:0] sum_shifted = accum >>> 15;
+    wire signed [23:0] sum_shifted = accum >>> 15;
 
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             even_out <= {DATA_WIDTH{1'b0}};
         end else if (out_en) begin
@@ -163,7 +163,7 @@ module fir_upsampler_2x #(
     reg signed [DATA_WIDTH-1:0] odd_delay [0:34];
     integer k;
 
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             for (k = 0; k < 35; k = k + 1) begin
                 odd_delay[k] <= {DATA_WIDTH{1'b0}};
@@ -185,7 +185,7 @@ module fir_upsampler_2x #(
     //
     // - For the first half of the input sample period, output the even filter result.
     // - For the second half, output the delayed center-tap sample.
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             data_out <= {DATA_WIDTH{1'b0}};
         end else begin

@@ -110,7 +110,7 @@ module top(
                 if (sample_wait_cnt < OVERSAMPLE_RATIO-1) begin
                     sample_wait_cnt <= sample_wait_cnt + 1;
                 end
-                if (sample_wait_cnt >= OVERSAMPLE_RATIO-2) begin
+                if (sample_wait_cnt == OVERSAMPLE_RATIO-2) begin
                     // 다음 클럭에 새 데이터 캡쳐하기 위해 미리 tready 를 1로 설정
                     axis_tready <= 1;
                 end
