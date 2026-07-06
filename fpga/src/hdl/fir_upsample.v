@@ -13,7 +13,7 @@ module fir_upsampler_2x #(
     // Filter Architecture & Storage
     // =========================================================================
     // 127-tap symmetric Half-Band FIR filter.
-    // Since it's a Half-Band filter, every odd tap (except the center tap) is zero.
+    // Since it's a Half-Band filter, every even tap is zero.
     // Thus, we store 64 input samples to compute the symmetric even samples.
     reg signed [DATA_WIDTH-1:0] x_reg [0:63];
 
@@ -101,7 +101,7 @@ module fir_upsampler_2x #(
     reg signed [DATA_WIDTH-1:0]  even_out; // Registered even output sample
 
     // Cycle t: Pre-adder & Coefficient fetch (1-cycle latency)
-    // Pre-adds symmetric input samples: x[idx] + x[31 - idx]
+    // Pre-adds symmetric input samples: x[idx] + x[63 - idx]
     always @(posedge clk) begin
         if (!rst_n) begin
             pre_add  <= {(DATA_WIDTH+1){1'b0}};
@@ -135,7 +135,7 @@ module fir_upsampler_2x #(
         end
     end
 
-    // Cycle t+3: Saturation & Rounding (1-cycle latency)
+    // Cycle t+3: Saturation (1-cycle latency)
     // The coefficients are in Q15 format, so we shift right by 15.
     // The accumulated sum is saturated to prevent overflow before assigning to 16-bit output.
     wire signed [23:0] sum_shifted = accum >>> 15;
@@ -158,8 +158,8 @@ module fir_upsampler_2x #(
     // Center Tap Delay Pipeline
     // =========================================================================
     // For a half-band filter, the center tap is 0.5. To match the latency of the
-    // even sample calculations (19 clock cycles), the center tap sample (x_reg[15])
-    // must be delayed by exactly 19 clock cycles.
+    // even sample calculations, the center tap sample (x_reg[31])
+    // must be delayed by 35 clock cycles.
     reg signed [DATA_WIDTH-1:0] odd_delay [0:34];
     integer k;
 

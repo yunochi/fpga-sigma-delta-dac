@@ -9,8 +9,8 @@ module linear_interpolation #(
         output wire signed [DATA_WIDTH-1:0] data_out
     );
 
-    reg signed [DATA_WIDTH + 16 -1:0] data_in_prev;
-    reg signed [DATA_WIDTH + 16 -1:0] data_in_current;
+    reg signed [DATA_WIDTH-1:0] data_in_prev;
+    reg signed [DATA_WIDTH-1:0] data_in_current;
     always @(posedge clk) begin
         if (!rst_n) begin
             data_in_prev <= 0;
@@ -18,11 +18,10 @@ module linear_interpolation #(
         end
         else if (interval_cnt == OVERSAMPLING_RATIO - 1) begin
             data_in_prev <= data_in_current;
-            data_in_current <= data_in <<< 8; // 256배 곱해서 정밀도 손실 최소화
+            data_in_current <= data_in;
         end
     end
 
-    // 다시 256으로 나눠서 원래 범위로 복원
-    assign data_out = (data_in_prev + ( (data_in_current - data_in_prev) * interval_cnt ) >>> $clog2(OVERSAMPLING_RATIO)) >>> 8;
+    wire signed [31:0] interp = (data_in_current - data_in_prev) * $signed({1'b0, interval_cnt});
+    assign data_out = data_in_prev + (interp >>> $clog2(OVERSAMPLING_RATIO));
 endmodule
-

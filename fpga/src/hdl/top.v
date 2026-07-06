@@ -1,23 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company:
-// Engineer:
-//
-// Create Date: 05/28/2026 10:24:06 AM
-// Design Name:
-// Module Name: top
-// Project Name:
-// Target Devices:
-// Tool Versions:
-// Description:
-//
-// Dependencies:
-//
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-//
-//////////////////////////////////////////////////////////////////////////////////
 
 
 module top(
@@ -106,7 +87,7 @@ module top(
                 pcm_in_r <= axis_tdata[31:16];
             end
             else begin
-                // 카운터가 끝에 끝에 도달할 때까지 증가 (데이터가 안 오면 OVERSAMPLE_RATIO-1 에서 유지)
+                // 카운터가 끝에 도달할 때까지 증가 (데이터가 안 오면 OVERSAMPLE_RATIO-1 에서 유지)
                 if (sample_wait_cnt < OVERSAMPLE_RATIO-1) begin
                     sample_wait_cnt <= sample_wait_cnt + 1;
                 end
