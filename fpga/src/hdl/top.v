@@ -41,11 +41,7 @@ module top(
     design_1_wrapper design_1_wrapper_inst (
                          .clk_200M(clk_200M),
                          .sys_clk(sys_clk),
-                         .reset_n(reset_n),
-                         .M_AXIS_0_tdata(),
-                         .M_AXIS_0_tlast(),
-                         .M_AXIS_0_tready(),
-                         .M_AXIS_0_tvalid()
+                         .reset_n(reset_n)
                      );
     i2s_rx i2s_rx_inst(
                .clk(sys_clk),
