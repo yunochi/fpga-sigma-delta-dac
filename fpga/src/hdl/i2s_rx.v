@@ -10,6 +10,8 @@ module i2s_rx #(
         output wire [31:0] tdata,
         output wire data_valid,
         output wire data_act_led,
+        output wire fifo_empty,
+        output wire fifo_full,
         output wire [12:0] fifo_data_count
     );
 
@@ -92,8 +94,8 @@ module i2s_rx #(
                  .wr_en(wvalid),  // input wire wr_en
                  .rd_en(tready),  // input wire rd_en
                  .dout(tdata),    // output wire [31 : 0] dout
-                 .full(),    // output wire full
-                 .empty(),  // output wire empty
+                 .full(fifo_full),    // output wire full
+                 .empty(fifo_empty),  // output wire empty
                  .valid(data_valid),
                  .data_count(fifo_data_count)   // output wire [12 : 0] data_count
              );

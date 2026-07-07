@@ -30,8 +30,6 @@ module top(
 
     (* MARK_DEBUG="true" *)
     wire [12:0] fifo_data_count;
-    assign fifo_full = fifo_data_count > 13'd4090;
-    assign fifo_empty = fifo_data_count < 13'd4;
     wire reset_n;
     wire [31:0]axis_tdata;
     wire axis_tlast;
@@ -53,6 +51,8 @@ module top(
                .tdata(axis_tdata),
                .data_valid(axis_tvalid),
                .data_act_led(data_act_led),
+               .fifo_empty(fifo_empty),
+               .fifo_full(fifo_full),
                .fifo_data_count(fifo_data_count)
            );
     wire signed [15:0] pdm_val_l;
@@ -65,7 +65,22 @@ module top(
     reg [15:0] sample_wait_cnt;
     reg [15:0] pcm_in_l;
     reg [15:0] pcm_in_r;
+    reg play_started;
 
+    // TODO: flow control 기능 구현
+    always @(posedge sys_clk) begin
+        if (!reset_n) begin
+            play_started <= 0;
+        end
+        else if (!play_started && fifo_data_count > 13'd2048) begin
+            // 중간까지 FIFO가 차면 play 시작
+            play_started <= 1;
+        end
+        else if (fifo_empty) begin
+            // FIFO가 비면 play 정지
+            play_started <= 0;
+        end
+    end
 
     always @(posedge sys_clk) begin
         if (!reset_n) begin
@@ -74,7 +89,11 @@ module top(
             pcm_in_l <= 0; pcm_in_r <= 0;
         end
         else begin
-            if (axis_tvalid && axis_tready) begin
+            if (!play_started) begin
+                axis_tready <= 0;
+                sample_wait_cnt <= 0;
+            end
+            else if (axis_tvalid && axis_tready) begin
                 axis_tready <= 0;
                 sample_wait_cnt <= 0;
                 pcm_in_l <= axis_tdata[15:0];
