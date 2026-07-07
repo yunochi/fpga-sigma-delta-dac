@@ -10,6 +10,7 @@ TB_SRC    := tb_tb.cpp
 BIN       := tb
 BIN_DIR   := obj_dir
 BIN_PATH  := $(BIN_DIR)/$(BIN)
+OSR       ?= 256
 
 # Verilog sources (DUT + submodules)
 VSRC      := sim_dut.v sigma-delta-3rd-order.v sigma-delta-2nd-order.v \
@@ -18,7 +19,8 @@ VSRC      := sim_dut.v sigma-delta-3rd-order.v sigma-delta-2nd-order.v \
 VFLAGS    := --cc --exe --build -Wall -Wno-WIDTH -Wno-UNUSED \
              -Wno-UNOPTFLAT -Wno-MODDUP -Wno-CASEINCOMPLETE \
              -Wno-DECLFILENAME \
-             --top-module $(TOP)
+             --top-module $(TOP) \
+             -GOVERSAMPLING_RATIO=$(OSR)
 
 .PHONY: all clean run
 
@@ -26,6 +28,7 @@ all: $(BIN_PATH)
 
 $(BIN_PATH): $(VSRC) $(TB_SRC)
 	$(VERILATOR) $(VFLAGS) $(VSRC) --exe $(TB_SRC) -o $(BIN) -Mdir $(BIN_DIR)
+	@printf '%s' '$(OSR)' > $(BIN_DIR)/.built_osr
 
 run: $(BIN_PATH)
 	./$(BIN_PATH) --fs 12288000 --f0 1000 --target-res 5

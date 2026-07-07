@@ -17,6 +17,7 @@ def main():
     parser.add_argument('--sim', choices=['verilator', 'icarus'], default='verilator',
                         help='Simulator backend (default: verilator, ~300x faster than icarus)')
     parser.add_argument('--rebuild', action='store_true', help='Force Verilator rebuild before running')
+    parser.add_argument('--target-bw', type=float, default=20000.0, help='Target audio max Frequency for SNR analysis (Hz)')
 
     args = parser.parse_args()
 
@@ -27,6 +28,7 @@ def main():
     print(f"--- Simulation Configuration ---")
     print(f"Simulator    : {args.sim}")
     print(f"Target F0    : {target_f0} Hz")
+    print(f"OSR          : {args.osr}")
     print(f"Samples (N)  : {n_samples}")
     print(f"---------------------------------------")
 
@@ -36,7 +38,7 @@ def main():
             print(f"--- Step 1: Building Verilator binary ---")
             try:
                 subprocess.run(["make", "clean"], check=True)
-                subprocess.run(["make"], check=True)
+                subprocess.run(["make", f"OSR={args.osr}"], check=True)
             except subprocess.CalledProcessError:
                 print("Verilator build failed. Falling back to icarus (--sim icarus).")
                 args.sim = 'icarus'
@@ -66,6 +68,7 @@ def main():
             f"-Ptestbench.FS_HZ={args.fs}",
             f"-Ptestbench.TARGET_F0={args.f0}",
             f"-Ptestbench.TARGET_RES={args.target_res}",
+            f"-Ptestbench.OVERSAMPLING_RATIO={args.osr}",
             "sim_tb.v"
         ]
 
@@ -86,7 +89,8 @@ def main():
     analyze_cmd = [
         "python3", "analyze_snr.py",
         "--fs", str(args.fs),
-        "--f0", str(target_f0)
+        "--f0", str(target_f0),
+        "--bw", str(args.target_bw),
     ]
     subprocess.run(analyze_cmd)
 

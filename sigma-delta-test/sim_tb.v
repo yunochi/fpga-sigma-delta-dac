@@ -30,8 +30,8 @@ module testbench;
     // -------------------------------------------------------------------------
     wire signed [15:0] fir_out_2x;
     wire signed [15:0] fir_out_4x;
-    wire [15:0] interval_cnt_div2 = data_interval_cnt >> 1;
-    wire [15:0] interval_cnt_div4 = data_interval_cnt >> 2;
+    wire [15:0] interval_cnt_div2 = data_interval_cnt & (OVERSAMPLING_RATIO / 2 - 1);
+    wire [15:0] interval_cnt_div4 = data_interval_cnt & (OVERSAMPLING_RATIO / 4 - 1);
 
     fir_upsampler_2x #(.DATA_WIDTH(16), .OVERSAMPLING_RATIO(OVERSAMPLING_RATIO)) upsampler_2x (
                          .clk(clk),
