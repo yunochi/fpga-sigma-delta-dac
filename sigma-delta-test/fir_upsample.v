@@ -38,6 +38,7 @@ module fir_upsampler_2x #(
     function signed [15:0] get_coef(input [4:0] idx);
         begin
             case (idx)
+                // Verilog get_coef(idx) values, idx=0 (outermost) -> idx=63 (innermost):
                 5'd0:  get_coef = -16'sd26;
                 5'd1:  get_coef = 16'sd28;
                 5'd2:  get_coef = -16'sd32;
@@ -48,28 +49,28 @@ module fir_upsampler_2x #(
                 5'd7:  get_coef = 16'sd80;
                 5'd8:  get_coef = -16'sd98;
                 5'd9:  get_coef = 16'sd118;
-                5'd10: get_coef = -16'sd140;
-                5'd11: get_coef = 16'sd168;
-                5'd12: get_coef = -16'sd200;
-                5'd13: get_coef = 16'sd234;
-                5'd14: get_coef = -16'sd274;
-                5'd15: get_coef = 16'sd320;
-                5'd16: get_coef = -16'sd372;
-                5'd17: get_coef = 16'sd430;
-                5'd18: get_coef = -16'sd496;
-                5'd19: get_coef = 16'sd574;
-                5'd20: get_coef = -16'sd662;
-                5'd21: get_coef = 16'sd766;
-                5'd22: get_coef = -16'sd888;
-                5'd23: get_coef = 16'sd1036;
-                5'd24: get_coef = -16'sd1220;
-                5'd25: get_coef = 16'sd1456;
-                5'd26: get_coef = -16'sd1770;
-                5'd27: get_coef = 16'sd2215;
-                5'd28: get_coef = -16'sd2899;
-                5'd29: get_coef = 16'sd4115;
-                5'd30: get_coef = -16'sd6922;
-                5'd31: get_coef = 16'sd20863;
+                5'd10:  get_coef = -16'sd140;
+                5'd11:  get_coef = 16'sd168;
+                5'd12:  get_coef = -16'sd200;
+                5'd13:  get_coef = 16'sd234;
+                5'd14:  get_coef = -16'sd274;
+                5'd15:  get_coef = 16'sd320;
+                5'd16:  get_coef = -16'sd372;
+                5'd17:  get_coef = 16'sd430;
+                5'd18:  get_coef = -16'sd496;
+                5'd19:  get_coef = 16'sd574;
+                5'd20:  get_coef = -16'sd662;
+                5'd21:  get_coef = 16'sd766;
+                5'd22:  get_coef = -16'sd888;
+                5'd23:  get_coef = 16'sd1036;
+                5'd24:  get_coef = -16'sd1220;
+                5'd25:  get_coef = 16'sd1456;
+                5'd26:  get_coef = -16'sd1770;
+                5'd27:  get_coef = 16'sd2215;
+                5'd28:  get_coef = -16'sd2899;
+                5'd29:  get_coef = 16'sd4115;
+                5'd30:  get_coef = -16'sd6922;
+                5'd31:  get_coef = 16'sd20863;
                 default: get_coef = 16'sd0;
             endcase
         end
