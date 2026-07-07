@@ -9,6 +9,7 @@ module fir_upsampler_2x #(
         output reg signed [DATA_WIDTH-1:0] data_out
     );
 
+    wire [15:0] interval_cnt_mod = interval_cnt & (OVERSAMPLING_RATIO - 1);
     // =========================================================================
     // Filter Architecture & Storage
     // =========================================================================
@@ -18,14 +19,14 @@ module fir_upsampler_2x #(
     reg signed [DATA_WIDTH-1:0] x_reg [0:63];
 
     // Shift register for input samples.
-    // Triggered at the beginning of a new input sample period (interval_cnt == 0).
+    // Triggered at the beginning of a new input sample period (interval_cnt_mod == 0).
     integer i;
     always @(posedge clk) begin
         if (!rst_n) begin
             for (i = 0; i < 64; i = i + 1) begin
                 x_reg[i] <= {DATA_WIDTH{1'b0}};
             end
-        end else if (interval_cnt == 16'd0) begin
+        end else if (interval_cnt_mod == 16'd0) begin
             x_reg[0] <= data_in;
             for (i = 1; i < 64; i = i + 1) begin
                 x_reg[i] <= x_reg[i-1];
@@ -82,17 +83,17 @@ module fir_upsampler_2x #(
     // The MAC unit computes the even sample using symmetric pre-addition.
     //
     // Pipeline Timeline:
-    // Cycle t   (interval_cnt 0 ~ 31)  : Pre-adder & Coefficient fetch
-    // Cycle t+1 (interval_cnt 1 ~ 32)  : Multiplication
-    // Cycle t+2 (interval_cnt 2 ~ 33)  : Accumulation (init on cycle 2)
-    // Cycle t+3 (interval_cnt 34)      : Saturation and Registering even output
+    // Cycle t   (interval_cnt_mod 0 ~ 31)  : Pre-adder & Coefficient fetch
+    // Cycle t+1 (interval_cnt_mod 1 ~ 32)  : Multiplication
+    // Cycle t+2 (interval_cnt_mod 2 ~ 33)  : Accumulation (init on cycle 2)
+    // Cycle t+3 (interval_cnt_mod 34)      : Saturation and Registering even output
 
     // Pipeline Stage Enables
-    wire preadd_en  = (interval_cnt < 32);
-    wire mul_en     = (interval_cnt >= 1 && interval_cnt <= 32);
-    wire accum_init = (interval_cnt == 2);
-    wire accum_en   = (interval_cnt >= 3 && interval_cnt <= 33);
-    wire out_en     = (interval_cnt == 34);
+    wire preadd_en  = (interval_cnt_mod < 32);
+    wire mul_en     = (interval_cnt_mod >= 1 && interval_cnt_mod <= 32);
+    wire accum_init = (interval_cnt_mod == 2);
+    wire accum_en   = (interval_cnt_mod >= 3 && interval_cnt_mod <= 33);
+    wire out_en     = (interval_cnt_mod == 34);
 
     // Datapath Registers
     reg signed [DATA_WIDTH:0]    pre_add;  // Pre-adder output (17 bits for 16-bit input)
@@ -108,8 +109,8 @@ module fir_upsampler_2x #(
             pre_add  <= {(DATA_WIDTH+1){1'b0}};
             coef_reg <= 16'sd0;
         end else if (preadd_en) begin
-            pre_add  <= $signed(x_reg[interval_cnt[4:0]]) + $signed(x_reg[63 - interval_cnt[4:0]]);
-            coef_reg <= get_coef(interval_cnt[4:0]);
+            pre_add  <= $signed(x_reg[interval_cnt_mod[4:0]]) + $signed(x_reg[63 - interval_cnt_mod[4:0]]);
+            coef_reg <= get_coef(interval_cnt_mod[4:0]);
         end
     end
 
@@ -190,7 +191,7 @@ module fir_upsampler_2x #(
         if (!rst_n) begin
             data_out <= {DATA_WIDTH{1'b0}};
         end else begin
-            if (interval_cnt < (OVERSAMPLING_RATIO / 2)) begin
+            if (interval_cnt_mod < (OVERSAMPLING_RATIO / 2)) begin
                 data_out <= even_out;
             end else begin
                 data_out <= odd_out;

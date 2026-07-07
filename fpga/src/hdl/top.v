@@ -67,8 +67,6 @@ module top(
     wire signed [15:0] fir_out_r_4x;
 
     reg [15:0] sample_wait_cnt;
-    wire [15:0] wait_cnt_2x = sample_wait_cnt & (OVERSAMPLE_RATIO / 2 - 1);
-    wire [15:0] wait_cnt_4x = sample_wait_cnt & (OVERSAMPLE_RATIO / 4 - 1);
     reg [15:0] pcm_in_l;
     reg [15:0] pcm_in_r;
 
@@ -116,7 +114,7 @@ module top(
                          .clk(sys_clk),
                          .rst_n(reset_n),
                          .data_in(fir_out_l_2x),
-                         .interval_cnt(wait_cnt_2x),
+                         .interval_cnt(sample_wait_cnt),
                          .data_out(fir_out_l_4x)
                      );
     linear_interpolation #(
@@ -126,7 +124,7 @@ module top(
                              .clk(sys_clk),
                              .rst_n(reset_n),
                              .data_in(fir_out_l_4x),
-                             .interval_cnt(wait_cnt_4x),
+                             .interval_cnt(sample_wait_cnt),
                              .data_out(pdm_val_l)
                          );
 
@@ -147,7 +145,7 @@ module top(
                          .clk(sys_clk),
                          .rst_n(reset_n),
                          .data_in(fir_out_r_2x),
-                         .interval_cnt(wait_cnt_2x),
+                         .interval_cnt(sample_wait_cnt),
                          .data_out(fir_out_r_4x)
                      );
     linear_interpolation #(
@@ -157,7 +155,7 @@ module top(
                              .clk(sys_clk),
                              .rst_n(reset_n),
                              .data_in(fir_out_r_4x),
-                             .interval_cnt(wait_cnt_4x),
+                             .interval_cnt(sample_wait_cnt),
                              .data_out(pdm_val_r)
                          );
 

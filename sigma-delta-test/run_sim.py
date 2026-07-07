@@ -13,7 +13,7 @@ def main():
     parser.add_argument('--f0', type=float, default=1000, help='Desired Target Frequency (Hz)')
     parser.add_argument('--target-res', type=int, default=5, help='Frequency resolution (Hz)')
     parser.add_argument('--amp', type=float, default=30000.0, help='Sine amplitude')
-    parser.add_argument('--osr', type=int, default=128, help='Oversampling ratio')
+    parser.add_argument('--osr', type=int, default=256, help='Oversampling ratio')
     parser.add_argument('--sim', choices=['verilator', 'icarus'], default='verilator',
                         help='Simulator backend (default: verilator, ~300x faster than icarus)')
     parser.add_argument('--rebuild', action='store_true', help='Force Verilator rebuild before running')

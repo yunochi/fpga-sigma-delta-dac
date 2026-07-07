@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
     double f0 = 1000.0;         // Target tone frequency (Hz)
     int    target_res = 5;       // Frequency resolution (Hz)
     double amplitude = 30000.0;  // Sine amplitude (16-bit signed range)
-    int    osr = 128;           // Oversampling ratio
+    int    osr = 256;           // Oversampling ratio
     const char* outfile = "dout.txt";
 
     for (int i = 1; i < argc; i++) {

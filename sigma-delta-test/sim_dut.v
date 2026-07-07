@@ -7,7 +7,7 @@
 // Synthesizable DUT wrapper for Verilator simulation.
 // All testbench concerns (clock gen, stimulus, file I/O) live in the C++ tb.
 module sim_dut #(
-        parameter integer OVERSAMPLING_RATIO = 128
+        parameter integer OVERSAMPLING_RATIO = 256
     ) (
         input wire clk,
         input wire rst_n,
@@ -22,8 +22,6 @@ module sim_dut #(
 
     wire signed [15:0] fir_out_2x;
     wire signed [15:0] fir_out_4x;
-    wire [15:0] interval_cnt_div2 = data_interval_cnt & (OVERSAMPLING_RATIO / 2 - 1);
-    wire [15:0] interval_cnt_div4 = data_interval_cnt & (OVERSAMPLING_RATIO / 4 - 1);
     wire signed [15:0] data_val;
 
     fir_upsampler_2x #(.DATA_WIDTH(16), .OVERSAMPLING_RATIO(OVERSAMPLING_RATIO)) upsampler_2x (
@@ -37,7 +35,7 @@ module sim_dut #(
                          .clk(clk),
                          .rst_n(rst_n),
                          .data_in(fir_out_2x),
-                         .interval_cnt(interval_cnt_div2),
+                         .interval_cnt(data_interval_cnt),
                          .data_out(fir_out_4x)
                      );
 
@@ -45,7 +43,7 @@ module sim_dut #(
                               .clk(clk),
                               .rst_n(rst_n),
                               .data_in(fir_out_4x),
-                              .interval_cnt(interval_cnt_div4),
+                              .interval_cnt(data_interval_cnt),
                               .data_out(data_val)
                           );
 
