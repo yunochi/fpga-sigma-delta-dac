@@ -10,7 +10,14 @@ set_property IOSTANDARD LVCMOS33 [get_ports s_i2s_*]
 set_property PACKAGE_PIN Y12 [get_ports s_i2s_sck]
 set_property PACKAGE_PIN AG13 [get_ports s_i2s_ws]
 set_property PACKAGE_PIN AA12 [get_ports s_i2s_sd]
-set_max_delay 80.0 -datapath_only -from [get_ports s_i2s_*]
+
+set_max_delay 30.0 \
+    -from [get_ports s_i2s_*] \
+    -to   [get_pins -hier -filter {NAME=~"*sck_ff_reg[0]/D" || NAME=~"*ws_ff_reg[0]/D" || NAME=~"*sd_ff_reg[0]/D"}]
+set_min_delay 0.0 \
+    -from [get_ports s_i2s_*] \
+    -to   [get_pins -hier -filter {NAME=~"*sck_ff_reg[0]/D" || NAME=~"*ws_ff_reg[0]/D" || NAME=~"*sd_ff_reg[0]/D"}]
+
 
 set_property IOSTANDARD LVDS [get_ports clk_200M_*]
 set_property PACKAGE_PIN L3 [get_ports clk_200M_p]
