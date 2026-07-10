@@ -53,6 +53,7 @@ void setup()
   usb_cfg.copyFrom(info);
   usb_cfg.product = "Pico I2S DAC";
   usb_cfg.enable_feedback_ep = false; // Disable feedback endpoint to eliminate host driver jitter/pops
+  usb_cfg.volume_active = true;
   usb_in.begin(usb_cfg);
 
   // Detect actual FIFO capacity from the library (packetSize * fifo_packets, rounded up to power of 2)
