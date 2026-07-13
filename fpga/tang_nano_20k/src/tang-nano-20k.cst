@@ -1,0 +1,31 @@
+//Copyright (C)2014-2026 Gowin Semiconductor Corporation.
+//All rights reserved. 
+//File Title: Physical Constraints file
+//Tool Version: V1.9.12.02
+//Part Number: GW2AR-LV18QN88C8/I7
+//Device: GW2AR-18
+//Device Version: C
+//Created Time: Sun 07 12 16:58:21 2026
+
+IO_LOC "data_act_led" 15;
+IO_PORT "data_act_led" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "pdm_out_r" 27;
+IO_PORT "pdm_out_r" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=12 BANK_VCCIO=3.3;
+IO_LOC "pdm_out_l" 28;
+IO_PORT "pdm_out_l" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=12 BANK_VCCIO=3.3;
+IO_LOC "s_i2s_sd" 75;
+IO_PORT "s_i2s_sd" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
+IO_LOC "s_i2s_ws" 74;
+IO_PORT "s_i2s_ws" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
+IO_LOC "s_i2s_sck" 73;
+IO_PORT "s_i2s_sck" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
+IO_LOC "reset" 88;
+IO_PORT "reset" IO_TYPE=LVCMOS33 PULL_MODE=NONE BANK_VCCIO=3.3;
+IO_LOC "sys_clk" 10;
+IO_PORT "sys_clk" IO_TYPE=LVCMOS33 PULL_MODE=NONE BANK_VCCIO=3.3;
+IO_LOC "play_led" 16;
+IO_PORT "play_led" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "fifo_empty_led" 18;
+IO_PORT "fifo_empty_led" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "fifo_full_led" 19;
+IO_PORT "fifo_full_led" IO_TYPE=LVCMOS33 PULL_MODE=NONE DRIVE=8 BANK_VCCIO=3.3;
