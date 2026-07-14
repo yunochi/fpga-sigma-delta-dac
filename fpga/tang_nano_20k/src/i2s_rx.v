@@ -51,7 +51,7 @@ module i2s_rx #(
         wvalid <= 0;
         if (!rst_n) begin
             ws_sync_d <= 0; data_left <= 0; data_right <= 0;
-            data_act_reg <= 0; data_led_cnt <= 0;
+            data_act_reg <= 1; data_led_cnt <= 0;
             data_cnt <= 5'd0;
         end
         else if (sck_rise_edge) begin

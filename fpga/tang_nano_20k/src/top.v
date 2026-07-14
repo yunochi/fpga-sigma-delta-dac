@@ -1,12 +1,10 @@
 `timescale 1ns / 1ps
 
-
-//24.576MHz Clock
 module top(
         output pdm_out_l,
         output pdm_out_r,
-        input sys_clk,
-        input reset,
+        input sys_clk_in,
+        input reset_in,
         input s_i2s_sck,
         input s_i2s_ws,
         input s_i2s_sd,
@@ -16,12 +14,27 @@ module top(
         output wire play_led
     );
 
+    wire sys_clk; // 24.576 MHz clock
+    wire pll_lock;
+    wire reset_n;
+    Gowin_rPLL gowin_rpll_inst(
+                   .clkin(sys_clk_in), //input clkin
+                   .reset(reset_in), //input reset
+                   .lock(pll_lock), //output lock
+                   .clkout(sys_clk) //output clkout
+               );
+    reset_sync sync_reset_inst(
+                   .clk(sys_clk),
+                   .i_nrst_async(pll_lock),
+                   .o_rst_sync(),
+                   .o_nrst_sync(reset_n)
+               );
+
     wire fifo_full;
     wire fifo_empty;
-    assign fifo_full_led = !fifo_full;
-    assign fifo_empty_led = !fifo_empty;
+    assign fifo_full_led = (reset_n == 0) ? 1 : !fifo_full;
+    assign fifo_empty_led = (reset_n == 0) ? 1 : !fifo_empty;
     parameter OVERSAMPLE_RATIO = 256;
-    wire reset_n = !reset;
 
     wire [12:0] fifo_data_count;
     wire [31:0]axis_tdata;

@@ -7,10 +7,10 @@
 //Device Version: C
 //Created Time: Sun 07 12 16:58:21 2026
 
-IO_LOC "sys_clk" 10;
-IO_PORT "sys_clk" IO_TYPE=LVCMOS33 PULL_MODE=NONE BANK_VCCIO=3.3;
-IO_LOC "reset" 88;
-IO_PORT "reset" IO_TYPE=LVCMOS33 PULL_MODE=NONE BANK_VCCIO=3.3;
+IO_LOC "sys_clk_in" 10;
+IO_PORT "sys_clk_in" IO_TYPE=LVCMOS33 PULL_MODE=NONE BANK_VCCIO=3.3;
+IO_LOC "reset_in" 88;
+IO_PORT "reset_in" IO_TYPE=LVCMOS33 PULL_MODE=NONE BANK_VCCIO=3.3;
 
 
 IO_LOC "data_act_led" 15;
