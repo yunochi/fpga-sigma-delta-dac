@@ -25,7 +25,6 @@ proc checkRequiredFiles { origin_dir} {
  "[file normalize "$origin_dir/src/hdl/sigma-delta-3rd-order.v"]"\
  "[file normalize "$origin_dir/src/hdl/top.v"]"\
  "[file normalize "$origin_dir/src/xdc/puzhi/new/puzhi.xdc"]"\
- "[file normalize "$origin_dir/src/xdc/myir/new/myir.xdc"]"\
   ]
   foreach ifile $files {
     if { ![file isfile $ifile] } {
@@ -234,26 +233,6 @@ set_property -name "target_constrs_file" -value "[file normalize "$origin_dir/sr
 set_property -name "target_part" -value "xczu4cg-sfvc784-1-i" -objects $obj
 set_property -name "target_ucf" -value "[file normalize "$origin_dir/src/xdc/puzhi/new/puzhi.xdc"]" -objects $obj
 
-# Create 'myir' fileset (if not found)
-if {[string equal [get_filesets -quiet myir] ""]} {
-  create_fileset -constrset myir
-}
-
-# Set 'myir' fileset object
-set obj [get_filesets myir]
-
-# Add/Import constrs file and set constrs file properties
-set file "[file normalize "$origin_dir/src/xdc/myir/new/myir.xdc"]"
-set file_added [add_files -norecurse -fileset $obj [list $file]]
-set file "$origin_dir/src/xdc/myir/new/myir.xdc"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets myir] [list "*$file"]]
-set_property -name "file_type" -value "XDC" -objects $file_obj
-
-# Set 'myir' fileset properties
-set obj [get_filesets myir]
-set_property -name "target_part" -value "xczu4cg-sfvc784-1-i" -objects $obj
-
 # Create 'sim_1' fileset (if not found)
 if {[string equal [get_filesets -quiet sim_1] ""]} {
   create_fileset -simset sim_1
@@ -356,9 +335,6 @@ proc cr_bd_design_1 { parentCell } {
 
   # Create ports
   set sys_clk [ create_bd_port -dir O -type clk sys_clk ]
-  set_property -dict [ list \
-   CONFIG.ASSOCIATED_BUSIF {} \
- ] $sys_clk
   set reset_n [ create_bd_port -dir O -from 0 -to 0 -type rst reset_n ]
   set clk_200M [ create_bd_port -dir I -type clk -freq_hz 200000000 clk_200M ]
 
@@ -406,11 +382,11 @@ proc cr_bd_design_1 { parentCell } {
     CONFIG.PSU_MIO_TREE_PERIPHERALS {Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#Quad SPI Flash#####################################UART 0#UART 0##################################}\
 \
     CONFIG.PSU_MIO_TREE_SIGNALS {sclk_out#miso_mo1#mo2#mo3#mosi_mi0#n_ss_out#####################################rxd#txd##################################} \
-    CONFIG.PSU__ACT_DDR_FREQ_MHZ {1199.988037} \
+    CONFIG.PSU__ACT_DDR_FREQ_MHZ {799.992004} \
     CONFIG.PSU__CRF_APB__ACPU_CTRL__ACT_FREQMHZ {1199.988037} \
     CONFIG.PSU__CRF_APB__DBG_FPD_CTRL__ACT_FREQMHZ {249.997498} \
     CONFIG.PSU__CRF_APB__DBG_TSTMP_CTRL__ACT_FREQMHZ {249.997498} \
-    CONFIG.PSU__CRF_APB__DDR_CTRL__ACT_FREQMHZ {599.994019} \
+    CONFIG.PSU__CRF_APB__DDR_CTRL__ACT_FREQMHZ {399.996002} \
     CONFIG.PSU__CRF_APB__DPDMA_REF_CTRL__ACT_FREQMHZ {599.994019} \
     CONFIG.PSU__CRF_APB__GDMA_REF_CTRL__ACT_FREQMHZ {599.994019} \
     CONFIG.PSU__CRF_APB__TOPSW_LSBUS_CTRL__ACT_FREQMHZ {99.999001} \
