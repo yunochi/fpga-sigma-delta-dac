@@ -1,4 +1,4 @@
-PROJ := top
+PROJ := sigma-delta-dac
 FAMILY := GW2A-18C
 DEVICE := GW2AR-LV18QN88C8/I7
 CST := tang-nano-20k.cst

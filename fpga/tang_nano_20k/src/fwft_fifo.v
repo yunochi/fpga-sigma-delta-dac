@@ -8,6 +8,7 @@ module fwft_fifo #(
         input wire [DATA_WIDTH-1:0] data_in,
         output reg [DATA_WIDTH-1:0] data_out,
         output wire empty,
+        output wire valid,
         output wire full,
         output reg [$clog2(FIFO_DEPTH+1)-1:0] data_count
     );
@@ -23,6 +24,7 @@ module fwft_fifo #(
 
     assign full  = (data_count == FIFO_DEPTH);
     assign empty = (data_count == 0);
+    assign valid = !empty;
 
     wire do_write = wr_en && !full;
     wire do_read  = rd_en && !empty;

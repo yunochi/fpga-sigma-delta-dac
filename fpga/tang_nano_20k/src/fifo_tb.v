@@ -6,6 +6,7 @@ module fwft_fifo_tb();
     reg rd_en;
     wire empty;
     wire full;
+    wire valid;
 
     initial begin
         clk = 0;
@@ -73,6 +74,7 @@ module fwft_fifo_tb();
                   .data_in(data_in),
                   .data_out(data_out),
                   .empty(empty),
+                  .valid(valid),
                   .full(full)
               );
 endmodule

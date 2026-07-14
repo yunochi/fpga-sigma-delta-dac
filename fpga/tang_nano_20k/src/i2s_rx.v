@@ -95,9 +95,9 @@ module i2s_rx #(
                   .data_in(data_left_right),
                   .data_out(tdata),
                   .empty(fifo_empty),
+                  .valid(data_valid),
                   .full(fifo_full),
                   .data_count(fifo_data_count)
               );
 
-    assign data_valid = fifo_data_count != 12'd0;
 endmodule
