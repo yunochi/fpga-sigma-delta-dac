@@ -1,10 +1,11 @@
 module i2s_rx #(
-        parameter integer DATA_WIDTH = 16
+        parameter integer DATA_WIDTH = 16,
+        parameter integer BCLK_DIV = 8
     ) (
         input wire clk,
         input wire rst_n,
-        input wire sck,
-        input wire ws,
+        output reg sck,
+        output reg ws,
         input wire sd,
         input wire tready,
         output wire [31:0] tdata,
@@ -15,15 +16,41 @@ module i2s_rx #(
         output wire [12:0] fifo_data_count
     );
 
+    // ----------------- BCLK / WS 생성 ----------------------
+    reg [7:0] clock_div_cnt;
+    reg [7:0] ws_div_cnt;
+    always @(posedge clk) begin
+        if (!rst_n) begin
+            sck <= 0; ws <= 0;
+            clock_div_cnt <= 0;
+            ws_div_cnt <= 0;
+        end
+        else begin
+            clock_div_cnt <= clock_div_cnt + 1;
+            if (clock_div_cnt == (BCLK_DIV/2)-1) begin
+                clock_div_cnt <= 0;
+                sck <= !sck;
+                // sck falling edge
+                if (sck == 1) begin
+                    ws_div_cnt <= ws_div_cnt + 1;
+                    if (ws_div_cnt == DATA_WIDTH-1) begin
+                        ws_div_cnt <= 0;
+                        ws <= !ws;
+                    end
+                end
+            end
+        end
+    end
+
 
     // ------------- input CDC 처리 ---------------------
-    (* keep = "true" *) (* dont_touch = "true" *) reg [3:0] sck_ff;
-    (* keep = "true" *) (* dont_touch = "true" *) reg [3:0] ws_ff;
-    (* keep = "true" *) (* dont_touch = "true" *) reg [3:0] sd_ff;
+    reg [1:0] sck_ff;
+    reg [1:0] ws_ff;
+    (* keep = "true" *) (* dont_touch = "true" *) reg [2:0] sd_ff;
 
-    wire sck_rise_edge = (sck_ff[3] == 0 && sck_ff[2] == 1);
-    wire sd_sync = sd_ff[3];
-    wire ws_sync = ws_ff[3];
+    wire sck_rise_edge = (sck_ff[1] == 0 && sck_ff[0] == 1);
+    wire sd_sync = sd_ff[2];
+    wire ws_sync = ws_ff[1];
     reg data_act_reg;
     assign data_act_led = data_act_reg;
     always @(posedge clk) begin
@@ -31,9 +58,9 @@ module i2s_rx #(
             sck_ff <= 0; ws_ff <= 0; sd_ff <= 0;
         end
         else begin
-            sck_ff <= {sck_ff[2:0], sck};
-            ws_ff <= {ws_ff[2:0], ws};
-            sd_ff <= {sd_ff[2:0], sd};
+            sck_ff <= {sck_ff[0], sck};
+            ws_ff <= {ws_ff[0], ws};
+            sd_ff <= {sd_ff[1:0], sd};
         end
     end
     // ----------------------------------------------

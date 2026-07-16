@@ -5,8 +5,8 @@ module top(
         output pdm_out_r,
         input sys_clk_in,
         input reset_in,
-        input s_i2s_sck,
-        input s_i2s_ws,
+        output s_i2s_sck,
+        output s_i2s_ws,
         input s_i2s_sd,
         output wire fifo_full_led,
         output wire fifo_empty_led,
@@ -42,7 +42,10 @@ module top(
     reg axis_tready;
     wire axis_tvalid;
 
-    i2s_rx i2s_rx_inst(
+    i2s_rx #(
+               .DATA_WIDTH(16),
+               .BCLK_DIV(8)
+           ) i2s_rx_inst(
                .clk(sys_clk),
                .rst_n(reset_n),
                .sck(s_i2s_sck),
