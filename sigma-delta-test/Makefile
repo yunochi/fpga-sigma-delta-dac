@@ -19,6 +19,7 @@ VSRC      := sim_dut.v sigma-delta-3rd-order.v sigma-delta-2nd-order.v \
 VFLAGS    := --cc --exe --build -Wall -Wno-WIDTH -Wno-UNUSED \
              -Wno-UNOPTFLAT -Wno-MODDUP -Wno-CASEINCOMPLETE \
              -Wno-DECLFILENAME \
+             -Wno-SYNCASYNCNET \
              --top-module $(TOP) \
              -GOVERSAMPLING_RATIO=$(OSR)
 
