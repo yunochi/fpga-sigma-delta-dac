@@ -63,7 +63,6 @@ module i2s_rx #(
             sd_ff <= {sd_ff[1:0], sd};
         end
     end
-    // ----------------------------------------------
     // ------------- Data push ---------------------
     reg [DATA_WIDTH-1:0] data_left;
     reg [DATA_WIDTH-1:0] data_right;
@@ -72,13 +71,11 @@ module i2s_rx #(
     reg ws_sync_d;
     reg wvalid;
     wire frame_end = (ws_sync_d == 1 && ws_sync == 0);
-    reg [10:0] data_led_cnt;
     reg [4:0] data_cnt;
     always @(posedge clk) begin
         wvalid <= 0;
         if (!rst_n) begin
             ws_sync_d <= 0; data_left <= 0; data_right <= 0;
-            data_act_reg <= 1; data_led_cnt <= 0;
             data_cnt <= 5'd0;
         end
         else if (sck_rise_edge) begin
@@ -103,20 +100,31 @@ module i2s_rx #(
             end
             if (frame_end) begin
                 wvalid <= 1;
-                data_led_cnt <= data_led_cnt + 1;
-                if (data_led_cnt == 11'd2047) begin
-                    data_act_reg <= ~data_act_reg;
-                end
             end
         end
     end
 
+    // -------------- LED -----------------------
+    reg [10:0] data_led_cnt;
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            data_led_cnt <= 0;
+            data_act_reg <= 1;
+        end
+        else if (sck_rise_edge && frame_end) begin
+            data_led_cnt <= data_led_cnt + 1;
+            if (data_led_cnt == 0) begin
+                data_act_reg <= ~data_act_reg;
+            end
+        end
+    end
 
     fwft_fifo #(
                   .DATA_WIDTH(DATA_WIDTH*2),
-                  .FIFO_DEPTH(4096)
+                  .FIFO_DEPTH(256)
               ) i2s_fifo_inst (
                   .clk(clk),
+                  .rstn(rst_n),
                   .wr_en(wvalid),
                   .rd_en(tready),
                   .data_in(data_left_right),

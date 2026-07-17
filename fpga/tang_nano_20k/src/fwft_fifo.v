@@ -3,6 +3,7 @@ module fwft_fifo #(
         parameter integer FIFO_DEPTH = 256
     ) (
         input wire clk,
+        input wire rstn,
         input wire wr_en,
         input wire rd_en,
         input wire [DATA_WIDTH-1:0] data_in,
@@ -39,12 +40,6 @@ module fwft_fifo #(
     // data_in directly. data_count tracking still treats it as a normal write.
     wire bypass = do_write && (empty || (do_read && data_count == 1));
 
-    initial begin
-        wr_ptr     = {PTR_W{1'b0}};
-        rd_ptr     = {PTR_W{1'b0}};
-        data_count = {COUNT_W{1'b0}};
-    end
-
     // --- BRAM write port (synchronous) ---
     always @(posedge clk) begin
         if (do_write)
@@ -61,6 +56,12 @@ module fwft_fifo #(
     always @(posedge clk)
         bram_q <= fifo_mem[bram_rd_addr];
 
+    initial begin
+        wr_ptr     = {PTR_W{1'b0}};
+        rd_ptr     = {PTR_W{1'b0}};
+        data_count = {COUNT_W{1'b0}};
+    end
+
     // --- FWFT output register (selects between bypass data and BRAM output) ---
     always @(posedge clk) begin
         if (bypass)
@@ -71,7 +72,12 @@ module fwft_fifo #(
 
     // --- Pointer / count management ---
     always @(posedge clk) begin
-        if (do_write && do_read) begin
+        if (!rstn) begin
+            wr_ptr <= 0;
+            rd_ptr <= 0;
+            data_count <= 0;
+        end
+        else if (do_write && do_read) begin
             wr_ptr <= next_wr_ptr;
             rd_ptr <= bypass ? next_wr_ptr : next_rd_ptr;
             // data_count unchanged

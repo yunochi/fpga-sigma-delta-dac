@@ -8,10 +8,7 @@ module top(
         output s_i2s_sck,
         output s_i2s_ws,
         input s_i2s_sd,
-        output wire fifo_full_led,
-        output wire fifo_empty_led,
-        output wire data_act_led,
-        output wire play_led
+        output wire data_act_led
     );
 
     wire sys_clk; // 24.576 MHz clock
@@ -30,14 +27,9 @@ module top(
                    .o_nrst_sync(reset_n)
                );
 
-    wire fifo_full;
-    wire fifo_empty;
-    assign fifo_full_led = (reset_n == 0) ? 1 : !fifo_full;
-    assign fifo_empty_led = (reset_n == 0) ? 1 : !fifo_empty;
     parameter OVERSAMPLE_RATIO = 256;
 
-    wire [12:0] fifo_data_count;
-    wire [31:0]axis_tdata;
+    wire [31:0] axis_tdata;
     wire axis_tlast;
     reg axis_tready;
     wire axis_tvalid;
@@ -54,10 +46,7 @@ module top(
                .tready(axis_tready),
                .tdata(axis_tdata),
                .data_valid(axis_tvalid),
-               .data_act_led(data_act_led),
-               .fifo_empty(fifo_empty),
-               .fifo_full(fifo_full),
-               .fifo_data_count(fifo_data_count)
+               .data_act_led(data_act_led)
            );
     wire signed [15:0] pdm_val_l;
     wire signed [15:0] pdm_val_r;
@@ -70,23 +59,6 @@ module top(
     reg [15:0] pcm_in_l;
     reg [15:0] pcm_in_r;
 
-    reg play_started;
-    assign play_led = !play_started;
-
-    // TODO: flow control 기능 구현
-    always @(posedge sys_clk) begin
-        if (!reset_n) begin
-            play_started <= 0;
-        end
-        else if (!play_started && fifo_data_count > 13'd1024) begin
-            // 중간까지 FIFO가 차면 play 시작
-            play_started <= 1;
-        end
-        else if (fifo_empty) begin
-            // FIFO가 비면 play 정지
-            play_started <= 0;
-        end
-    end
 
     always @(posedge sys_clk) begin
         if (!reset_n) begin
@@ -95,11 +67,7 @@ module top(
             pcm_in_l <= 0; pcm_in_r <= 0;
         end
         else begin
-            if (!play_started) begin
-                axis_tready <= 0;
-                sample_wait_cnt <= 0;
-            end
-            else if (axis_tvalid && axis_tready) begin
+            if (axis_tvalid && axis_tready) begin
                 axis_tready <= 0;
                 sample_wait_cnt <= 0;
                 pcm_in_l <= axis_tdata[15:0];
