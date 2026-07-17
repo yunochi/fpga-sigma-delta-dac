@@ -12,12 +12,13 @@ set_property PACKAGE_PIN AG13 [get_ports s_i2s_ws]
 set_property PACKAGE_PIN AA12 [get_ports s_i2s_sd]
 
 set_max_delay 30.0 \
-    -from [get_ports s_i2s_*] \
-    -to   [get_pins -hier -filter {NAME=~"*sck_ff_reg[0]/D" || NAME=~"*ws_ff_reg[0]/D" || NAME=~"*sd_ff_reg[0]/D"}]
+    -from [get_ports s_i2s_sd] \
+    -to   [get_pins -hier -filter {NAME=~"*sd_ff_reg[0]/D"}]
 set_min_delay 0.0 \
-    -from [get_ports s_i2s_*] \
-    -to   [get_pins -hier -filter {NAME=~"*sck_ff_reg[0]/D" || NAME=~"*ws_ff_reg[0]/D" || NAME=~"*sd_ff_reg[0]/D"}]
-
+    -from [get_ports s_i2s_sd] \
+    -to   [get_pins -hier -filter {NAME=~"*sd_ff_reg[0]/D"}]
+set_max_delay 20.0 -to [get_ports s_i2s_sck]
+set_max_delay 20.0 -to [get_ports s_i2s_ws]
 
 set_property IOSTANDARD LVDS [get_ports clk_200M_*]
 set_property PACKAGE_PIN L3 [get_ports clk_200M_p]
@@ -27,10 +28,6 @@ create_clock -period 5.000 -name clk_200M [get_ports clk_200M_p]
 
 set_property PACKAGE_PIN AH6 [get_ports data_act_led]
 set_property IOSTANDARD LVCMOS18 [get_ports data_act_led]
-set_property PACKAGE_PIN AB5 [get_ports fifo_empty]
-set_property PACKAGE_PIN AE4 [get_ports fifo_full]
-set_property IOSTANDARD LVCMOS18 [get_ports fifo_empty]
-set_property IOSTANDARD LVCMOS18 [get_ports fifo_full]
 set_false_path -to [get_ports data_act_led]
-set_false_path -to [get_ports fifo_empty]
-set_false_path -to [get_ports fifo_full]
+
+set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]

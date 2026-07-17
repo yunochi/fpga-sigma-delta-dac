@@ -6,11 +6,9 @@ module top(
         output pdm_out_r,
         input clk_200M_p,
         input clk_200M_n,
-        input s_i2s_sck,
-        input s_i2s_ws,
+        output s_i2s_sck,
+        output s_i2s_ws,
         input s_i2s_sd,
-        output wire fifo_full,
-        output wire fifo_empty,
         output wire data_act_led
     );
     wire diff_buf_out;
@@ -67,21 +65,6 @@ module top(
     reg [15:0] pcm_in_r;
     reg play_started;
 
-    // TODO: flow control 기능 구현
-    always @(posedge sys_clk) begin
-        if (!reset_n) begin
-            play_started <= 0;
-        end
-        else if (!play_started && fifo_data_count > 13'd2048) begin
-            // 중간까지 FIFO가 차면 play 시작
-            play_started <= 1;
-        end
-        else if (fifo_empty) begin
-            // FIFO가 비면 play 정지
-            play_started <= 0;
-        end
-    end
-
     always @(posedge sys_clk) begin
         if (!reset_n) begin
             axis_tready <= 0;
@@ -89,11 +72,7 @@ module top(
             pcm_in_l <= 0; pcm_in_r <= 0;
         end
         else begin
-            if (!play_started) begin
-                axis_tready <= 0;
-                sample_wait_cnt <= 0;
-            end
-            else if (axis_tvalid && axis_tready) begin
+            if (axis_tvalid && axis_tready) begin
                 axis_tready <= 0;
                 sample_wait_cnt <= 0;
                 pcm_in_l <= axis_tdata[15:0];

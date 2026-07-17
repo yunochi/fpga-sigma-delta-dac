@@ -18,8 +18,8 @@
 proc checkRequiredFiles { origin_dir} {
   set status true
   set files [list \
- "[file normalize "$origin_dir/src/ip/i2s_fifo/i2s_fifo.xci"]"\
  "[file normalize "$origin_dir/src/hdl/fir_upsample.v"]"\
+ "[file normalize "$origin_dir/src/hdl/fwft_fifo.v"]"\
  "[file normalize "$origin_dir/src/hdl/i2s_rx.v"]"\
  "[file normalize "$origin_dir/src/hdl/linear_upsample.v"]"\
  "[file normalize "$origin_dir/src/hdl/sigma-delta-3rd-order.v"]"\
@@ -155,7 +155,6 @@ set_property -name "webtalk.modelsim_export_sim" -value "23" -objects $obj
 set_property -name "webtalk.questa_export_sim" -value "23" -objects $obj
 set_property -name "webtalk.riviera_export_sim" -value "23" -objects $obj
 set_property -name "webtalk.vcs_export_sim" -value "23" -objects $obj
-set_property -name "webtalk.xcelium_export_sim" -value "1" -objects $obj
 set_property -name "webtalk.xsim_export_sim" -value "23" -objects $obj
 set_property -name "webtalk.xsim_launch_sim" -value "1" -objects $obj
 set_property -name "xpm_libraries" -value "XPM_CDC XPM_FIFO XPM_MEMORY" -objects $obj
@@ -168,8 +167,8 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
 set files [list \
- [file normalize "${origin_dir}/src/ip/i2s_fifo/i2s_fifo.xci"] \
  [file normalize "${origin_dir}/src/hdl/fir_upsample.v"] \
+ [file normalize "${origin_dir}/src/hdl/fwft_fifo.v"] \
  [file normalize "${origin_dir}/src/hdl/i2s_rx.v"] \
  [file normalize "${origin_dir}/src/hdl/linear_upsample.v"] \
  [file normalize "${origin_dir}/src/hdl/sigma-delta-3rd-order.v"] \
@@ -178,15 +177,7 @@ set files [list \
 add_files -norecurse -fileset $obj $files
 
 # Set 'sources_1' fileset file properties for remote files
-set file "$origin_dir/src/ip/i2s_fifo/i2s_fifo.xci"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property -name "generate_files_for_reference" -value "0" -objects $file_obj
-set_property -name "registered_with_manager" -value "1" -objects $file_obj
-if { ![get_property "is_locked" $file_obj] } {
-  set_property -name "synth_checkpoint_mode" -value "Singular" -objects $file_obj
-}
-
+# None
 
 # Set 'sources_1' fileset file properties for local files
 # None
