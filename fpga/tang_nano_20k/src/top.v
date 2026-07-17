@@ -97,13 +97,23 @@ module top(
                          .interval_cnt(sample_wait_cnt),
                          .data_out(fir_out_l_2x)
                      );
+    fir_upsampler_2x #(
+                         .DATA_WIDTH(16),
+                         .OVERSAMPLING_RATIO(OVERSAMPLE_RATIO / 2)
+                     ) fir_l_4x (
+                         .clk(sys_clk),
+                         .rst_n(reset_n),
+                         .data_in(fir_out_l_2x),
+                         .interval_cnt(sample_wait_cnt),
+                         .data_out(fir_out_l_4x)
+                     );
     linear_interpolation #(
                              .DATA_WIDTH(16),
-                             .OVERSAMPLING_RATIO(OVERSAMPLE_RATIO / 2)
+                             .OVERSAMPLING_RATIO(OVERSAMPLE_RATIO / 4)
                          ) interpolation_l (
                              .clk(sys_clk),
                              .rst_n(reset_n),
-                             .data_in(fir_out_l_2x),
+                             .data_in(fir_out_l_4x),
                              .interval_cnt(sample_wait_cnt),
                              .data_out(pdm_val_l)
                          );
@@ -118,13 +128,23 @@ module top(
                          .interval_cnt(sample_wait_cnt),
                          .data_out(fir_out_r_2x)
                      );
+    fir_upsampler_2x #(
+                         .DATA_WIDTH(16),
+                         .OVERSAMPLING_RATIO(OVERSAMPLE_RATIO / 2)
+                     ) fir_r_4x (
+                         .clk(sys_clk),
+                         .rst_n(reset_n),
+                         .data_in(fir_out_r_2x),
+                         .interval_cnt(sample_wait_cnt),
+                         .data_out(fir_out_r_4x)
+                     );
     linear_interpolation #(
                              .DATA_WIDTH(16),
-                             .OVERSAMPLING_RATIO(OVERSAMPLE_RATIO / 2)
+                             .OVERSAMPLING_RATIO(OVERSAMPLE_RATIO / 4)
                          ) interpolation_r (
                              .clk(sys_clk),
                              .rst_n(reset_n),
-                             .data_in(fir_out_r_2x),
+                             .data_in(fir_out_r_4x),
                              .interval_cnt(sample_wait_cnt),
                              .data_out(pdm_val_r)
                          );
