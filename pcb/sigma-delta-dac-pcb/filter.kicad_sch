@@ -1712,50 +1712,6 @@
 				)
 			)
 		)
-		(property "Sim.Library" "/home/yuri/다운로드/sbom950e/OPA168x.LIB"
-			(at 71.12 132.08 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Name" "OPA168x"
-			(at 71.12 132.08 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 71.12 132.08 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=IN+ 2=IN- 3=VCC 4=VEE 5=OUT"
-			(at 71.12 132.08 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(pin "8"
 			(uuid "61671dfc-9eea-41ee-ab1d-68f60e1328a4")
 		)
@@ -2482,73 +2438,29 @@
 				)
 			)
 		)
-		(property "Sim.Library" "/home/yuri/다운로드/sbom950e/OPA168x.LIB"
-			(at 158.75 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Name" "OPA168x"
-			(at 158.75 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 158.75 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=IN+ 2=IN- 3=VCC 4=VEE 5=OUT"
-			(at 158.75 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(pin "8"
-			(uuid "61671dfc-9eea-41ee-ab1d-68f60e1328a4")
+			(uuid "61671dfc-9eea-41ee-ab1d-68f60e1328a5")
 		)
 		(pin "4"
-			(uuid "dce595b0-d280-48ab-8158-c342dd4a86b2")
+			(uuid "dce595b0-d280-48ab-8158-c342dd4a86b3")
 		)
 		(pin "7"
-			(uuid "d84a969b-0b3b-4e8b-95ba-b31731dfac00")
+			(uuid "d84a969b-0b3b-4e8b-95ba-b31731dfac01")
 		)
 		(pin "6"
-			(uuid "a8b31198-23fe-4d52-8f0d-565dd9387393")
+			(uuid "a8b31198-23fe-4d52-8f0d-565dd9387394")
 		)
 		(pin "5"
-			(uuid "ae4650eb-8042-45c8-8d16-7cb98751c390")
+			(uuid "ae4650eb-8042-45c8-8d16-7cb98751c391")
 		)
 		(pin "3"
-			(uuid "86f4e79c-4b50-4f47-bc58-cfaf01da68e9")
+			(uuid "86f4e79c-4b50-4f47-bc58-cfaf01da68ea")
 		)
 		(pin "2"
-			(uuid "d15c16fb-f4d0-41be-8b04-e063685fb9cf")
+			(uuid "d15c16fb-f4d0-41be-8b04-e063685fb9d0")
 		)
 		(pin "1"
-			(uuid "3443a292-ac51-4f20-ab95-199a3affccd6")
+			(uuid "3443a292-ac51-4f20-ab95-199a3affccd7")
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
@@ -3330,73 +3242,29 @@
 				)
 			)
 		)
-		(property "Sim.Library" "/home/yuri/다운로드/sbom950e/OPA168x.LIB"
-			(at 156.21 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Name" "OPA168x"
-			(at 156.21 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 156.21 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=IN+ 2=IN- 3=VCC 4=VEE 5=OUT"
-			(at 156.21 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
 		(pin "8"
-			(uuid "61671dfc-9eea-41ee-ab1d-68f60e1328a4")
+			(uuid "61671dfc-9eea-41ee-ab1d-68f60e1328a6")
 		)
 		(pin "4"
-			(uuid "dce595b0-d280-48ab-8158-c342dd4a86b2")
+			(uuid "dce595b0-d280-48ab-8158-c342dd4a86b4")
 		)
 		(pin "7"
-			(uuid "d84a969b-0b3b-4e8b-95ba-b31731dfac00")
+			(uuid "d84a969b-0b3b-4e8b-95ba-b31731dfac02")
 		)
 		(pin "6"
-			(uuid "a8b31198-23fe-4d52-8f0d-565dd9387393")
+			(uuid "a8b31198-23fe-4d52-8f0d-565dd9387395")
 		)
 		(pin "5"
-			(uuid "ae4650eb-8042-45c8-8d16-7cb98751c390")
+			(uuid "ae4650eb-8042-45c8-8d16-7cb98751c392")
 		)
 		(pin "3"
-			(uuid "86f4e79c-4b50-4f47-bc58-cfaf01da68e9")
+			(uuid "86f4e79c-4b50-4f47-bc58-cfaf01da68eb")
 		)
 		(pin "2"
-			(uuid "d15c16fb-f4d0-41be-8b04-e063685fb9cf")
+			(uuid "d15c16fb-f4d0-41be-8b04-e063685fb9d1")
 		)
 		(pin "1"
-			(uuid "3443a292-ac51-4f20-ab95-199a3affccd6")
+			(uuid "3443a292-ac51-4f20-ab95-199a3affccd8")
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
