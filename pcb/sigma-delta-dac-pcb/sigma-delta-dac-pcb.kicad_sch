@@ -52,6 +52,52 @@
 		)
 	)
 	(sheet
+		(at 72.39 83.82)
+		(size 17.78 6.35)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "8f418b56-faf6-46f2-a5e3-a02109698ece")
+		(property "Sheetname" "Buffer"
+			(at 72.39 83.1084 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "buffer.kicad_sch"
+			(at 72.39 90.7546 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
 		(at 72.39 99.06)
 		(size 17.78 5.08)
 		(exclude_from_sim no)
@@ -93,52 +139,6 @@
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771"
 					(page "5")
-				)
-			)
-		)
-	)
-	(sheet
-		(at 72.39 83.82)
-		(size 17.78 6.35)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-		)
-		(fill
-			(color 0 0 0 0)
-		)
-		(uuid "d4f48e9e-9982-4ca4-9f98-cecc4545cf7e")
-		(property "Sheetname" "Sim"
-			(at 72.39 83.1084 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "sim.kicad_sch"
-			(at 72.39 90.7546 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-			)
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771"
-					(page "4")
 				)
 			)
 		)
