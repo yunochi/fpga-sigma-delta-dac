@@ -1567,7 +1567,8 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 123.19 34.29 90)
+		(at 123.19 34.29 270)
+		(mirror x)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1577,7 +1578,7 @@
 		(dnp no)
 		(uuid "09d2e4ec-969c-4572-9851-f49602488cf3")
 		(property "Reference" "R12"
-			(at 121.9199 31.75 0)
+			(at 124.4601 31.75 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1588,7 +1589,7 @@
 			)
 		)
 		(property "Value" "4.87k"
-			(at 124.4599 31.75 0)
+			(at 121.9201 31.75 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -1599,7 +1600,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 123.444 33.274 90)
+			(at 122.936 33.274 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1621,7 +1622,7 @@
 			)
 		)
 		(property "Description" "1608 1%"
-			(at 126.492 27.432 0)
+			(at 119.888 27.432 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
