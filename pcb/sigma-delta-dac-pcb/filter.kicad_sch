@@ -1004,10 +1004,28 @@
 		(uuid "168f0694-515f-4f1f-a35b-645cdc8bedf7")
 	)
 	(junction
+		(at 40.64 149.86)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1714842b-0cb5-48b2-b190-28d2938c8c40")
+	)
+	(junction
 		(at 163.83 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "17f84091-0048-4da2-9b57-a24405cb4830")
+	)
+	(junction
+		(at 40.64 121.92)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2b99920c-0aa8-4b4d-9ea2-3e559a691f25")
+	)
+	(junction
+		(at 40.64 114.3)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7803c525-34cc-4b42-983c-c730707fdbcf")
 	)
 	(junction
 		(at 171.45 86.36)
@@ -1028,6 +1046,12 @@
 		(uuid "aacbee4b-d518-44e8-87f7-2eaee7633232")
 	)
 	(junction
+		(at 40.64 142.24)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b6bdb115-554b-4409-8e8a-31f5578f91ca")
+	)
+	(junction
 		(at 114.3 34.29)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1038,6 +1062,26 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f415cf3a-a81f-479e-a544-dc3fe9f4153c")
+	)
+	(wire
+		(pts
+			(xy 25.4 142.24) (xy 40.64 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "058a8623-6a43-4335-857d-d66dce0cc7fc")
+	)
+	(wire
+		(pts
+			(xy 25.4 149.86) (xy 40.64 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0bad0bfc-5228-49fd-b087-979918783b8d")
 	)
 	(wire
 		(pts
@@ -1058,6 +1102,16 @@
 			(type default)
 		)
 		(uuid "1278ef88-2b70-47dd-8ebf-1a8b9b80181c")
+	)
+	(wire
+		(pts
+			(xy 26.67 114.3) (xy 40.64 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14528ec3-6e4a-4f41-ac28-fb6533267e8e")
 	)
 	(wire
 		(pts
@@ -1181,6 +1235,16 @@
 	)
 	(wire
 		(pts
+			(xy 26.67 121.92) (xy 40.64 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46f54c7f-8c85-4754-966c-1fd7b06dc29a")
+	)
+	(wire
+		(pts
 			(xy 40.64 149.86) (xy 40.64 153.67)
 		)
 		(stroke
@@ -1208,16 +1272,6 @@
 			(type default)
 		)
 		(uuid "53f4c93d-94c6-48ad-aefc-8de840afbe2b")
-	)
-	(wire
-		(pts
-			(xy 40.64 139.7) (xy 40.64 142.24)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "56574a8a-bc8b-408d-9987-9e06d3ba4bed")
 	)
 	(wire
 		(pts
@@ -1298,6 +1352,16 @@
 			(type default)
 		)
 		(uuid "92e57294-6ba7-420e-b364-954c85a9e8fd")
+	)
+	(wire
+		(pts
+			(xy 40.64 139.7) (xy 40.64 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a240ac7b-03b7-4617-bd26-2ae006b0d9de")
 	)
 	(wire
 		(pts
@@ -1836,6 +1900,130 @@
 	)
 	(symbol
 		(lib_id "Device:C")
+		(at 25.4 146.05 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0f303765-4933-4ec9-a73f-e26045020ede")
+		(property "Reference" "C18"
+			(at 29.21 144.7799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 29.21 147.3199 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 26.3652 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 25.4 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "50V 1005 X7R"
+			(at 33.782 149.098 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 25.4 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 25.4 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 25.4 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 25.4 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "f2563a31-25ee-4e66-a682-672f965f08aa")
+		)
+		(pin "1"
+			(uuid "816b55e0-4a55-40b8-9f07-79585d5b7d14")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "C18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
 		(at 154.94 73.66 90)
 		(unit 1)
 		(body_style 1)
@@ -1968,7 +2156,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1cd8b2bd-dc65-4e1c-bc75-e1af7b91f5d2")
-		(property "Reference" "#PWR033"
+		(property "Reference" "#PWR035"
 			(at 132.08 113.03 0)
 			(hide yes)
 			(show_name no)
@@ -2028,7 +2216,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR033")
+					(reference "#PWR035")
 					(unit 1)
 				)
 			)
@@ -2416,7 +2604,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2640696c-4b46-4f8b-b341-c0e7da35bfe6")
-		(property "Reference" "#PWR034"
+		(property "Reference" "#PWR036"
 			(at 40.64 116.84 0)
 			(hide yes)
 			(show_name no)
@@ -2476,7 +2664,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR034")
+					(reference "#PWR036")
 					(unit 1)
 				)
 			)
@@ -2494,7 +2682,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2acea132-1e7d-4e8a-be10-bcbeaa5daf66")
-		(property "Reference" "#PWR038"
+		(property "Reference" "#PWR040"
 			(at 68.58 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -2554,7 +2742,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR038")
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -2958,7 +3146,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3a947602-3e3d-4eef-a197-9edc35e839e8")
-		(property "Reference" "#PWR037"
+		(property "Reference" "#PWR039"
 			(at 40.64 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -3018,7 +3206,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR037")
+					(reference "#PWR039")
 					(unit 1)
 				)
 			)
@@ -3036,7 +3224,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6773468d-5b77-4647-a836-4d6618eb9981")
-		(property "Reference" "#PWR039"
+		(property "Reference" "#PWR041"
 			(at 40.64 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -3096,7 +3284,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR039")
+					(reference "#PWR041")
 					(unit 1)
 				)
 			)
@@ -3114,7 +3302,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6eedf734-d72b-4cf8-9967-8040627bb4dd")
-		(property "Reference" "#PWR032"
+		(property "Reference" "#PWR034"
 			(at 132.08 60.96 0)
 			(hide yes)
 			(show_name no)
@@ -3174,7 +3362,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR032")
+					(reference "#PWR034")
 					(unit 1)
 				)
 			)
@@ -3192,7 +3380,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "723d8e34-abf8-47af-ab55-70fd37961ff5")
-		(property "Reference" "#PWR035"
+		(property "Reference" "#PWR037"
 			(at 40.64 129.54 0)
 			(hide yes)
 			(show_name no)
@@ -3252,7 +3440,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR035")
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)
@@ -3269,7 +3457,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "8af7a6e9-9026-42f0-8cbf-0e60d907ea4e")
-		(property "Reference" "C16"
+		(property "Reference" "C17"
 			(at 44.45 116.8399 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3376,7 +3564,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C16")
+					(reference "C17")
 					(unit 1)
 				)
 			)
@@ -3516,7 +3704,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "940ea1bb-bf9b-4517-879c-2fbe02cdc51b")
-		(property "Reference" "#PWR036"
+		(property "Reference" "#PWR038"
 			(at 68.58 127 0)
 			(hide yes)
 			(show_name no)
@@ -3576,7 +3764,131 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR036")
+					(reference "#PWR038")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 26.67 118.11 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a8645bc6-60e8-4cfb-a837-34f20add5a3d")
+		(property "Reference" "C16"
+			(at 30.48 116.8399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 30.48 119.3799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 27.6352 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 26.67 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "50V 1005 X7R"
+			(at 35.052 121.158 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 26.67 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 26.67 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 26.67 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 26.67 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "9740b501-d189-4eb3-9276-b082c800e187")
+		)
+		(pin "1"
+			(uuid "1835445a-209c-47b9-a086-ee85399f8c72")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "C16")
 					(unit 1)
 				)
 			)
@@ -3981,7 +4293,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "e8eba7ea-9253-47b1-bfef-f2dcf387eadf")
-		(property "Reference" "C17"
+		(property "Reference" "C19"
 			(at 44.45 144.7799 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4088,7 +4400,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C17")
+					(reference "C19")
 					(unit 1)
 				)
 			)

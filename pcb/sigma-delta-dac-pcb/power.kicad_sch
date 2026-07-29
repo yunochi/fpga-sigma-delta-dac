@@ -5,6 +5,129 @@
 	(uuid "1a57151b-86e1-4eac-8ee7-f1e3d183e253")
 	(paper "A4")
 	(lib_symbols
+		(symbol "Connector:TestPoint"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.762)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
@@ -1240,6 +1363,12 @@
 		(uuid "284067c7-7315-4882-a338-618d4c663ed0")
 	)
 	(junction
+		(at 118.11 36.83)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2faa239a-bd8e-4836-9617-78f2fd2f8763")
+	)
+	(junction
 		(at 172.72 54.61)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1257,6 +1386,12 @@
 		(color 0 0 0 0)
 		(uuid "a8a96e4f-f97e-48c6-a9d3-79cef2cea097")
 	)
+	(junction
+		(at 132.08 52.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d8f576bc-4621-4542-837e-a52573e7977a")
+	)
 	(wire
 		(pts
 			(xy 172.72 44.45) (xy 172.72 46.99)
@@ -1266,6 +1401,16 @@
 			(type default)
 		)
 		(uuid "03b6e0f0-c4e2-4eb6-97e0-77b574b9c197")
+	)
+	(wire
+		(pts
+			(xy 132.08 52.07) (xy 132.08 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "058db9ba-f5dd-4b6a-b2ab-8a0a7b224354")
 	)
 	(wire
 		(pts
@@ -1379,7 +1524,7 @@
 	)
 	(wire
 		(pts
-			(xy 115.57 52.07) (xy 116.84 52.07)
+			(xy 115.57 52.07) (xy 132.08 52.07)
 		)
 		(stroke
 			(width 0)
@@ -1416,6 +1561,26 @@
 			(type default)
 		)
 		(uuid "563d5efd-906a-4df9-8c4d-0177a2b3ba9e")
+	)
+	(wire
+		(pts
+			(xy 118.11 36.83) (xy 128.27 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6450affb-ece1-4cca-966d-d43b53188b9e")
+	)
+	(wire
+		(pts
+			(xy 142.24 36.83) (xy 142.24 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "677aecfe-6b9a-48e7-b8ec-57a4cdffd5c5")
 	)
 	(wire
 		(pts
@@ -1536,6 +1701,16 @@
 			(type default)
 		)
 		(uuid "d92e2888-f0a6-48d4-ab64-83142cca1e20")
+	)
+	(wire
+		(pts
+			(xy 132.08 52.07) (xy 134.62 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e0ab6493-352a-413f-85d1-38a5de849e1a")
 	)
 	(wire
 		(pts
@@ -1891,7 +2066,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "00e74f78-1bdb-46be-80b1-7d356d971d6a")
-		(property "Reference" "#PWR08"
+		(property "Reference" "#PWR09"
 			(at 59.69 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -1951,7 +2126,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR08")
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)
@@ -2083,7 +2258,7 @@
 	)
 	(symbol
 		(lib_id "power:-3V3")
-		(at 116.84 52.07 270)
+		(at 134.62 52.07 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2093,8 +2268,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0aaa9f10-6847-4d1e-9c13-79788f240ce2")
-		(property "Reference" "#PWR09"
-			(at 113.03 52.07 0)
+		(property "Reference" "#PWR010"
+			(at 130.81 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2105,7 +2280,7 @@
 			)
 		)
 		(property "Value" "-3V3"
-			(at 120.65 52.0699 90)
+			(at 138.43 52.0699 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2116,7 +2291,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 116.84 52.07 0)
+			(at 134.62 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2127,7 +2302,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 52.07 0)
+			(at 134.62 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2138,7 +2313,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"-3V3\""
-			(at 116.84 52.07 0)
+			(at 134.62 52.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2154,7 +2329,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR09")
+					(reference "#PWR010")
 					(unit 1)
 				)
 			)
@@ -2172,7 +2347,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2162a8a0-3202-4950-a46f-daa9921d2cdf")
-		(property "Reference" "#PWR016"
+		(property "Reference" "#PWR018"
 			(at 87.63 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -2232,7 +2407,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR016")
+					(reference "#PWR018")
 					(unit 1)
 				)
 			)
@@ -2357,6 +2532,164 @@
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
 					(reference "C4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 132.08 55.88 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2efbfd02-2128-4bc7-bd38-fd135aabadff")
+		(property "Reference" "TP3"
+			(at 134.62 57.9119 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 134.62 60.4519 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_1.0x1.0mm"
+			(at 127 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 132.08 55.88 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c2224968-5e19-460d-a11b-ed0dcd13be8d")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
+					(reference "TP3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 142.24 36.83 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4d725898-b734-4a8b-8bd8-cd1af0230092")
+		(property "Reference" "TP2"
+			(at 144.78 32.2579 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 144.78 34.7979 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_1.0x1.0mm"
+			(at 147.32 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 147.32 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 142.24 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0e07f386-3902-4680-bffc-c92f17bbd6a9")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
+					(reference "TP2")
 					(unit 1)
 				)
 			)
@@ -2498,7 +2831,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "581d145b-b652-47be-84df-c02aee4f3f4a")
-		(property "Reference" "#PWR06"
+		(property "Reference" "#PWR07"
 			(at 172.72 48.26 0)
 			(hide yes)
 			(show_name no)
@@ -2558,7 +2891,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR06")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -2948,7 +3281,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "72bfecb8-c124-4dc2-b206-d3f25f31f993")
-		(property "Reference" "#PWR017"
+		(property "Reference" "#PWR019"
 			(at 54.61 102.87 0)
 			(hide yes)
 			(show_name no)
@@ -3008,7 +3341,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR017")
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -3026,7 +3359,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7fc3417f-a141-4724-a80a-55de18826410")
-		(property "Reference" "#PWR012"
+		(property "Reference" "#PWR013"
 			(at 105.41 72.39 0)
 			(hide yes)
 			(show_name no)
@@ -3086,7 +3419,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR012")
+					(reference "#PWR013")
 					(unit 1)
 				)
 			)
@@ -3252,6 +3585,163 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 142.24 38.1 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "916f68a6-d701-4c15-a598-220e5344e080")
+		(property "Reference" "#PWR05"
+			(at 142.24 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 142.24 43.18 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 142.24 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 142.24 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 142.24 38.1 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d7b35b81-5042-49df-94e5-411241e55084")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
+					(reference "#PWR05")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 128.27 36.83 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "950431a0-d7b7-4c65-b437-c806d8e4b06c")
+		(property "Reference" "TP1"
+			(at 130.81 32.2579 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 130.81 34.7979 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_1.0x1.0mm"
+			(at 133.35 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 133.35 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 128.27 36.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5a37959b-084e-4a30-8289-3ef3d16972ac")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
+					(reference "TP1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 172.72 62.23 0)
 		(unit 1)
 		(body_style 1)
@@ -3262,7 +3752,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9589231a-6d56-42cb-bf40-efbde12a8b42")
-		(property "Reference" "#PWR010"
+		(property "Reference" "#PWR011"
 			(at 172.72 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -3322,7 +3812,85 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR010")
+					(reference "#PWR011")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 132.08 69.85 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a5bebf6d-c35d-42d2-858a-aa7229504bb8")
+		(property "Reference" "#PWR014"
+			(at 132.08 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 132.08 74.93 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 132.08 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 132.08 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 132.08 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9b15f2da-2696-463f-8b62-4fd1b45c7ae6")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
+					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -3464,7 +4032,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b08980c1-5537-4361-aaf4-2e17b62ebd9c")
-		(property "Reference" "#PWR018"
+		(property "Reference" "#PWR020"
 			(at 110.49 102.87 0)
 			(hide yes)
 			(show_name no)
@@ -3524,7 +4092,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR018")
+					(reference "#PWR020")
 					(unit 1)
 				)
 			)
@@ -3666,7 +4234,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ba04f4ae-5c9a-4444-877e-96df19027fd5")
-		(property "Reference" "#PWR019"
+		(property "Reference" "#PWR021"
 			(at 172.72 97.79 0)
 			(hide yes)
 			(show_name no)
@@ -3726,7 +4294,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR019")
+					(reference "#PWR021")
 					(unit 1)
 				)
 			)
@@ -3744,7 +4312,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bfa61dd8-74bc-4b3b-ad8c-e75706ad593f")
-		(property "Reference" "#PWR014"
+		(property "Reference" "#PWR016"
 			(at 87.63 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -3804,7 +4372,86 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR014")
+					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 132.08 69.85 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d124cc80-4adc-4e4d-b9c9-7b7b1d4072d9")
+		(property "Reference" "TP4"
+			(at 134.62 65.2779 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint"
+			(at 134.62 67.8179 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_1.0x1.0mm"
+			(at 137.16 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 137.16 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "test point"
+			(at 132.08 69.85 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0874ac29-5bc4-4880-afa3-c916e8780c91")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
+					(reference "TP4")
 					(unit 1)
 				)
 			)
@@ -4024,7 +4671,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dd08ca8c-6c19-4960-9680-f4255ccba5d3")
-		(property "Reference" "#PWR011"
+		(property "Reference" "#PWR012"
 			(at 102.87 72.39 0)
 			(hide yes)
 			(show_name no)
@@ -4084,7 +4731,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR011")
+					(reference "#PWR012")
 					(unit 1)
 				)
 			)
@@ -4102,7 +4749,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e29e1f2a-027d-4f4b-8604-5c38acce927c")
-		(property "Reference" "#PWR013"
+		(property "Reference" "#PWR015"
 			(at 172.72 73.66 0)
 			(hide yes)
 			(show_name no)
@@ -4162,7 +4809,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR013")
+					(reference "#PWR015")
 					(unit 1)
 				)
 			)
@@ -4180,7 +4827,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e36b6be3-3e74-4644-b710-ba841fe66e29")
-		(property "Reference" "#PWR07"
+		(property "Reference" "#PWR08"
 			(at 33.02 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -4240,7 +4887,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR07")
+					(reference "#PWR08")
 					(unit 1)
 				)
 			)
@@ -4258,7 +4905,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e8fcf687-6a6a-49a8-ac71-0b23b0860473")
-		(property "Reference" "#PWR05"
+		(property "Reference" "#PWR06"
 			(at 76.2 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -4319,7 +4966,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR05")
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -4461,7 +5108,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f2357bb6-19c4-4e8d-9d3d-a3b588393008")
-		(property "Reference" "#PWR015"
+		(property "Reference" "#PWR017"
 			(at 110.49 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -4521,7 +5168,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/ed9ba576-4856-421a-999e-3dc47fa0bde8"
-					(reference "#PWR015")
+					(reference "#PWR017")
 					(unit 1)
 				)
 			)

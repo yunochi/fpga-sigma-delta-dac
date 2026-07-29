@@ -1512,7 +1512,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "15328b2e-2b40-4ce6-9321-2d4687279c6a")
-		(property "Reference" "#PWR022"
+		(property "Reference" "#PWR024"
 			(at 62.23 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -1572,7 +1572,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR022")
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -2121,7 +2121,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "520d0cd2-34e9-4f8a-8480-b0d3bfea67bf")
-		(property "Reference" "#PWR028"
+		(property "Reference" "#PWR030"
 			(at 62.23 111.76 0)
 			(hide yes)
 			(show_name no)
@@ -2181,7 +2181,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR028")
+					(reference "#PWR030")
 					(unit 1)
 				)
 			)
@@ -2199,7 +2199,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5d3896dd-56c3-4a1b-a997-179ae22f36d3")
-		(property "Reference" "#PWR030"
+		(property "Reference" "#PWR032"
 			(at 123.19 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -2259,7 +2259,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR030")
+					(reference "#PWR032")
 					(unit 1)
 				)
 			)
@@ -2277,7 +2277,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "632f31f4-6448-4324-b4ef-f57315787677")
-		(property "Reference" "#PWR025"
+		(property "Reference" "#PWR027"
 			(at 144.78 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -2337,7 +2337,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR025")
+					(reference "#PWR027")
 					(unit 1)
 				)
 			)
@@ -2568,7 +2568,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6eede20f-07f8-4bda-b7b4-839398f5d8ca")
-		(property "Reference" "#PWR021"
+		(property "Reference" "#PWR023"
 			(at 93.98 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -2629,7 +2629,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR021")
+					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -2647,7 +2647,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "92c9056c-ea4e-4946-804c-2bc3b9b99612")
-		(property "Reference" "#PWR020"
+		(property "Reference" "#PWR022"
 			(at 44.45 58.42 0)
 			(hide yes)
 			(show_name no)
@@ -2707,7 +2707,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR020")
+					(reference "#PWR022")
 					(unit 1)
 				)
 			)
@@ -2803,7 +2803,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9d36f608-4647-4b61-83cd-f74a5ad21b9b")
-		(property "Reference" "#PWR023"
+		(property "Reference" "#PWR025"
 			(at 77.47 90.17 0)
 			(hide yes)
 			(show_name no)
@@ -2863,7 +2863,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR023")
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -2881,7 +2881,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a15f2c98-6cfb-477f-bad1-e06f99dd6ba1")
-		(property "Reference" "#PWR027"
+		(property "Reference" "#PWR029"
 			(at 92.71 100.33 0)
 			(hide yes)
 			(show_name no)
@@ -2942,7 +2942,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR027")
+					(reference "#PWR029")
 					(unit 1)
 				)
 			)
@@ -3040,7 +3040,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b6595166-6044-482d-85ab-1b7bfeee253a")
-		(property "Reference" "#PWR031"
+		(property "Reference" "#PWR033"
 			(at 144.78 139.7 0)
 			(hide yes)
 			(show_name no)
@@ -3100,7 +3100,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR031")
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
@@ -3276,7 +3276,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d25df7b2-a133-4d74-b044-9ba47ec9d761")
-		(property "Reference" "#PWR024"
+		(property "Reference" "#PWR026"
 			(at 123.19 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -3336,7 +3336,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR024")
+					(reference "#PWR026")
 					(unit 1)
 				)
 			)
@@ -3354,7 +3354,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "debcc646-e840-4b76-b06b-74c20f514d23")
-		(property "Reference" "#PWR026"
+		(property "Reference" "#PWR028"
 			(at 44.45 99.06 0)
 			(hide yes)
 			(show_name no)
@@ -3414,7 +3414,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR026")
+					(reference "#PWR028")
 					(unit 1)
 				)
 			)
@@ -3432,7 +3432,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "df752ccc-29bf-4d11-a566-a5be3ee7c57a")
-		(property "Reference" "#PWR029"
+		(property "Reference" "#PWR031"
 			(at 77.47 132.08 0)
 			(hide yes)
 			(show_name no)
@@ -3492,7 +3492,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/8f418b56-faf6-46f2-a5e3-a02109698ece"
-					(reference "#PWR029")
+					(reference "#PWR031")
 					(unit 1)
 				)
 			)
