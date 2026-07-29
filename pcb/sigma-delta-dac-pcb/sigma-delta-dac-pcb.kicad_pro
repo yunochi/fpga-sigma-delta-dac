@@ -498,7 +498,9 @@
     }
   },
   "libraries": {
-    "pinned_footprint_libs": [],
+    "pinned_footprint_libs": [
+      "Logo"
+    ],
     "pinned_symbol_libs": [
       "OPA1688IDR"
     ]
