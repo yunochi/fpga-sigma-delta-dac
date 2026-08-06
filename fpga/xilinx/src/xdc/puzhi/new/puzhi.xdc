@@ -30,4 +30,8 @@ set_property PACKAGE_PIN AH6 [get_ports data_act_led]
 set_property IOSTANDARD LVCMOS18 [get_ports data_act_led]
 set_false_path -to [get_ports data_act_led]
 
+set_property PACKAGE_PIN D2 [get_ports sys_rstn_i]
+set_property IOSTANDARD LVCMOS18 [get_ports sys_rstn_i]
+set_false_path -from [get_ports sys_rstn_i]
+
 set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]

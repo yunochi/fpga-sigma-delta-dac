@@ -9,6 +9,7 @@ module top(
         output s_i2s_sck,
         output s_i2s_ws,
         input s_i2s_sd,
+        input wire sys_rstn_i,
         output wire data_act_led
     );
     wire diff_buf_out;
@@ -35,6 +36,7 @@ module top(
     design_1_wrapper design_1_wrapper_inst (
                          .clk_200M(clk_200M),
                          .sys_clk(sys_clk),
+                         .sys_rstn_i(sys_rstn_i),
                          .reset_n(reset_n)
                      );
     i2s_rx i2s_rx_inst(
