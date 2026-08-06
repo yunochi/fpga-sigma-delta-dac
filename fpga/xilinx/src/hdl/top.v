@@ -26,8 +26,6 @@ module top(
     wire sys_clk; //24.576MHz Clock
     parameter OVERSAMPLE_RATIO = 256;
 
-    (* MARK_DEBUG="true" *)
-    wire [12:0] fifo_data_count;
     wire reset_n;
     wire [31:0]axis_tdata;
     wire axis_tlast;
@@ -49,9 +47,9 @@ module top(
                .tdata(axis_tdata),
                .data_valid(axis_tvalid),
                .data_act_led(data_act_led),
-               .fifo_empty(fifo_empty),
-               .fifo_full(fifo_full),
-               .fifo_data_count(fifo_data_count)
+               .fifo_empty(),
+               .fifo_full(),
+               .fifo_data_count()
            );
     wire signed [15:0] pdm_val_l;
     wire signed [15:0] pdm_val_r;
@@ -63,7 +61,6 @@ module top(
     reg [15:0] sample_wait_cnt;
     reg [15:0] pcm_in_l;
     reg [15:0] pcm_in_r;
-    reg play_started;
 
     always @(posedge sys_clk) begin
         if (!reset_n) begin

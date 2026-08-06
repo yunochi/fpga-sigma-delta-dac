@@ -46,7 +46,7 @@ module i2s_rx #(
     // ------------- input CDC 처리 ---------------------
     reg [1:0] sck_ff;
     reg [1:0] ws_ff;
-    (* keep = "true" *) (* dont_touch = "true" *) reg [2:0] sd_ff;
+    (* ASYNC_REG = "TRUE" *) (* dont_touch = "true" *) reg [2:0] sd_ff;
 
     wire sck_rise_edge = (sck_ff[1] == 0 && sck_ff[0] == 1);
     wire sd_sync = sd_ff[2];
