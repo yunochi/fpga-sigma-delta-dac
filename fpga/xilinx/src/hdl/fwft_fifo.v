@@ -56,18 +56,33 @@ module fwft_fifo #(
     always @(posedge clk)
         bram_q <= fifo_mem[bram_rd_addr];
 
+    // Read-during-write hazard on the prefetch slot: if the slot being
+    // prefetched this cycle is written at the same time, bram_q will hold
+    // the *stale* value next cycle. Remember the colliding word in a fabric
+    // FF (kept entirely off the BRAM read path, so fifo_mem still infers as
+    // block RAM with its output register) and substitute it when the stale
+    // bram_q would be consumed by data_out on the next read.
+    reg [DATA_WIDTH-1:0] fwd_reg;
+    reg                  fwd_vld;
+    always @(posedge clk) begin
+        if (!rstn) fwd_vld <= 1'b0;
+        else       fwd_vld <= do_write && (bram_rd_addr == wr_ptr);
+        fwd_reg <= data_in;
+    end
+    wire [DATA_WIDTH-1:0] head_next = fwd_vld ? fwd_reg : bram_q;
+
     initial begin
         wr_ptr     = {PTR_W{1'b0}};
         rd_ptr     = {PTR_W{1'b0}};
         data_count = {COUNT_W{1'b0}};
     end
 
-    // --- FWFT output register (selects between bypass data and BRAM output) ---
+    // --- FWFT output register (bypass data, forwarded word, or BRAM output) ---
     always @(posedge clk) begin
         if (bypass)
             data_out <= data_in;
         else if (do_read)
-            data_out <= bram_q;
+            data_out <= head_next;
     end
 
     // --- Pointer / count management ---
