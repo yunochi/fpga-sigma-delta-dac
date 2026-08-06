@@ -44,10 +44,11 @@ module fwft_fifo_tb();
         @(posedge clk) begin
              data_in <= 0;
              wr_en <= 1;
-             rd_en <= 1;
          end;
+        @(posedge clk);
         repeat (9) begin
             @(posedge clk) begin
+                 rd_en <= 1;
                  data_in <= data_in + 1;
              end;
         end;
