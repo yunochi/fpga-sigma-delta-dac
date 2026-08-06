@@ -10,7 +10,9 @@ SIMCOMPILER := iverilog
 SIMULATOR := vvp
 VIEWER := gtkwave
 
-SRCS = $(wildcard *.v)
+# Target-specific sources live here; RTL shared with the Xilinx target lives in fpga/common/rtl
+COMMON_RTL := ../../common/rtl
+SRCS = $(wildcard *.v) $(wildcard $(COMMON_RTL)/*.v)
 TBSRCS = $(filter %_tb.v, $(SRCS))
 MODSRCS = $(filter-out %_tb.v %_incl.v, $(SRCS))
 VVPS = $(patsubst %.v,%.vvp,$(TBSRCS))
@@ -42,4 +44,4 @@ ${PROJ}.json: $(MODSRCS)
 	$(SIMULATOR) $(SIMFLAGS) $<
 
 clean:
-	rm -f *.fs "${PROJ}.json" "pnr${PROJ}.json" *.vvp *.vcd
+	rm -f *.fs "${PROJ}.json" "pnr${PROJ}.json" "report.json" *.vvp *.vcd

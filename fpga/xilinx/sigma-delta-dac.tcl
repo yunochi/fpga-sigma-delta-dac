@@ -18,11 +18,11 @@
 proc checkRequiredFiles { origin_dir} {
   set status true
   set files [list \
- "[file normalize "$origin_dir/src/hdl/fir_upsample.v"]"\
- "[file normalize "$origin_dir/src/hdl/fwft_fifo.v"]"\
- "[file normalize "$origin_dir/src/hdl/i2s_rx.v"]"\
- "[file normalize "$origin_dir/src/hdl/linear_upsample.v"]"\
- "[file normalize "$origin_dir/src/hdl/sigma-delta-3rd-order.v"]"\
+ "[file normalize "$origin_dir/../common/rtl/fir_upsample.v"]"\
+ "[file normalize "$origin_dir/../common/rtl/fwft_fifo.v"]"\
+ "[file normalize "$origin_dir/../common/rtl/i2s_rx.v"]"\
+ "[file normalize "$origin_dir/../common/rtl/linear_upsample.v"]"\
+ "[file normalize "$origin_dir/../common/rtl/sigma-delta-3rd-order.v"]"\
  "[file normalize "$origin_dir/src/hdl/top.v"]"\
  "[file normalize "$origin_dir/src/xdc/puzhi/new/puzhi.xdc"]"\
   ]
@@ -167,11 +167,11 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
 set files [list \
- [file normalize "${origin_dir}/src/hdl/fir_upsample.v"] \
- [file normalize "${origin_dir}/src/hdl/fwft_fifo.v"] \
- [file normalize "${origin_dir}/src/hdl/i2s_rx.v"] \
- [file normalize "${origin_dir}/src/hdl/linear_upsample.v"] \
- [file normalize "${origin_dir}/src/hdl/sigma-delta-3rd-order.v"] \
+ [file normalize "${origin_dir}/../common/rtl/fir_upsample.v"] \
+ [file normalize "${origin_dir}/../common/rtl/fwft_fifo.v"] \
+ [file normalize "${origin_dir}/../common/rtl/i2s_rx.v"] \
+ [file normalize "${origin_dir}/../common/rtl/linear_upsample.v"] \
+ [file normalize "${origin_dir}/../common/rtl/sigma-delta-3rd-order.v"] \
  [file normalize "${origin_dir}/src/hdl/top.v"] \
 ]
 add_files -norecurse -fileset $obj $files
