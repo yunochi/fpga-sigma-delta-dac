@@ -5,278 +5,6 @@
 	(uuid "902a5a56-5e0c-4def-aef1-478aeeb82b14")
 	(paper "A4")
 	(lib_symbols
-		(symbol "Amplifier_Operational:TLV9062"
-			(pin_names
-				(offset 0.127)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "U"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "TLV9062"
-				(at 0 -5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tlv9062.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Dual Operational Amplifiers, SOIC-8/TSSOP-8/VSSOP-8"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_locked" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "dual opamp"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm* TSSOP*4.4x3mm*P0.65mm* VSSOP*3x3mm*P0.5mm*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "TLV9062_1_1"
-				(polyline
-					(pts
-						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin output line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -7.62 -2.54 0)
-					(length 2.54)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -7.62 2.54 0)
-					(length 2.54)
-					(name "+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "TLV9062_2_1"
-				(polyline
-					(pts
-						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin input line
-					(at -7.62 2.54 0)
-					(length 2.54)
-					(name "+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -7.62 -2.54 0)
-					(length 2.54)
-					(name "-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(symbol "TLV9062_3_1"
-				(pin power_in line
-					(at -2.54 -7.62 90)
-					(length 3.81)
-					(name "V-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -2.54 7.62 270)
-					(length 3.81)
-					(name "V+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
@@ -393,183 +121,6 @@
 				)
 			)
 			(symbol "C_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Device:C_Polarized"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "C_Polarized"
-				(at 0.635 -2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0.9652 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Polarized capacitor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "cap capacitor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "CP_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "C_Polarized_0_1"
-				(rectangle
-					(start -2.286 0.508)
-					(end 2.286 1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 2.286) (xy -0.762 2.286)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 2.794) (xy -1.27 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 2.286 -0.508)
-					(end -2.286 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-			)
-			(symbol "C_Polarized_1_1"
 				(pin passive line
 					(at 0 3.81 270)
 					(length 2.794)
@@ -798,7 +349,279 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "power:+5V"
+		(symbol "OPA1688IDR:OPA1688IDR"
+			(pin_names
+				(offset 0.127)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "OPA1688IDR"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/opa1688.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Dual Operational Amplifiers, SOIC-8/TSSOP-8/VSSOP-8"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "dual opamp"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "SOIC*3.9x4.9mm*P1.27mm*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "OPA1688IDR_1_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "OPA1688IDR_2_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "OPA1688IDR_3_1"
+				(pin power_in line
+					(at -2.54 -7.62 90)
+					(length 3.81)
+					(name "V-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -2.54 7.62 270)
+					(length 3.81)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:+3V3"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -823,7 +646,7 @@
 					)
 				)
 			)
-			(property "Value" "+5V"
+			(property "Value" "+3V3"
 				(at 0 3.556 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -855,7 +678,7 @@
 					)
 				)
 			)
-			(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(property "Description" "Power symbol creates a global label with name \"+3V3\""
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -877,7 +700,7 @@
 					)
 				)
 			)
-			(symbol "+5V_0_1"
+			(symbol "+3V3_0_1"
 				(polyline
 					(pts
 						(xy -0.762 1.27) (xy 0 2.54)
@@ -915,7 +738,7 @@
 					)
 				)
 			)
-			(symbol "+5V_1_1"
+			(symbol "+3V3_1_1"
 				(pin power_in line
 					(at 0 0 90)
 					(length 0)
@@ -932,6 +755,121 @@
 								(size 1.27 1.27)
 							)
 						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:-3V3"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "-3V3"
+				(at 0 3.556 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"-3V3\""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "-3V3_0_0"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "-3V3_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy 0.762 1.27) (xy 0 2.54) (xy -0.762 1.27) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
 					)
 				)
 			)
@@ -1054,76 +992,100 @@
 		)
 	)
 	(junction
+		(at 111.76 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "06fed6c3-8b30-4925-97ef-b1cf1c19165b")
+	)
+	(junction
 		(at 166.37 36.83)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "163fd29c-2c25-4852-8c4a-a972de42a473")
+		(uuid "168f0694-515f-4f1f-a35b-645cdc8bedf7")
 	)
 	(junction
-		(at 102.87 67.31)
+		(at 40.64 149.86)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "312bfd02-343a-4d04-bf67-e8d12a92336b")
+		(uuid "1714842b-0cb5-48b2-b190-28d2938c8c40")
 	)
 	(junction
-		(at 104.14 34.29)
+		(at 163.83 88.9)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "359d2b3c-2eb7-4131-9112-66974265a2c5")
+		(uuid "17f84091-0048-4da2-9b57-a24405cb4830")
 	)
 	(junction
-		(at 34.29 27.94)
+		(at 40.64 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "3b40f318-2b4f-4014-9208-e1004561c7ec")
+		(uuid "2b99920c-0aa8-4b4d-9ea2-3e559a691f25")
 	)
 	(junction
-		(at 165.1 69.85)
+		(at 40.64 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "7174181d-5c40-46d4-b05c-e14554377ffb")
+		(uuid "7803c525-34cc-4b42-983c-c730707fdbcf")
 	)
 	(junction
-		(at 128.27 67.31)
+		(at 171.45 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "a898d434-661c-4be6-bcda-dc71534062ea")
+		(uuid "8dfe04e9-326b-4a8b-9f03-98c76ac72515")
 	)
 	(junction
-		(at 34.29 44.45)
+		(at 173.99 34.29)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "f7bd2c4c-4b4b-4def-86f4-8626d2ffc222")
+		(uuid "9fed26a3-45a1-4e43-9463-32b8c9e5a352")
 	)
 	(junction
-		(at 129.54 34.29)
+		(at 132.08 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "ff75f958-76e8-4374-8b34-fd2ee845b38e")
+		(uuid "aacbee4b-d518-44e8-87f7-2eaee7633232")
+	)
+	(junction
+		(at 40.64 142.24)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b6bdb115-554b-4409-8e8a-31f5578f91ca")
+	)
+	(junction
+		(at 114.3 34.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ce45e4ee-4418-43ab-a978-1f355d5b8b85")
+	)
+	(junction
+		(at 132.08 34.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f415cf3a-a81f-479e-a544-dc3fe9f4153c")
 	)
 	(wire
 		(pts
-			(xy 34.29 39.37) (xy 34.29 44.45)
+			(xy 25.4 142.24) (xy 40.64 142.24)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "00722442-fb42-43f9-9b3b-62b5d799b1cc")
+		(uuid "058a8623-6a43-4335-857d-d66dce0cc7fc")
 	)
 	(wire
 		(pts
-			(xy 45.72 27.94) (xy 45.72 29.21)
+			(xy 25.4 149.86) (xy 40.64 149.86)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "0c3ac858-8e80-448d-9004-7f6af82d689e")
+		(uuid "0bad0bfc-5228-49fd-b087-979918783b8d")
 	)
 	(wire
 		(pts
-			(xy 165.1 76.2) (xy 165.1 69.85)
+			(xy 163.83 95.25) (xy 163.83 88.9)
 		)
 		(stroke
 			(width 0)
@@ -1133,7 +1095,27 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 72.39) (xy 146.05 76.2)
+			(xy 114.3 21.59) (xy 153.67 21.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1278ef88-2b70-47dd-8ebf-1a8b9b80181c")
+	)
+	(wire
+		(pts
+			(xy 26.67 114.3) (xy 40.64 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14528ec3-6e4a-4f41-ac28-fb6533267e8e")
+	)
+	(wire
+		(pts
+			(xy 144.78 91.44) (xy 144.78 95.25)
 		)
 		(stroke
 			(width 0)
@@ -1143,57 +1125,107 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 67.31) (xy 76.2 67.31)
+			(xy 132.08 86.36) (xy 132.08 92.71)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "325d826d-d63a-4ba6-a893-a4d78e63d0ea")
+		(uuid "1d69ec10-8391-4ace-b893-1f0a25e1f1ed")
 	)
 	(wire
 		(pts
-			(xy 88.9 34.29) (xy 76.2 34.29)
+			(xy 114.3 34.29) (xy 114.3 21.59)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "34a119e3-b989-4100-b672-961fa7632616")
+		(uuid "1e9b7a35-b247-46d6-95a2-45a989e585c5")
 	)
 	(wire
 		(pts
-			(xy 121.92 67.31) (xy 128.27 67.31)
+			(xy 158.75 73.66) (xy 171.45 73.66)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "34e3b2b3-4d33-4998-980d-90e18e2989a3")
+		(uuid "22853dbf-26d9-48c3-b79b-3b70ed8db8f9")
 	)
 	(wire
 		(pts
-			(xy 129.54 43.18) (xy 129.54 48.26)
+			(xy 40.64 121.92) (xy 40.64 123.19)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3a978462-f3ca-4378-b611-d7417d7f6edb")
+		(uuid "25b9cf22-de84-4893-a27d-28fa09f14807")
 	)
 	(wire
 		(pts
-			(xy 128.27 76.2) (xy 128.27 81.28)
+			(xy 106.68 34.29) (xy 114.3 34.29)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "42ce981e-a912-4870-a8ac-306ccc30f6c8")
+		(uuid "28234d45-25dc-4827-a3d7-39871a61d17c")
 	)
 	(wire
 		(pts
-			(xy 165.1 69.85) (xy 172.72 69.85)
+			(xy 104.14 86.36) (xy 111.76 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "28d0a9a1-c6eb-4068-8d33-91d61ff199c2")
+	)
+	(wire
+		(pts
+			(xy 132.08 34.29) (xy 151.13 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b7f1e1f-5f79-4528-a106-96d205974e54")
+	)
+	(wire
+		(pts
+			(xy 114.3 34.29) (xy 119.38 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ba4430f-38d3-49a4-aa8d-a25104fbc840")
+	)
+	(wire
+		(pts
+			(xy 132.08 34.29) (xy 132.08 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c959b45-377b-4844-adc1-578435e871cf")
+	)
+	(wire
+		(pts
+			(xy 68.58 123.19) (xy 68.58 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d1dea5c-330f-4da1-b6b6-74891efbf772")
+	)
+	(wire
+		(pts
+			(xy 163.83 88.9) (xy 171.45 88.9)
 		)
 		(stroke
 			(width 0)
@@ -1203,17 +1235,17 @@
 	)
 	(wire
 		(pts
-			(xy 96.52 34.29) (xy 104.14 34.29)
+			(xy 26.67 121.92) (xy 40.64 121.92)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4948ad5a-298b-4cbd-9bba-2888507a5bde")
+		(uuid "46f54c7f-8c85-4754-966c-1fd7b06dc29a")
 	)
 	(wire
 		(pts
-			(xy 34.29 44.45) (xy 34.29 52.07)
+			(xy 40.64 149.86) (xy 40.64 153.67)
 		)
 		(stroke
 			(width 0)
@@ -1223,7 +1255,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 69.85) (xy 172.72 67.31)
+			(xy 171.45 88.9) (xy 171.45 86.36)
 		)
 		(stroke
 			(width 0)
@@ -1233,47 +1265,27 @@
 	)
 	(wire
 		(pts
-			(xy 34.29 44.45) (xy 45.72 44.45)
+			(xy 124.46 86.36) (xy 132.08 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5300393b-055d-4ed9-b85b-da3c7b668e7b")
+		(uuid "53f4c93d-94c6-48ad-aefc-8de840afbe2b")
 	)
 	(wire
 		(pts
-			(xy 104.14 34.29) (xy 115.57 34.29)
+			(xy 173.99 34.29) (xy 173.99 36.83)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5b26fa21-605c-489a-8f65-cd8faf4a2bd1")
+		(uuid "600c135f-73fd-4eab-a92d-12f8c21bff55")
 	)
 	(wire
 		(pts
-			(xy 123.19 34.29) (xy 129.54 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5be3699d-f6d3-40ce-add1-1a151da290ae")
-	)
-	(wire
-		(pts
-			(xy 173.99 36.83) (xy 173.99 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "611e481c-9626-4e82-99f8-ab75c1d9755c")
-	)
-	(wire
-		(pts
-			(xy 149.86 72.39) (xy 146.05 72.39)
+			(xy 148.59 91.44) (xy 144.78 91.44)
 		)
 		(stroke
 			(width 0)
@@ -1293,57 +1305,17 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 76.2) (xy 102.87 81.28)
+			(xy 132.08 86.36) (xy 148.59 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "72e58f6c-eef6-4c87-8c34-87d9d6644e97")
+		(uuid "7ab70073-5179-44f8-aa59-7855e13670c2")
 	)
 	(wire
 		(pts
-			(xy 95.25 67.31) (xy 102.87 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "73c32a42-e5f8-405c-a017-f81456e450ff")
-	)
-	(wire
-		(pts
-			(xy 21.59 27.94) (xy 21.59 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "73f6a024-eff5-4d55-badd-f25e146837d8")
-	)
-	(wire
-		(pts
-			(xy 129.54 34.29) (xy 151.13 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "79665a8e-5f9f-459a-be31-6a1211ebf0cd")
-	)
-	(wire
-		(pts
-			(xy 129.54 34.29) (xy 129.54 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a0ae9ef-a91b-4556-a3f3-78465d2f2f09")
-	)
-	(wire
-		(pts
-			(xy 34.29 21.59) (xy 34.29 27.94)
+			(xy 40.64 113.03) (xy 40.64 114.3)
 		)
 		(stroke
 			(width 0)
@@ -1353,17 +1325,17 @@
 	)
 	(wire
 		(pts
-			(xy 21.59 27.94) (xy 34.29 27.94)
+			(xy 127 34.29) (xy 132.08 34.29)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "839404d5-1d92-46c8-8835-3f3e2a852efd")
+		(uuid "7fa473eb-2879-4531-bd78-a272dcbcc3f9")
 	)
 	(wire
 		(pts
-			(xy 172.72 67.31) (xy 176.53 67.31)
+			(xy 171.45 86.36) (xy 208.28 86.36)
 		)
 		(stroke
 			(width 0)
@@ -1373,43 +1345,43 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 67.31) (xy 149.86 67.31)
+			(xy 83.82 34.29) (xy 99.06 34.29)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "937dd2db-4361-47f6-a012-38e783f2d9f2")
+		(uuid "92e57294-6ba7-420e-b364-954c85a9e8fd")
 	)
 	(wire
 		(pts
-			(xy 34.29 27.94) (xy 45.72 27.94)
+			(xy 40.64 139.7) (xy 40.64 142.24)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9799cfca-7e2a-489c-807b-b9857b32bdd9")
+		(uuid "a240ac7b-03b7-4617-bd26-2ae006b0d9de")
 	)
 	(wire
 		(pts
-			(xy 128.27 67.31) (xy 128.27 68.58)
+			(xy 81.28 86.36) (xy 96.52 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9d418cea-c747-4d5b-b099-dffb03bcf8e1")
+		(uuid "a5ff79f5-ef4d-486f-903b-7fa02cf684a2")
 	)
 	(wire
 		(pts
-			(xy 185.42 34.29) (xy 210.82 34.29)
+			(xy 161.29 21.59) (xy 173.99 21.59)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a424687b-6a28-492d-9710-ee1dc0e8385b")
+		(uuid "b4e33408-c4e5-49d6-8b91-0ce083f53a5e")
 	)
 	(wire
 		(pts
@@ -1433,7 +1405,7 @@
 	)
 	(wire
 		(pts
-			(xy 217.17 67.31) (xy 231.14 67.31)
+			(xy 215.9 86.36) (xy 229.87 86.36)
 		)
 		(stroke
 			(width 0)
@@ -1443,33 +1415,23 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 67.31) (xy 114.3 67.31)
+			(xy 173.99 21.59) (xy 173.99 34.29)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "be32f5cc-1d60-40cd-bf73-8fb53dd4a96d")
+		(uuid "bcc87ffe-0e82-4080-9e85-c5ef3dabfcaf")
 	)
 	(wire
 		(pts
-			(xy 146.05 76.2) (xy 165.1 76.2)
+			(xy 144.78 95.25) (xy 163.83 95.25)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "c0c3c57f-2442-4621-934f-8363ea426d31")
-	)
-	(wire
-		(pts
-			(xy 104.14 43.18) (xy 104.14 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c22cfc0d-bfa4-4716-9a1f-f72e76d31135")
 	)
 	(wire
 		(pts
@@ -1483,13 +1445,23 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 67.31) (xy 102.87 68.58)
+			(xy 111.76 73.66) (xy 151.13 73.66)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c61256b3-6242-4c3c-a457-362124bacd5f")
+		(uuid "c7095258-1ae6-4847-a915-528f3cb8fe87")
+	)
+	(wire
+		(pts
+			(xy 111.76 86.36) (xy 111.76 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d42eeeba-5848-4d71-aef5-92af723378ec")
 	)
 	(wire
 		(pts
@@ -1503,7 +1475,17 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 34.29) (xy 177.8 34.29)
+			(xy 132.08 48.26) (xy 132.08 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da87247a-ccba-45f7-afa1-b2e2faeee7b4")
+	)
+	(wire
+		(pts
+			(xy 173.99 34.29) (xy 210.82 34.29)
 		)
 		(stroke
 			(width 0)
@@ -1513,23 +1495,33 @@
 	)
 	(wire
 		(pts
-			(xy 104.14 34.29) (xy 104.14 35.56)
+			(xy 111.76 86.36) (xy 116.84 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e2354e21-8c79-46ec-a1de-9a90d418c3ca")
+		(uuid "e3bedcc8-6d6b-4a91-b0c0-1db23832d82f")
 	)
 	(wire
 		(pts
-			(xy 184.15 67.31) (xy 209.55 67.31)
+			(xy 171.45 73.66) (xy 171.45 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "eb543baf-3917-4b80-9f62-1dae4ef12bda")
+		(uuid "e91cac47-46d8-4b06-bbda-fdbe0c604fa3")
+	)
+	(wire
+		(pts
+			(xy 132.08 100.33) (xy 132.08 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ef11ee5b-4256-4d54-b666-e7752e662c7a")
 	)
 	(wire
 		(pts
@@ -1541,39 +1533,57 @@
 		)
 		(uuid "f4294b85-2091-4ea4-b74f-eb9bcbb84b01")
 	)
-	(wire
-		(pts
-			(xy 34.29 27.94) (xy 34.29 31.75)
+	(global_label "BUFFER_R"
+		(shape input)
+		(at 81.28 86.36 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
 		)
-		(stroke
-			(width 0)
-			(type default)
+		(uuid "8218b601-23dd-4281-99e8-8009952c58ab")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 68.8605 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
 		)
-		(uuid "f79b38b0-e7ba-4e00-a533-7fc7aab1ef06")
 	)
-	(wire
-		(pts
-			(xy 21.59 39.37) (xy 21.59 44.45)
+	(global_label "BUFFER_L"
+		(shape input)
+		(at 83.82 34.29 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
 		)
-		(stroke
-			(width 0)
-			(type default)
+		(uuid "82a6805c-d74e-43ba-a890-36e1abbb6829")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 71.6424 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
 		)
-		(uuid "f9813670-b603-4b37-90de-7a15903110de")
-	)
-	(wire
-		(pts
-			(xy 21.59 44.45) (xy 34.29 44.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ff0ffd7c-9b52-4a7c-a158-a5e8114fa77c")
 	)
 	(global_label "A_OUT_R"
 		(shape input)
-		(at 231.14 67.31 0)
+		(at 229.87 86.36 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -1583,7 +1593,7 @@
 		)
 		(uuid "9e3800ea-bb00-485d-8532-6711b3b9f75f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 242.0476 67.31 0)
+			(at 240.7776 86.36 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1592,54 +1602,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
-			)
-		)
-	)
-	(global_label "SDM_L"
-		(shape input)
-		(at 76.2 34.29 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ba0a669f-c900-42fc-8abd-dcda9c11cfa3")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 67.2882 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-	)
-	(global_label "SDM_R"
-		(shape input)
-		(at 76.2 67.31 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "d694e18c-0edb-45b1-8a09-74132d82a2b5")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 67.0463 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
 			)
 		)
 	)
@@ -1668,8 +1630,9 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C_Polarized")
-		(at 213.36 67.31 90)
+		(lib_id "Device:R_US")
+		(at 123.19 34.29 270)
+		(mirror x)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1677,30 +1640,31 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "04cff6c9-0740-47f3-9303-f637146b6f6e")
-		(property "Reference" "C10"
-			(at 212.471 59.69 90)
+		(uuid "09d2e4ec-969c-4572-9851-f49602488cf3")
+		(property "Reference" "R12"
+			(at 124.4601 31.75 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "100uF"
-			(at 212.471 62.23 90)
+		(property "Value" "4.87k"
+			(at 121.9201 31.75 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.3"
-			(at 217.17 66.3448 0)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 122.936 33.274 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1711,7 +1675,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 213.36 67.31 0)
+			(at 123.19 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1721,8 +1685,51 @@
 				)
 			)
 		)
-		(property "Description" "Polarized capacitor"
-			(at 213.36 67.31 0)
+		(property "Description" "1608 1%"
+			(at 119.888 27.432 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 123.19 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 123.19 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 123.19 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 123.19 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1733,24 +1740,24 @@
 			)
 		)
 		(pin "1"
-			(uuid "97c061b0-6b9b-4d66-b12a-8c067fd88592")
+			(uuid "3c92950c-070b-4816-b63f-7545b98d5df4")
 		)
 		(pin "2"
-			(uuid "7387ddbf-b2cd-4dd3-aac0-24560b60f450")
+			(uuid "b60b4b21-f070-4c8f-b9bc-9b722db49170")
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C10")
+					(reference "R12")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:R_US")
-		(at 180.34 67.31 90)
-		(unit 1)
+		(lib_id "OPA1688IDR:OPA1688IDR")
+		(at 71.12 132.08 0)
+		(unit 3)
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1758,29 +1765,31 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "08526c81-b3fe-4e7c-8b7b-0d297716d528")
-		(property "Reference" "R10"
-			(at 180.34 60.96 90)
+		(uuid "0d09cb0c-de5b-417f-a9f8-763fc005efaa")
+		(property "Reference" "U4"
+			(at 69.85 130.8099 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "50"
-			(at 180.34 63.5 90)
+		(property "Value" "OPA1688IDR"
+			(at 69.85 133.3499 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 180.594 66.294 90)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 71.12 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1790,8 +1799,8 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
-			(at 180.34 67.31 0)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/opa1688.pdf"
+			(at 71.12 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1801,8 +1810,8 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, US symbol"
-			(at 180.34 67.31 0)
+		(property "Description" "Dual Operational Amplifiers, SOIC-8/TSSOP-8/VSSOP-8"
+			(at 71.12 132.08 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1811,25 +1820,87 @@
 					(size 1.27 1.27)
 				)
 			)
+		)
+		(property "Sim.Device" ""
+			(at 71.12 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 71.12 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 71.12 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 71.12 132.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "61671dfc-9eea-41ee-ab1d-68f60e1328a4")
+		)
+		(pin "4"
+			(uuid "dce595b0-d280-48ab-8158-c342dd4a86b2")
+		)
+		(pin "7"
+			(uuid "d84a969b-0b3b-4e8b-95ba-b31731dfac00")
+		)
+		(pin "6"
+			(uuid "a8b31198-23fe-4d52-8f0d-565dd9387393")
+		)
+		(pin "5"
+			(uuid "ae4650eb-8042-45c8-8d16-7cb98751c390")
+		)
+		(pin "3"
+			(uuid "86f4e79c-4b50-4f47-bc58-cfaf01da68e9")
 		)
 		(pin "2"
-			(uuid "36dca352-ef20-4f1a-84a6-9c190bcae90e")
+			(uuid "d15c16fb-f4d0-41be-8b04-e063685fb9cf")
 		)
 		(pin "1"
-			(uuid "dfe4ff81-e320-4bb5-ab17-c091447c0229")
+			(uuid "3443a292-ac51-4f20-ab95-199a3affccd6")
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "R10")
-					(unit 1)
+					(reference "U4")
+					(unit 3)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:R_US")
-		(at 91.44 67.31 90)
+		(lib_id "Device:C")
+		(at 25.4 146.05 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1837,30 +1908,31 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "20dcbe9f-beb0-4625-837e-d1460a9446cd")
-		(property "Reference" "R8"
-			(at 91.44 60.96 90)
+		(uuid "0f303765-4933-4ec9-a73f-e26045020ede")
+		(property "Reference" "C18"
+			(at 29.21 144.7799 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "220"
-			(at 91.44 63.5 90)
+		(property "Value" "100nF"
+			(at 29.21 147.3199 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 91.694 66.294 90)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 26.3652 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1871,7 +1943,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.44 67.31 0)
+			(at 25.4 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1881,8 +1953,51 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, US symbol"
-			(at 91.44 67.31 0)
+		(property "Description" "50V 1005 X7R"
+			(at 33.782 149.098 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 25.4 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 25.4 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 25.4 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 25.4 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1893,15 +2008,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "6e6edd4d-e872-4d2b-9a3c-a47001bb16f1")
+			(uuid "f2563a31-25ee-4e66-a682-672f965f08aa")
 		)
 		(pin "1"
-			(uuid "4e59c205-1f4a-48fb-bf9b-c5888067092f")
+			(uuid "816b55e0-4a55-40b8-9f07-79585d5b7d14")
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "R8")
+					(reference "C18")
 					(unit 1)
 				)
 			)
@@ -1909,7 +2024,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 128.27 72.39 0)
+		(at 154.94 73.66 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1917,32 +2032,29 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "21200756-6c2c-4f3d-9f18-6481f034ab4e")
-		(property "Reference" "C12"
-			(at 132.08 69.8499 0)
+		(uuid "1679c4e5-9c75-40fb-bf27-f50f3705576d")
+		(property "Reference" "C14"
+			(at 154.94 66.04 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
 		(property "Value" "2.2nF"
-			(at 132.08 72.3899 0)
+			(at 154.94 68.58 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 129.2352 76.2 0)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 158.75 72.6948 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1953,7 +2065,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.27 72.39 0)
+			(at 154.94 73.66 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1963,8 +2075,51 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
-			(at 128.27 72.39 0)
+		(property "Description" "1608 C0G 1%"
+			(at 154.686 70.358 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 154.94 73.66 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 154.94 73.66 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 154.94 73.66 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 154.94 73.66 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1975,10 +2130,736 @@
 			)
 		)
 		(pin "1"
-			(uuid "18034f4f-95fd-4d33-944d-1e0a4ec65a91")
+			(uuid "8bae8d74-66b3-4526-b525-320e46a5faf6")
 		)
 		(pin "2"
-			(uuid "ac428abf-5904-49a2-909d-a20ebe1f2ade")
+			(uuid "b4d6cdff-218e-4e1d-8178-9fd5bca4faf9")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "C14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 132.08 106.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1cd8b2bd-dc65-4e1c-bc75-e1af7b91f5d2")
+		(property "Reference" "#PWR035"
+			(at 132.08 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 132.08 111.76 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 132.08 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 132.08 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 132.08 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "aa4dc159-e9b5-4786-8880-56e2f834b80c")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "#PWR035")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_US")
+		(at 102.87 34.29 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2143ead8-26fc-49d3-90a5-c299b562c588")
+		(property "Reference" "R11"
+			(at 101.5999 31.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2.61k"
+			(at 104.1399 31.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 103.124 33.274 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "1608 1%"
+			(at 106.172 27.432 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 102.87 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 102.87 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 102.87 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 102.87 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b0db594a-bbb5-4311-ad33-798594fe9349")
+		)
+		(pin "2"
+			(uuid "e224783f-bd9e-4bea-b988-d95d2cf2bf31")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "R11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 132.08 44.45 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "21e6176a-34e2-47b6-afe0-54f51cfd0aaa")
+		(property "Reference" "C13"
+			(at 124.46 44.45 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1 nF"
+			(at 127 44.45 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 131.1148 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 132.08 44.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "1608 1% C0G"
+			(at 128.778 44.704 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 132.08 44.45 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 132.08 44.45 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 132.08 44.45 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 132.08 44.45 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a1a6e313-2e85-4985-be86-b9885fce5e76")
+		)
+		(pin "2"
+			(uuid "85c12758-a632-481e-8552-09dd574b1da2")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "C13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_US")
+		(at 120.65 86.36 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "24d6327c-7d4b-4363-8def-9151d7aad905")
+		(property "Reference" "R15"
+			(at 119.3799 83.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4.87k"
+			(at 121.9199 83.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 120.904 85.344 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 120.65 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "1608 1%"
+			(at 123.952 79.502 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 120.65 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 120.65 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 120.65 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 120.65 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9bda5a72-6c22-4526-9038-934618024fc0")
+		)
+		(pin "2"
+			(uuid "608132da-fffa-4e14-ac88-6f58d2218f65")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "R15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 40.64 113.03 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2640696c-4b46-4f8b-b341-c0e7da35bfe6")
+		(property "Reference" "#PWR036"
+			(at 40.64 116.84 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 40.64 107.95 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 40.64 113.03 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6738d109-b391-4d13-b2ed-275554aecd7e")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "#PWR036")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-3V3")
+		(at 68.58 139.7 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2acea132-1e7d-4e8a-be10-bcbeaa5daf66")
+		(property "Reference" "#PWR040"
+			(at 68.58 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "-3V3"
+			(at 68.58 144.78 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"-3V3\""
+			(at 68.58 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "678ef1a1-fc37-4de8-ac55-23a2425fd4e4")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "#PWR040")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 157.48 21.59 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2f4c21db-f193-43f5-b5d8-f1d3b3e083c1")
+		(property "Reference" "C12"
+			(at 157.48 13.97 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2.2nF"
+			(at 157.48 16.51 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 161.29 20.6248 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 157.48 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "1608 C0G 1%"
+			(at 157.226 18.288 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 157.48 21.59 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 157.48 21.59 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 157.48 21.59 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 157.48 21.59 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "de344d84-7826-48fe-8c03-17c05ed73184")
+		)
+		(pin "2"
+			(uuid "92203aa6-09ee-477b-b5e9-a5e0672897ad")
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
@@ -1990,1319 +2871,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+5V")
-		(at 34.29 21.59 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "25d525bc-22af-433e-a354-35dec7d5ea27")
-		(property "Reference" "#PWR011"
-			(at 34.29 25.4 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+5V"
-			(at 34.29 16.51 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 34.29 21.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 34.29 21.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 34.29 21.59 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "4900e5f0-27c2-4cac-b7ae-1cc585dacc97")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR011")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 102.87 72.39 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "27943458-dc6d-4b61-a09f-58bd7f09e33f")
-		(property "Reference" "C11"
-			(at 106.68 69.8499 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "22nF"
-			(at 106.68 72.3899 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 103.8352 76.2 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 102.87 72.39 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 102.87 72.39 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "873372ef-43bb-41c1-b488-ee5f9cd8f8f3")
-		)
-		(pin "2"
-			(uuid "c70a36e8-4423-48c6-9000-d668ab9aa5ce")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 129.54 39.37 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4f1e9bf8-7377-4c02-88ab-9dbe69b862be")
-		(property "Reference" "C9"
-			(at 133.35 36.8299 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "2.2nF"
-			(at 133.35 39.3699 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 130.5052 43.18 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 129.54 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 129.54 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "984c642f-091d-432f-9c4a-de67a229522d")
-		)
-		(pin "2"
-			(uuid "a41a6346-71fd-415f-962e-3a5abff2b119")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C_Polarized")
-		(at 214.63 34.29 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "565a025f-584b-4a47-927f-a20ec08453de")
-		(property "Reference" "C5"
-			(at 213.741 26.67 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "100uF"
-			(at 213.741 29.21 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:CP_Elec_6.3x5.3"
-			(at 218.44 33.3248 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 214.63 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Polarized capacitor"
-			(at 214.63 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "a328c063-65e6-4a5c-b973-57bdbb5a1f2f")
-		)
-		(pin "2"
-			(uuid "fe08ea21-f54f-4edf-9a8d-79f960005308")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_US")
-		(at 118.11 67.31 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "71272aef-9d84-495a-bf2d-4335bc32ad97")
-		(property "Reference" "R9"
-			(at 118.11 60.96 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "2.2k"
-			(at 118.11 63.5 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 118.364 66.294 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 118.11 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 118.11 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "R"
-			(at 118.11 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Type" "="
-			(at 118.11 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Params" "r=\"22k\""
-			(at 118.11 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=+ 2=-"
-			(at 118.11 67.31 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "e2fbcb7d-ffcf-4abf-93d8-fe930222b3b6")
-		)
-		(pin "1"
-			(uuid "a6d3ab86-305f-43ca-95d2-1ddb175e2b55")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "R9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_US")
-		(at 119.38 34.29 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "88639f3a-1c9b-4e2a-a215-40e34dde7c8a")
-		(property "Reference" "R6"
-			(at 119.38 27.94 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "2.2k"
-			(at 119.38 30.48 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 119.634 33.274 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 119.38 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 119.38 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "0af03941-91ae-4f6b-ae84-42e834aad989")
-		)
-		(pin "1"
-			(uuid "c382c145-4b21-4d3b-8c20-8ff250512ea8")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "R6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 21.59 35.56 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "912e6d2b-93aa-4435-92cc-e59927147b4e")
-		(property "Reference" "C6"
-			(at 25.4 34.2899 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100nF"
-			(at 25.4 36.8299 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 22.5552 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 21.59 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 21.59 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "1459adb8-543d-42f6-9791-cb786a21f97c")
-		)
-		(pin "1"
-			(uuid "928f3774-f71d-4d27-9602-730147007aaf")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 34.29 35.56 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "91f2c038-dc68-488f-b17d-567904f84fe2")
-		(property "Reference" "C7"
-			(at 38.1 34.2899 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100nF"
-			(at 38.1 36.8299 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 35.2552 39.37 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 34.29 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 34.29 35.56 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "907d1332-e468-4dc0-9719-73b128fa834c")
-		)
-		(pin "2"
-			(uuid "ff283f1d-59d5-4d8f-896b-4404f106233a")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 102.87 81.28 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9990dd5b-7ca4-45f0-99aa-ad048a5b21c5")
-		(property "Reference" "#PWR015"
-			(at 102.87 87.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 102.87 86.36 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 102.87 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 102.87 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 102.87 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "360e50ee-847c-4941-b8f0-ac5f2e4dc526")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR015")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:TLV9062")
-		(at 48.26 36.83 0)
-		(unit 3)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a4266ed2-1352-489f-aa47-1cfb00053011")
-		(property "Reference" "U2"
-			(at 46.99 35.5599 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TLV9062"
-			(at 46.99 38.0999 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 48.26 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tlv9062.pdf"
-			(at 48.26 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Dual Operational Amplifiers, SOIC-8/TSSOP-8/VSSOP-8"
-			(at 48.26 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 48.26 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Name" "kicad_builtin_opamp_dual"
-			(at 48.26 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 48.26 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
-			(at 48.26 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Params" "POLE=10M GAIN=200k"
-			(at 48.26 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "d271fde0-854b-430a-bd18-9439359c633c")
-		)
-		(pin "2"
-			(uuid "39046c94-c513-4286-b758-8698d68783c7")
-		)
-		(pin "1"
-			(uuid "d8f04bd0-bf03-434b-8fdd-cfab0c61652b")
-		)
-		(pin "4"
-			(uuid "9e1e5e73-3a61-4b76-8816-c5892f7083bc")
-		)
-		(pin "8"
-			(uuid "01cdee02-3d25-4677-adac-c7b410929fa3")
-		)
-		(pin "7"
-			(uuid "6c254f2a-d46f-44e4-9d9d-e36293bfaf51")
-		)
-		(pin "6"
-			(uuid "3e46470d-7103-46e2-827b-361a03c61029")
-		)
-		(pin "5"
-			(uuid "55dd012e-9188-4dd7-bdf3-3ee755bc78c6")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "U2")
-					(unit 3)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 34.29 52.07 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a9e12774-9bd9-48b4-8498-02653d252c13")
-		(property "Reference" "#PWR014"
-			(at 34.29 58.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 34.29 57.15 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 34.29 52.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 34.29 52.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 34.29 52.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "0a0fe9a7-8965-4688-9a18-64f693a96086")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR014")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_US")
-		(at 92.71 34.29 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ab6b0f16-3af9-42a8-9cb7-e1753cf985da")
-		(property "Reference" "R5"
-			(at 92.71 27.94 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "220"
-			(at 92.71 30.48 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 92.964 33.274 90)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 92.71 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Resistor, US symbol"
-			(at 92.71 34.29 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "a704cbca-93b2-45cb-9c8a-359bf266771a")
-		)
-		(pin "1"
-			(uuid "52f5ac1d-994b-4a2f-91b5-1b8a1dc17bd5")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "R5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 128.27 81.28 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ad00b616-fadc-4a06-af52-5c5881f7ea10")
-		(property "Reference" "#PWR016"
-			(at 128.27 87.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 128.27 86.36 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 128.27 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 128.27 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 128.27 81.28 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "f863ba9e-686c-4711-a325-bce498e0505d")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR016")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:TLV9062")
-		(at 157.48 69.85 0)
-		(unit 2)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b76ef40e-ec85-456f-9032-75e79a4c20c8")
-		(property "Reference" "U2"
-			(at 157.48 59.69 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "TLV9062"
-			(at 157.48 62.23 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 157.48 69.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tlv9062.pdf"
-			(at 157.48 69.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Dual Operational Amplifiers, SOIC-8/TSSOP-8/VSSOP-8"
-			(at 157.48 69.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
-			(at 157.48 69.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Name" "kicad_builtin_opamp_dual"
-			(at 157.48 69.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 157.48 69.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
-			(at 157.48 69.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Params" "POLE=10M GAIN=200k"
-			(at 157.48 69.85 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "d271fde0-854b-430a-bd18-9439359c633d")
-		)
-		(pin "2"
-			(uuid "39046c94-c513-4286-b758-8698d68783c8")
-		)
-		(pin "1"
-			(uuid "d8f04bd0-bf03-434b-8fdd-cfab0c61652c")
-		)
-		(pin "4"
-			(uuid "37058582-1e69-4759-8fe5-b24220e139cc")
-		)
-		(pin "8"
-			(uuid "e7e7be26-0f8f-4366-aa24-8f4823521a0f")
-		)
-		(pin "7"
-			(uuid "6c254f2a-d46f-44e4-9d9d-e36293bfaf52")
-		)
-		(pin "6"
-			(uuid "3e46470d-7103-46e2-827b-361a03c6102a")
-		)
-		(pin "5"
-			(uuid "55dd012e-9188-4dd7-bdf3-3ee755bc78c7")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "U2")
-					(unit 2)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:TLV9062")
+		(lib_id "OPA1688IDR:OPA1688IDR")
 		(at 158.75 36.83 0)
 		(unit 1)
 		(body_style 1)
@@ -3312,8 +2881,8 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "b934e1ef-1a8b-459d-b42a-3f733b22df83")
-		(property "Reference" "U2"
+		(uuid "3675c54d-71ed-4b98-8094-79f1ca6a407c")
+		(property "Reference" "U4"
 			(at 158.75 26.67 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3323,7 +2892,7 @@
 				)
 			)
 		)
-		(property "Value" "TLV9062"
+		(property "Value" "OPA1688IDR"
 			(at 158.75 29.21 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3344,7 +2913,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tlv9062.pdf"
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/opa1688.pdf"
 			(at 158.75 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -3366,7 +2935,7 @@
 				)
 			)
 		)
-		(property "Sim.Library" "${KICAD9_SYMBOL_DIR}/Simulation_SPICE.sp"
+		(property "Sim.Device" ""
 			(at 158.75 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -3377,7 +2946,7 @@
 				)
 			)
 		)
-		(property "Sim.Name" "kicad_builtin_opamp_dual"
+		(property "Sim.Library" ""
 			(at 158.75 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -3388,7 +2957,7 @@
 				)
 			)
 		)
-		(property "Sim.Device" "SUBCKT"
+		(property "Sim.Name" ""
 			(at 158.75 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -3399,7 +2968,7 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=out1 2=in1- 3=in1+ 4=vee 5=in2+ 6=in2- 7=out2 8=vcc"
+		(property "Sim.Pins" ""
 			(at 158.75 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -3409,54 +2978,43 @@
 					(size 1.27 1.27)
 				)
 			)
-		)
-		(property "Sim.Params" "POLE=10M GAIN=200k"
-			(at 158.75 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "d271fde0-854b-430a-bd18-9439359c633e")
-		)
-		(pin "2"
-			(uuid "39046c94-c513-4286-b758-8698d68783c9")
-		)
-		(pin "1"
-			(uuid "d8f04bd0-bf03-434b-8fdd-cfab0c61652d")
-		)
-		(pin "4"
-			(uuid "37058582-1e69-4759-8fe5-b24220e139cd")
 		)
 		(pin "8"
-			(uuid "e7e7be26-0f8f-4366-aa24-8f4823521a10")
+			(uuid "61671dfc-9eea-41ee-ab1d-68f60e1328a5")
+		)
+		(pin "4"
+			(uuid "dce595b0-d280-48ab-8158-c342dd4a86b3")
 		)
 		(pin "7"
-			(uuid "6c254f2a-d46f-44e4-9d9d-e36293bfaf53")
+			(uuid "d84a969b-0b3b-4e8b-95ba-b31731dfac01")
 		)
 		(pin "6"
-			(uuid "3e46470d-7103-46e2-827b-361a03c6102b")
+			(uuid "a8b31198-23fe-4d52-8f0d-565dd9387394")
 		)
 		(pin "5"
-			(uuid "55dd012e-9188-4dd7-bdf3-3ee755bc78c8")
+			(uuid "ae4650eb-8042-45c8-8d16-7cb98751c391")
+		)
+		(pin "3"
+			(uuid "86f4e79c-4b50-4f47-bc58-cfaf01da68ea")
+		)
+		(pin "2"
+			(uuid "d15c16fb-f4d0-41be-8b04-e063685fb9d0")
+		)
+		(pin "1"
+			(uuid "3443a292-ac51-4f20-ab95-199a3affccd7")
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "U2")
+					(reference "U4")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:R_US")
-		(at 181.61 34.29 90)
+		(lib_id "Device:C")
+		(at 132.08 96.52 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3464,10 +3022,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "bcfba508-6b91-473c-9754-c23957a0ae32")
-		(property "Reference" "R7"
-			(at 181.61 27.94 90)
+		(uuid "38f2aeb3-8a5d-4f1f-a611-152210f3d8f0")
+		(property "Reference" "C15"
+			(at 124.46 96.52 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3476,8 +3033,8 @@
 				)
 			)
 		)
-		(property "Value" "50"
-			(at 181.61 30.48 90)
+		(property "Value" "1 nF"
+			(at 127 96.52 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3486,8 +3043,8 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 181.864 33.274 90)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 131.1148 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3498,7 +3055,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 181.61 34.29 0)
+			(at 132.08 96.52 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3508,8 +3065,1199 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, US symbol"
-			(at 181.61 34.29 0)
+		(property "Description" "1608 1% C0G"
+			(at 128.778 96.774 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 132.08 96.52 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 132.08 96.52 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 132.08 96.52 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 132.08 96.52 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f46fad2e-4051-4380-a32c-77f6a0a20cf7")
+		)
+		(pin "2"
+			(uuid "c6460e90-3d2c-4809-a1d6-8fc081009cf6")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "C15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 40.64 139.7 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3a947602-3e3d-4eef-a197-9edc35e839e8")
+		(property "Reference" "#PWR039"
+			(at 40.64 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 40.64 134.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 40.64 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "74883d1e-8ae7-4a49-b62d-f6f5ff0c306d")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "#PWR039")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-3V3")
+		(at 40.64 153.67 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6773468d-5b77-4647-a836-4d6618eb9981")
+		(property "Reference" "#PWR041"
+			(at 40.64 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "-3V3"
+			(at 40.64 158.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"-3V3\""
+			(at 40.64 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a024427c-3cbe-414a-9159-1368f3aa6c20")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "#PWR041")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 132.08 54.61 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6eedf734-d72b-4cf8-9967-8040627bb4dd")
+		(property "Reference" "#PWR034"
+			(at 132.08 60.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 132.08 59.69 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 132.08 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 132.08 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 132.08 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b8f556e7-02c6-414f-b49d-06c1abd2874f")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "#PWR034")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 40.64 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "723d8e34-abf8-47af-ab55-70fd37961ff5")
+		(property "Reference" "#PWR037"
+			(at 40.64 129.54 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 40.64 128.27 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 40.64 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2f46581d-2f88-4d09-9221-633044b0d23c")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "#PWR037")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 40.64 118.11 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8af7a6e9-9026-42f0-8cbf-0e60d907ea4e")
+		(property "Reference" "C17"
+			(at 44.45 116.8399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 44.45 119.3799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 41.6052 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "50V 1005 X7R"
+			(at 49.022 121.158 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 40.64 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 40.64 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 40.64 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 40.64 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "e31f5dea-dd6f-4ee4-8e9b-03e1dca7fb77")
+		)
+		(pin "1"
+			(uuid "05d8f5e6-125e-4c16-8c67-6828c25367aa")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "C17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_US")
+		(at 212.09 86.36 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8efcbe64-6f92-4977-bd71-56438f5f3318")
+		(property "Reference" "R16"
+			(at 212.09 80.01 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0"
+			(at 212.09 82.55 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 212.344 85.344 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 212.09 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "2012 5%"
+			(at 211.582 84.074 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 212.09 86.36 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 212.09 86.36 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 212.09 86.36 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 212.09 86.36 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "e64045fb-17b4-46f3-a0f6-05fe6850ddb8")
+		)
+		(pin "1"
+			(uuid "8c580a2e-5a7e-41ad-8a21-42c006821759")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "R16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 68.58 123.19 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "940ea1bb-bf9b-4517-879c-2fbe02cdc51b")
+		(property "Reference" "#PWR038"
+			(at 68.58 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 68.58 118.11 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 68.58 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "bd6a156b-8013-44a2-a9a5-49534ebb9853")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "#PWR038")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 26.67 118.11 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a8645bc6-60e8-4cfb-a837-34f20add5a3d")
+		(property "Reference" "C16"
+			(at 30.48 116.8399 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 30.48 119.3799 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 27.6352 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 26.67 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "50V 1005 X7R"
+			(at 35.052 121.158 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 26.67 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 26.67 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 26.67 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 26.67 118.11 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "9740b501-d189-4eb3-9276-b082c800e187")
+		)
+		(pin "1"
+			(uuid "1835445a-209c-47b9-a086-ee85399f8c72")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "C16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_US")
+		(at 100.33 86.36 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a87591b7-cd26-4f6a-a27d-4878a16394e1")
+		(property "Reference" "R14"
+			(at 99.0599 83.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2.61k"
+			(at 101.5999 83.82 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 100.584 85.344 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100.33 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "1608 1%"
+			(at 103.632 79.502 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 100.33 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 100.33 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 100.33 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 100.33 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "538a30e7-8ad1-4c06-a076-149187e2401a")
+		)
+		(pin "2"
+			(uuid "1c071058-3017-499e-9063-987a67b073a9")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "OPA1688IDR:OPA1688IDR")
+		(at 156.21 88.9 0)
+		(unit 2)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b038b706-6a3d-454a-843a-80b58108c310")
+		(property "Reference" "U4"
+			(at 156.21 78.74 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "OPA1688IDR"
+			(at 156.21 81.28 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 156.21 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/opa1688.pdf"
+			(at 156.21 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Dual Operational Amplifiers, SOIC-8/TSSOP-8/VSSOP-8"
+			(at 156.21 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 156.21 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 156.21 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 156.21 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 156.21 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "61671dfc-9eea-41ee-ab1d-68f60e1328a6")
+		)
+		(pin "4"
+			(uuid "dce595b0-d280-48ab-8158-c342dd4a86b4")
+		)
+		(pin "7"
+			(uuid "d84a969b-0b3b-4e8b-95ba-b31731dfac02")
+		)
+		(pin "6"
+			(uuid "a8b31198-23fe-4d52-8f0d-565dd9387395")
+		)
+		(pin "5"
+			(uuid "ae4650eb-8042-45c8-8d16-7cb98751c392")
+		)
+		(pin "3"
+			(uuid "86f4e79c-4b50-4f47-bc58-cfaf01da68eb")
+		)
+		(pin "2"
+			(uuid "d15c16fb-f4d0-41be-8b04-e063685fb9d1")
+		)
+		(pin "1"
+			(uuid "3443a292-ac51-4f20-ab95-199a3affccd8")
+		)
+		(instances
+			(project "sigma-delta-dac-pcb"
+				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
+					(reference "U4")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_US")
+		(at 214.63 34.29 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bcfba508-6b91-473c-9754-c23957a0ae32")
+		(property "Reference" "R13"
+			(at 214.63 27.94 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0"
+			(at 214.63 30.48 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 214.884 33.274 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 214.63 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "2012 5%"
+			(at 214.122 32.004 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 214.63 34.29 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" ""
+			(at 214.63 34.29 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 214.63 34.29 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 214.63 34.29 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3528,85 +4276,7 @@
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "R7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 104.14 48.26 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c068abd6-1ecc-4ff1-b504-5c17abc1707c")
-		(property "Reference" "#PWR012"
-			(at 104.14 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 104.14 53.34 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 104.14 48.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 104.14 48.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 104.14 48.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "2be8fbd8-3007-4317-940f-d06e42a0ccfb")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR012")
+					(reference "R13")
 					(unit 1)
 				)
 			)
@@ -3614,7 +4284,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 104.14 39.37 0)
+		(at 40.64 146.05 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3622,10 +4292,9 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c31db9e8-e062-455d-8965-827f6759991d")
-		(property "Reference" "C8"
-			(at 107.95 36.8299 0)
+		(uuid "e8eba7ea-9253-47b1-bfef-f2dcf387eadf")
+		(property "Reference" "C19"
+			(at 44.45 144.7799 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3635,8 +4304,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "22nF"
-			(at 107.95 39.3699 0)
+		(property "Value" "100nF"
+			(at 44.45 147.3199 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3646,8 +4315,8 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 105.1052 43.18 0)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 41.6052 149.86 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3658,7 +4327,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 104.14 39.37 0)
+			(at 40.64 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3668,8 +4337,18 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
-			(at 104.14 39.37 0)
+		(property "Description" "50V 1005 X7R"
+			(at 49.022 149.098 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" ""
+			(at 40.64 146.05 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3679,94 +4358,49 @@
 				)
 			)
 		)
-		(pin "1"
-			(uuid "603136b9-78e7-4e2c-9663-bd1ceb170d46")
+		(property "Sim.Library" ""
+			(at 40.64 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" ""
+			(at 40.64 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" ""
+			(at 40.64 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
 		)
 		(pin "2"
-			(uuid "856dcbc6-1202-406d-a4ff-4a10195703c3")
-		)
-		(instances
-			(project "sigma-delta-dac-pcb"
-				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "C8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 129.54 48.26 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "cbb9c95f-d904-4b5d-b20f-15fe3832c3d5")
-		(property "Reference" "#PWR013"
-			(at 129.54 54.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 129.54 53.34 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 129.54 48.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 129.54 48.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 129.54 48.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
+			(uuid "5f797bf5-9f9f-4f43-89d5-7e52154c7311")
 		)
 		(pin "1"
-			(uuid "57f564f8-ae7a-48cd-aa7b-c2e87e12bca2")
+			(uuid "2e90a464-d922-4ef2-aaee-d8dabc5abbda")
 		)
 		(instances
 			(project "sigma-delta-dac-pcb"
 				(path "/a35bdaff-6288-40da-b7db-a5834010c771/c6716165-07c7-41f8-b936-c230c5d7062d"
-					(reference "#PWR013")
+					(reference "C19")
 					(unit 1)
 				)
 			)

@@ -2,3 +2,5 @@ gerber
 *.lck
 .history
 *.kicad_prl
+*.csv
+
