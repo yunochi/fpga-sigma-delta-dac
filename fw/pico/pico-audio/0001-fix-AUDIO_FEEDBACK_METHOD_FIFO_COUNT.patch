@@ -1,0 +1,45 @@
+From f1f9009d2ad866b4d7daa7c12c49ab69467fd5e2 Mon Sep 17 00:00:00 2001
+From: Yuri Lee <yrlee@mycreatz.com>
+Date: Thu, 6 Aug 2026 16:37:27 +0900
+Subject: [PATCH] fix AUDIO_FEEDBACK_METHOD_FIFO_COUNT
+
+---
+ .../Communication/USB/USBAudioDeviceBase.h       | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/src/AudioTools/Communication/USB/USBAudioDeviceBase.h b/src/AudioTools/Communication/USB/USBAudioDeviceBase.h
+index 89696851..c7695615 100644
+--- a/src/AudioTools/Communication/USB/USBAudioDeviceBase.h
++++ b/src/AudioTools/Communication/USB/USBAudioDeviceBase.h
+@@ -1116,21 +1116,19 @@ class USBAudioDeviceBase : public AudioStream, public VolumeSupport {
+               audio->feedback.compute.fifo_count.fifo_lvl_avg -
+               (audio->feedback.compute.fifo_count.fifo_lvl_avg >> 8) +
+               ((uint32_t)ff_count << 8);
+-          uint32_t avg = audio->feedback.compute.fifo_count.fifo_lvl_avg >> 8;
++          uint32_t avg = audio->feedback.compute.fifo_count.fifo_lvl_avg >> 16;
+           uint32_t thr = audio->feedback.compute.fifo_count.fifo_lvl_thr;
+           uint32_t nom = audio->feedback.compute.fifo_count.nom_value;
+           if (avg > thr) {
+-            audio->feedback.value =
+-                nom +
+-                (uint32_t)audio->feedback.compute.fifo_count.rate_const[0] *
+-                    (avg - thr);
++            uint32_t drop = (uint32_t)audio->feedback.compute.fifo_count.rate_const[1] *
++                            (avg - thr);
++            audio->feedback.value = nom - drop;
+           } else {
+-            uint32_t drop =
+-                (uint32_t)audio->feedback.compute.fifo_count.rate_const[1] *
+-                (thr - avg);
+             audio->feedback.value =
+-                (nom > drop) ? nom - drop : audio->feedback.min_value;
++                nom + (uint32_t)audio->feedback.compute.fifo_count.rate_const[0] *
++                (thr - avg);
+           }
++          
+           uint32_t clamped = audio->feedback.value < audio->feedback.min_value
+                                 ? audio->feedback.min_value
+                                 : audio->feedback.value;
+-- 
+2.43.0
+

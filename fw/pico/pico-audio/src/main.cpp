@@ -16,8 +16,8 @@ I2S i2s_out(OUTPUT);
 #define I2S_PIN_DATA 2
 
 // USB ring buffer capacity, detected at runtime from the library config.
-int TOTAL_CAPACITY = 0;
-int CENTER_LIMIT = 0; // 50% target center
+int usb_buffer_size = 0;
+int usb_buffer_center = 0; // 50% target center
 
 void setup()
 {
@@ -38,16 +38,8 @@ void setup()
   usb_cfg.volume_active = true;
   usb_in.begin(usb_cfg);
 
-  // Detect actual FIFO capacity from the library (packetSize * fifo_packets, rounded up to power of 2)
-  // audioPacketSize() is public; fifo_packets comes from the config we just applied.
-  {
-    int p = 256;
-    int sz = (int)usb_in.audioPacketSize() * (int)usb_cfg.fifo_packets;
-    while (p < sz)
-      p <<= 1;
-    TOTAL_CAPACITY = p;
-  }
-  CENTER_LIMIT = TOTAL_CAPACITY / 2;
+  usb_buffer_size = usb_in.bufferRx().size();
+  usb_buffer_center = usb_buffer_size / 2;
 
   // Configure I2S Output
   i2s_out.setSlave();
@@ -72,18 +64,17 @@ void report_usb_buffer(int avail)
   if (now - last_report_ms >= 1000)
   {
     last_report_ms = now;
-    Serial.printf("[STATUS] Buffer Level: %d | Center: %d | Capacity: %d | I2S Freq: %d Hz\n",
-                  avail, CENTER_LIMIT, TOTAL_CAPACITY, AUDIO_SAMPLE_RATE);
+    Serial.printf("[STATUS] Buffer Level: %d | Center: %d | Capacity: %d \n",
+                  avail, usb_buffer_center, usb_buffer_size);
   }
 }
 
-// Single-Core loop: Handles USB task and copies data directly to native I2S with Pacing Control & Cool-down
 void loop()
 {
   static bool playback_started = false;
   const int DATA_CHUNK_SIZE = 256;
   static uint8_t copy_buf[DATA_CHUNK_SIZE];
-  int avail = usb_in.available();
+  int avail = usb_in.bufferRx().available();
   report_usb_buffer(avail);
 
   if (playback_started && avail < DATA_CHUNK_SIZE)
@@ -92,13 +83,13 @@ void loop()
   }
   if (!playback_started)
   {
-    if (avail >= CENTER_LIMIT)
+    if (avail >= usb_buffer_center)
     {
       playback_started = true;
     }
     else
     {
-      return; // Keep buffering and wait, leaving I2S clock at nominal
+      return; // Keep buffering and wait
     }
   }
 
