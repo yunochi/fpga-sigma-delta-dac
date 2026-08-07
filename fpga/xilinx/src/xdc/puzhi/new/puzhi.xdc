@@ -4,21 +4,20 @@ set_property PACKAGE_PIN AA11 [get_ports pdm_out_r]
 set_property IOSTANDARD LVCMOS33 [get_ports pdm_out_*]
 set_property DRIVE 16 [get_ports pdm_out_*]
 set_property SLEW SLOW [get_ports pdm_out_*]
-set_false_path -to [get_ports pdm_out_*]
+set_max_delay 30.0 -to [get_ports pdm_out_*]
+set_min_delay 0 -to [get_ports pdm_out_*]
 
 set_property IOSTANDARD LVCMOS33 [get_ports s_i2s_*]
 set_property PACKAGE_PIN Y12 [get_ports s_i2s_sck]
 set_property PACKAGE_PIN AG13 [get_ports s_i2s_ws]
 set_property PACKAGE_PIN AA12 [get_ports s_i2s_sd]
 
-set_max_delay 30.0 \
-    -from [get_ports s_i2s_sd] \
-    -to   [get_pins -hier -filter {NAME=~"*sd_ff_reg[0]/D"}]
-set_min_delay 0.0 \
-    -from [get_ports s_i2s_sd] \
-    -to   [get_pins -hier -filter {NAME=~"*sd_ff_reg[0]/D"}]
+set_max_delay 30.0 -from [get_ports s_i2s_sd]
+set_min_delay 0 -from [get_ports s_i2s_sd]
 set_max_delay 20.0 -to [get_ports s_i2s_sck]
+set_min_delay 0 -to [get_ports s_i2s_sck]
 set_max_delay 20.0 -to [get_ports s_i2s_ws]
+set_min_delay 0 -to [get_ports s_i2s_ws]
 
 set_property IOSTANDARD LVDS [get_ports clk_200M_*]
 set_property PACKAGE_PIN L3 [get_ports clk_200M_p]
