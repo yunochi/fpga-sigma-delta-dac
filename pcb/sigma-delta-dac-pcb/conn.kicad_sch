@@ -2074,7 +2074,7 @@
 				)
 			)
 		)
-		(property "Description" "1608"
+		(property "Description" "1608 1%"
 			(at 46.99 74.422 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2196,7 +2196,7 @@
 				)
 			)
 		)
-		(property "Description" "1608"
+		(property "Description" "1608 1%"
 			(at 46.99 55.372 90)
 			(show_name no)
 			(do_not_autoplace no)
